@@ -85,6 +85,8 @@ const fr = {
   donnees_locales: 'Toutes les données restent sur ce téléphone.',
   sw_pret: "Prête pour le mode avion : l'application fonctionne maintenant sans Internet.",
   maj: 'Nouvelle version disponible — touchez pour recharger.',
+  packs_serveur: "Packs du serveur de l'école",
+  importer: 'Importer',
 } as const;
 
 export type Cle = keyof typeof fr;
@@ -171,6 +173,8 @@ const ar: Record<Cle, string> = {
   donnees_locales: 'تبقى كل البيانات على هذا الهاتف.',
   sw_pret: 'جاهز لوضع الطيران: التطبيق يعمل الآن بدون إنترنت.',
   maj: 'إصدار جديد متاح — المس لإعادة التحميل.',
+  packs_serveur: 'حزم خادم المدرسة',
+  importer: 'استيراد',
 };
 
 let lang: Lang = 'fr';

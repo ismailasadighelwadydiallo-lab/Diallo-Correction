@@ -2,6 +2,7 @@ import { lirePack, specFeuille, feuilleSVG, W, H, type Pack, type QuestionQcm } 
 import { db, uid } from '../db.ts';
 import { t } from '../i18n.ts';
 import { $, $$, app, choisirFichiers, esc, nomFichier, telecharger, titre, toast, pts } from '../ui.ts';
+import { modeActuel } from '../statut.ts';
 
 export function accueil() {
   titre('app', false);
@@ -26,8 +27,29 @@ export async function listeEpreuves(cible: 'epreuve' | 'serie' | 'resultats' = '
     ${packs.length ? packs.map((p) => `<a class="list-item" href="#/${cible}/${encodeURIComponent(p.id)}" data-pack="${esc(p.id)}">
       <div class="grow"><b>${esc(p.pack.titre)}</b><div class="mut">${p.pack.questions.length} ${t('questions')} · ${pts(p.pack.total)} · ${nb.get(p.id)} ${t('copies')}</div></div><span class="btn pri">${t('ouvrir')}</span></a>`).join('') : `<p class="mut">${t('aucune_epreuve')}</p>`}
     </div>
-    ${cible === 'epreuve' || !packs.length ? `<div class="row"><button class="pri grow" id="imp">${t('importer_pack')}</button><a class="btn grow" href="#/creer">${t('creer_qcm')}</a></div>` : ''}`;
+    ${cible === 'epreuve' || !packs.length ? `<div class="row"><button class="pri grow" id="imp">${t('importer_pack')}</button><a class="btn grow" href="#/creer">${t('creer_qcm')}</a></div>
+    ${modeActuel() === 'serveur' ? `<div class="row"><button class="grow" id="srv">📥 ${t('packs_serveur')}</button></div><div id="liste-srv"></div>` : ''}` : ''}`;
   $('#imp')?.addEventListener('click', importerPack);
+  $('#srv')?.addEventListener('click', packsServeur);
+}
+
+/** Packs proposés par le serveur local de l'école (même origine, Wi-Fi, pas Internet). */
+async function packsServeur() {
+  const zone = $('#liste-srv');
+  try {
+    const r = await fetch('/api/packs', { cache: 'no-store' });
+    const liste: { fichier: string; titre?: string; valide: boolean; erreurs: string[] }[] = await r.json();
+    zone.innerHTML = `<div class="card">${liste.map((p) => `<div class="list-item"><div class="grow"><b>${esc(p.titre ?? p.fichier)}</b><div class="mut">${esc(p.fichier)}${p.valide ? '' : ' · ❌ ' + esc(p.erreurs[0] ?? '')}</div></div>${p.valide ? `<button class="pri" data-f="${esc(p.fichier)}">${t('importer')}</button>` : ''}</div>`).join('') || '<p class="mut">—</p>'}</div>`;
+    $$('[data-f]', zone).forEach((b) => (b.onclick = async () => {
+      const txt = await (await fetch('/packs/' + encodeURIComponent(b.dataset.f!), { cache: 'no-store' })).text();
+      const pack = lirePack(txt);
+      await db.packs.put({ id: pack.id, pack, ajoute_le: new Date().toISOString(), origine: 'serveur' });
+      toast(`${t('pack_importe')} : ${pack.titre}`);
+      location.hash = `#/epreuve/${encodeURIComponent(pack.id)}`;
+    }));
+  } catch (e) {
+    zone.innerHTML = `<p class="tag bad">${esc((e as Error).message)}</p>`;
+  }
 }
 
 export async function importerPack() {
