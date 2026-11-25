@@ -1,6 +1,6 @@
 import { copieDepuisLecture, modifierNote, noterCopie, specFeuille, type ItemFeuille, type Pack } from 'oc-core';
-import { db, uid, type CopieEnregistree } from '../db.ts';
-import { lirePhoto } from '../image.ts';
+import { db, imageBlob, uid, type CopieEnregistree } from '../db.ts';
+import { chargerImage, lirePhoto } from '../image.ts';
 import { t, nombre } from '../i18n.ts';
 import { $, $$, app, choisirFichiers, esc, pts, titre } from '../ui.ts';
 
@@ -61,7 +61,7 @@ export async function corrigerPhoto(pack: Pack, items: ItemFeuille[], f: Blob, e
   const copie = copieDepuisLecture(items, lecture.lignes, eleve);
   const resultat = noterCopie(pack, copie);
   const c: CopieEnregistree = {
-    id: uid(), packId: pack.id, eleve, copie, resultat, image: jpeg,
+    id: uid(), packId: pack.id, eleve, copie, resultat, image: await jpeg.arrayBuffer(),
     positions: lecture.lignes.map((l) => l.positions), reperes: lecture.reperes, rayon: lecture.rayon, date: new Date().toISOString(),
   };
   await db.copies.put(c);
@@ -123,7 +123,7 @@ export async function copie(id: string) {
 }
 
 async function dessiner(c: CopieEnregistree, pack: Pack) {
-  const bmp = await createImageBitmap(c.image!);
+  const bmp = await chargerImage(imageBlob(c)!);
   const v = $<HTMLCanvasElement>('#vis');
   if (!v) return;
   v.width = bmp.width; v.height = bmp.height;

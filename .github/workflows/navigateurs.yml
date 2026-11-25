@@ -1,0 +1,37 @@
+# Vérification automatique sur tous les navigateurs, à chaque envoi de code sur GitHub.
+# Chromium (Chrome Android + PC), Edge, Firefox (PC + écran de téléphone),
+# WebKit/Safari (iPhone, iPad, Mac) avec Playwright, puis le vrai WebKitGTK piloté par WebDriver.
+name: Navigateurs
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - name: Navigateurs Playwright
+        run: npx playwright install --with-deps chromium firefox webkit msedge
+      - run: npm run test:navigateurs
+      - name: WebKitGTK (moteur de Safari) en mode avion réel
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y webkit2gtk-driver xvfb
+          npm run test:webkit
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultats-playwright
+          path: packages/oc-web/test-results/
+          retention-days: 7

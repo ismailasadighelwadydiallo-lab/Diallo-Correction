@@ -13,10 +13,12 @@
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "build": "npm run build -w oc-web",
-    "test:avion": "npm run build && npx playwright test -c packages/oc-web/playwright.config.ts",
+    "test:avion": "npm run build && npx playwright test -c packages/oc-web/playwright.config.ts --project=android-chrome --project=pc-chrome",
     "serveur": "npm run build && node packages/oc-server/src/main.ts",
     "fixtures": "node scripts/gen-fixtures.ts",
-    "verifier-packs": "node scripts/verifier-packs.ts"
+    "verifier-packs": "node scripts/verifier-packs.ts",
+    "test:navigateurs": "npm run build && npx playwright test -c packages/oc-web/playwright.config.ts",
+    "test:webkit": "npm run build && node packages/oc-web/e2e-webdriver/webkit-hors-ligne.ts"
   },
   "engines": {
     "node": ">=22.18"

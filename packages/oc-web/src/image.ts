@@ -9,20 +9,23 @@ export interface PhotoLue {
   jpeg: Blob;
 }
 
-async function charger(f: Blob): Promise<ImageBitmap | HTMLImageElement> {
+/** Décode une image. createImageBitmap si possible (rapide, tient compte de l'orientation EXIF),
+ *  sinon <img> (anciens Safari, Firefox avec options non gérées). */
+export async function chargerImage(f: Blob): Promise<ImageBitmap | HTMLImageElement> {
   if ('createImageBitmap' in window) {
     try { return await createImageBitmap(f, { imageOrientation: 'from-image' }); } catch { /* repli */ }
   }
   return new Promise((res, rej) => {
     const img = new Image();
-    img.onload = () => res(img);
-    img.onerror = () => rej(new Error('Image illisible'));
-    img.src = URL.createObjectURL(f);
+    const url = URL.createObjectURL(f);
+    img.onload = () => { URL.revokeObjectURL(url); res(img); };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('Image illisible')); };
+    img.src = url;
   });
 }
 
 export async function lirePhoto(f: Blob, items: ItemFeuille[]): Promise<PhotoLue> {
-  const img = await charger(f);
+  const img = await chargerImage(f);
   const sc = Math.min(1, MAX_COTE / Math.max(img.width, img.height));
   const w = Math.round(img.width * sc), h = Math.round(img.height * sc);
   const c = document.createElement('canvas');

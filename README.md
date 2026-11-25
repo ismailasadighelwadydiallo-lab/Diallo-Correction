@@ -3,7 +3,9 @@
 **OFFLINE FIRST. AI LOCAL FIRST. CLOUD OPTIONAL.**
 Si Internet disparaît, l'application reste utile. Si Internet revient, elle devient plus puissante.
 
-Correction automatique de copies photographiées, dans Chrome sur Android, **en mode avion**.
+Correction automatique de copies photographiées, **en mode avion**, dans tout navigateur récent :
+Chrome, Edge, Firefox, Safari, sur téléphone Android, iPhone, iPad ou ordinateur
+(détail et limites par navigateur : `docs/navigateurs.md`).
 Note sur 20, points partiels par étape, explication de chaque point retiré, indice de confiance,
 copies douteuses signalées sans rien bloquer. Interface en français et en arabe.
 
@@ -46,7 +48,7 @@ Il faut **Node.js 22.18 ou plus récent** (https://nodejs.org, version LTS).
 
 ```bash
 npm install              # une fois, avec Internet
-npm test                 # tests automatiques (74 tests)
+npm test                 # tests automatiques (78 tests)
 npm run build            # construit l'application dans packages/oc-web/dist
 npm run serveur          # lance le serveur local (construit d'abord l'application)
 ```
@@ -61,7 +63,19 @@ npm run test:avion
 
 Ce test (Playwright) ouvre l'application, **coupe le réseau**, importe un pack, corrige deux
 photos simulées, vérifie les notes, modifie une note, exporte le CSV, passe en arabe, et vérifie
-qu'**aucune requête** ne part vers Internet. Il teste aussi la page labo et le serveur local.
+qu'**aucune requête** ne part vers Internet. Il teste aussi la page labo, le serveur local et
+l'aide à l'installation, sur Chrome Android et Chrome ordinateur.
+
+### Tous les navigateurs
+
+```bash
+npx playwright install --with-deps chromium firefox webkit msedge   # une fois, avec Internet
+npm run test:navigateurs      # Chrome Android/PC, Edge, Firefox PC/mobile, Safari iPhone/iPad/Mac
+npm run test:webkit           # moteur de Safari (WebKitGTK), serveur réellement arrêté
+```
+
+`test:webkit` demande, sous Linux : `sudo apt install webkit2gtk-driver xvfb`. Sur GitHub, ces tests
+tournent tout seuls à chaque envoi (`.github/workflows/navigateurs.yml`).
 
 ### Autres commandes
 
@@ -76,8 +90,8 @@ qu'**aucune requête** ne part vers Internet. Il teste aussi la page labo et le 
 
 1. Sur le PC de l'école, branché au Wi-Fi (un simple routeur suffit, **sans Internet**) :
    `npm run serveur`. Le serveur affiche ses adresses, par exemple `http://192.168.1.10:8080/installer`.
-2. Sur chaque téléphone, connecté au même Wi-Fi, ouvrez cette adresse **/installer** dans Chrome
-   et suivez les étapes :
+2. Sur chaque appareil, connecté au même Wi-Fi, ouvrez cette adresse **/installer** et suivez les
+   étapes de votre appareil (la page explique Android, iPhone/iPad et ordinateur). Sur Android :
    - télécharger le **certificat de l'école** et l'installer (une seule fois : Paramètres →
      Sécurité → Chiffrement et identifiants → Installer un certificat → Certificat CA) ;
    - ouvrir `https://192.168.1.10:8443/` ;
@@ -85,7 +99,10 @@ qu'**aucune requête** ne part vers Internet. Il teste aussi la page labo et le 
 3. Ouvrez l'application une fois : le message « Prête pour le mode avion » apparaît.
    Ensuite, elle fonctionne sans Wi-Fi et sans Internet.
 
-Pourquoi un certificat ? Chrome n'active le mode hors ligne que sur une adresse `https://`.
+Sur iPhone/iPad, le certificat s'installe depuis Safari (Réglages → Général → VPN et gestion de
+l'appareil, puis Informations → Réglages des certificats), puis Partager ⬆️ → « Sur l'écran d'accueil ».
+
+Pourquoi un certificat ? Les navigateurs n'activent le mode hors ligne que sur une adresse `https://`.
 Le serveur fabrique lui-même ce certificat (dossier `packages/oc-server/certs/`, à ne pas
 partager : il contient la clé privée). **Méthode sans certificat** (un téléphone de test) :
 dans Chrome, ouvrir `chrome://flags/#unsafely-treat-insecure-origin-as-secure`, y mettre

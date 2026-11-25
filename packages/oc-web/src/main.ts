@@ -3,6 +3,7 @@ import { registerSW } from 'virtual:pwa-register';
 import { appliquerLangue, langue, setLangue, t } from './i18n.ts';
 import { initStatut, afficherStatut } from './statut.ts';
 import { $, toast } from './ui.ts';
+import { initInstallation } from './installer.ts';
 import { accueil, creerQcm, epreuve, feuille, listeEpreuves } from './screens/epreuves.ts';
 import { copie, serie } from './screens/correction.ts';
 import { resultats, sauvegarde } from './screens/resultats.ts';
@@ -59,5 +60,5 @@ if ('serviceWorker' in navigator) {
     },
   });
 }
-// Demande au navigateur de ne pas effacer les données (copies, packs) en cas de manque d'espace.
-navigator.storage?.persist?.().catch(() => {});
+// Aide à l'installation (bouton Chrome/Edge, explications Safari/Firefox) et stockage persistant.
+initInstallation(() => { if (/^#?\/?$/.test(location.hash)) accueil(); });

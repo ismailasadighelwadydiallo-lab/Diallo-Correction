@@ -1,7 +1,7 @@
 # Architecture
 
 ```
-          Téléphone (Chrome Android, mode avion)                 PC de l'école (Wi-Fi sans Internet)
+          Téléphone, tablette, PC (tout navigateur)             PC de l'école (Wi-Fi sans Internet)
  ┌──────────────────────────────────────────────┐          ┌─────────────────────────────────┐
  │ oc-web (PWA)                                 │  HTTPS   │ oc-server (Fastify)             │
  │  écrans · caméra · IndexedDB (Dexie)         │◄────────►│  /           la PWA construite  │

@@ -83,18 +83,41 @@ export async function creerServeur(o: OptionsServeur): Promise<FastifyInstance> 
   return app;
 }
 
-/** Page d'aide pour installer l'application sur un téléphone Android (Chrome). */
+/** Page d'aide pour installer l'application sur un téléphone ou un ordinateur (tous navigateurs). */
 export function pageInstallation(hote: string, http: number, https: number, avecCa: boolean): string {
   const urlHttps = `https://${hote}:${https}/`;
+  const ca = `<a class="b" href="http://${hote}:${http}/ca.crt">⬇️ Télécharger le certificat de l'école</a>`;
+  const app = `<a class="b" href="${urlHttps}">${urlHttps}</a>`;
   return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Installer Offline Correction</title>
-<style>body{font-family:system-ui,sans-serif;max-width:640px;margin:0 auto;padding:16px;line-height:1.5;color:#14202b}h1{font-size:22px}li{margin:10px 0}a.b{display:inline-block;background:#0b5cad;color:#fff;padding:12px 16px;border-radius:9px;text-decoration:none}code{background:#eef2f6;padding:2px 6px;border-radius:4px}</style></head><body>
-<h1>Installer Offline Correction sur ce téléphone</h1>
-${avecCa ? `<ol>
-<li><b>Une seule fois par téléphone :</b> téléchargez le certificat de l'école<br><a class="b" href="http://${hote}:${http}/ca.crt">⬇️ Télécharger le certificat</a></li>
-<li>Ouvrez <b>Paramètres → Sécurité (ou Sécurité et confidentialité) → Plus de paramètres → Chiffrement et identifiants → Installer un certificat → Certificat CA</b>, puis choisissez le fichier <code>offline-correction-ca.crt</code>. (Les noms des menus changent un peu selon les marques.)</li>
-<li>Ouvrez l'application dans Chrome :<br><a class="b" href="${urlHttps}">${urlHttps}</a></li>
-<li>Dans Chrome, menu <b>⋮ → Installer l'application</b> (ou « Ajouter à l'écran d'accueil »).</li>
-<li>Ouvrez l'application une fois avec le Wi-Fi : un message indique qu'elle est prête pour le mode avion.</li>
-</ol>` : `<p>Le serveur fonctionne en HTTP seulement. Chrome n'installe une application qu'en HTTPS : relancez le serveur sans <code>OC_HTTP_SEUL=1</code>, ou suivez l'autre méthode du README (réglage <code>chrome://flags</code>).</p>`}
+<style>body{font-family:system-ui,sans-serif;max-width:640px;margin:0 auto;padding:16px;line-height:1.5;color:#14202b}h1{font-size:22px}h2{font-size:18px;margin-top:28px;border-top:1px solid #dde3ea;padding-top:16px}li{margin:10px 0}a.b{display:inline-block;background:#0b5cad;color:#fff;padding:12px 16px;border-radius:9px;text-decoration:none;word-break:break-all}code{background:#eef2f6;padding:2px 6px;border-radius:4px}.mut{color:#5b6b7a}</style></head><body>
+<h1>Installer Offline Correction</h1>
+${avecCa ? `<p>Deux étapes, <b>une seule fois par appareil</b> : faire confiance au certificat de l'école, puis ouvrir l'application. Ensuite, elle marche sans Wi-Fi et sans Internet.</p>
+<p>${ca}</p>
+<h2>📱 Android (Chrome, Samsung Internet, Edge)</h2>
+<ol>
+<li>Téléchargez le certificat (bouton ci-dessus).</li>
+<li><b>Paramètres → Sécurité (ou Sécurité et confidentialité) → Plus de paramètres → Chiffrement et identifiants → Installer un certificat → Certificat CA</b>, puis choisissez <code>offline-correction-ca.crt</code>. (Les noms des menus changent un peu selon les marques.)</li>
+<li>Ouvrez l'application : ${app}</li>
+<li>Menu <b>⋮ → Installer l'application</b> (ou « Ajouter à l'écran d'accueil »).</li>
+</ol>
+<p class="mut">Firefox Android : après l'étape 2, Firefox doit aussi accepter ce certificat : Paramètres → À propos de Firefox → touchez 5 fois le logo → retour → Paramètres secrets → « Utiliser les certificats d'autorités tierces ».</p>
+<h2>🍎 iPhone / iPad (Safari)</h2>
+<ol>
+<li>Dans <b>Safari</b>, téléchargez le certificat (bouton ci-dessus) et acceptez le profil.</li>
+<li><b>Réglages → Général → VPN et gestion de l'appareil</b> → profil « Offline Correction » → Installer.</li>
+<li><b>Réglages → Général → Informations → Réglages des certificats</b> → activez la confiance pour « Offline Correction ».</li>
+<li>Ouvrez l'application dans Safari : ${app}</li>
+<li>Bouton <b>Partager ⬆️ → « Sur l'écran d'accueil »</b>. Important : sans cela, Safari peut effacer les copies après 7 jours sans ouvrir l'application.</li>
+</ol>
+<h2>💻 Ordinateur</h2>
+<ol>
+<li>Téléchargez le certificat (bouton ci-dessus) et ouvrez-le.
+<br><b>Windows</b> (Chrome, Edge) : Installer le certificat → Ordinateur local → « Autorités de certification racines de confiance ».
+<br><b>Mac</b> (Safari, Chrome) : il s'ouvre dans Trousseau d'accès → double-clic → Se fier → « Toujours approuver ».
+<br><b>Firefox</b> (toutes plateformes) : Paramètres → Vie privée et sécurité → Certificats → Afficher les certificats → Autorités → Importer → cocher « Confirmer cette AC pour identifier des sites web ».</li>
+<li>Ouvrez l'application : ${app}</li>
+<li>Chrome / Edge : icône d'installation dans la barre d'adresse. Safari Mac : Fichier → « Ajouter au Dock ». Firefox : gardez un favori (pas d'installation, mais le mode hors ligne marche).</li>
+</ol>
+<p>Ouvrez l'application une fois avec le Wi-Fi : un message indique qu'elle est prête pour le mode avion.</p>` : `<p>Le serveur fonctionne en HTTP seulement. Les navigateurs n'activent le mode hors ligne qu'en HTTPS : relancez le serveur sans <code>OC_HTTP_SEUL=1</code>, ou suivez l'autre méthode du README (réglage <code>chrome://flags</code>, Chrome seulement).</p>`}
 <p>Le serveur de l'école n'utilise jamais Internet.</p></body></html>`;
 }

@@ -58,7 +58,7 @@ mesures de la page labo sur vos téléphones : je n'ai pas pu les mesurer moi-m�
 
 ## Limites connues
 
-- **HTTPS obligatoire pour installer l'application depuis le Wi-Fi** : Chrome n'active le mode
+- **HTTPS obligatoire pour installer l'application depuis le Wi-Fi** : les navigateurs n'activent le mode
   hors ligne (service worker) que sur `https://` ou `localhost`. Le serveur crée donc un
   certificat d'école à installer **une fois** sur chaque téléphone (page `/installer`).
   Autre solution sans certificat : réglage `chrome://flags/#unsafely-treat-insecure-origin-as-secure`
@@ -71,4 +71,8 @@ mesures de la page labo sur vos téléphones : je n'ai pas pu les mesurer moi-m�
   (étapes, erreur entraînée, « montrer que », méthode différente), mais la lecture automatique de
   l'écriture manuscrite n'existe pas encore (phase suivante). Aujourd'hui, l'enseignant noircit
   les points obtenus dans les cases de points de la feuille.
+- **Navigateurs** : Chromium et le moteur de Safari (WebKitGTK) sont testés ; Firefox et Safari
+  lui-même pas encore (voir `docs/navigateurs.md`). Sur iPhone, l'application doit être ajoutée à
+  l'écran d'accueil, sinon Safari peut effacer les données après 7 jours sans visite.
+- **Photos dans IndexedDB** : enregistrées en ArrayBuffer et non en Blob, car WebKit refusait les Blob.
 - **Traductions arabes** écrites par moi : à faire relire par un locuteur natif.

@@ -76,6 +76,8 @@ describe('page d\'installation', () => {
     const r = await app.inject({ url: '/installer', headers: { host: '192.168.1.20:8080' } });
     expect(r.body).toContain('http://192.168.1.20:8080/ca.crt');
     expect(r.body).toContain('https://192.168.1.20:8443/');
+    // une section par type d'appareil
+    for (const m of ['Android', 'iPhone / iPad', 'Ordinateur', 'Firefox', 'Sur l\'écran d\'accueil']) expect(r.body).toContain(m);
     await app.close();
   });
 });

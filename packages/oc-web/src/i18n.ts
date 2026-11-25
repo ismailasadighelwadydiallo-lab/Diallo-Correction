@@ -82,11 +82,20 @@ const fr = {
   doute_raisons: 'Pourquoi signalée',
   vide: 'vide',
   plusieurs: 'plusieurs cases',
-  donnees_locales: 'Toutes les données restent sur ce téléphone.',
+  donnees_locales: 'Toutes les données restent sur cet appareil.',
   sw_pret: "Prête pour le mode avion : l'application fonctionne maintenant sans Internet.",
   maj: 'Nouvelle version disponible — touchez pour recharger.',
   packs_serveur: "Packs du serveur de l'école",
   importer: 'Importer',
+  inst_titre: "📲 Installer l'application",
+  inst_bouton: 'Installer',
+  inst_fermer: 'Plus tard',
+  inst_ios: "Sur iPhone / iPad (Safari) : touchez Partager ⬆️ puis « Sur l'écran d'accueil ». Important : sans cela, Safari peut effacer les copies enregistrées après 7 jours sans ouvrir l'application.",
+  inst_mac: "Safari sur Mac : menu Fichier → « Ajouter au Dock ».",
+  inst_firefox_android: "Firefox : menu ⋮ → « Installer » ou « Ajouter à l'écran d'accueil ».",
+  inst_firefox_pc: "Firefox sur ordinateur n'installe pas les applications web. Ce n'est pas grave : gardez cette page en favori, elle marche aussi sans Internet.",
+  inst_autre: "Menu du navigateur → « Installer l'application » ou « Ajouter à l'écran d'accueil ».",
+  stockage_fragile: "⚠️ Ce navigateur n'a pas garanti la conservation des données. Faites régulièrement une sauvegarde (💾).",
 } as const;
 
 export type Cle = keyof typeof fr;
@@ -170,11 +179,20 @@ const ar: Record<Cle, string> = {
   doute_raisons: 'سبب الإشارة',
   vide: 'فارغ',
   plusieurs: 'عدة خانات',
-  donnees_locales: 'تبقى كل البيانات على هذا الهاتف.',
+  donnees_locales: 'تبقى كل البيانات على هذا الجهاز.',
   sw_pret: 'جاهز لوضع الطيران: التطبيق يعمل الآن بدون إنترنت.',
   maj: 'إصدار جديد متاح — المس لإعادة التحميل.',
   packs_serveur: 'حزم خادم المدرسة',
   importer: 'استيراد',
+  inst_titre: '📲 تثبيت التطبيق',
+  inst_bouton: 'تثبيت',
+  inst_fermer: 'لاحقًا',
+  inst_ios: 'على iPhone / iPad (Safari): المس زر المشاركة ⬆️ ثم « إضافة إلى الشاشة الرئيسية ». مهم: بدون ذلك قد يحذف Safari الأوراق المحفوظة بعد 7 أيام دون فتح التطبيق.',
+  inst_mac: 'Safari على Mac: قائمة ملف ← « إضافة إلى Dock ».',
+  inst_firefox_android: 'Firefox: القائمة ⋮ ← « تثبيت » أو « إضافة إلى الشاشة الرئيسية ».',
+  inst_firefox_pc: 'Firefox على الحاسوب لا يثبّت تطبيقات الويب. لا بأس: احفظ هذه الصفحة في المفضلة، فهي تعمل أيضًا بدون إنترنت.',
+  inst_autre: 'قائمة المتصفح ← « تثبيت التطبيق » أو « إضافة إلى الشاشة الرئيسية ».',
+  stockage_fragile: '⚠️ لم يضمن هذا المتصفح حفظ البيانات. قم بنسخ احتياطي بانتظام (💾).',
 };
 
 let lang: Lang = 'fr';

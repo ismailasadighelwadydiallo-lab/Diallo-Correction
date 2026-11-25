@@ -150,6 +150,18 @@ function texteRapport(): string {
 
 function majRapport() { ($('#rapport') as HTMLTextAreaElement).value = texteRapport(); }
 
+/** Navigateur sans WebGPU (Firefox Android/Linux, anciens Safari, Chrome ancien…) :
+ *  les modèles WebLLM sont grisés et un modèle wllama (processeur) est choisi d'office. */
+function adapterSansWebGPU() {
+  const sel = $('#modele') as HTMLSelectElement;
+  for (const o of sel.options) {
+    const c = CANDIDATS.find((x) => x.id === o.value)!;
+    if (c.moteur === 'webllm') { o.disabled = true; o.textContent = `${c.nom} — WebGPU absent sur ce navigateur`; }
+  }
+  const premier = CANDIDATS.find((c) => c.moteur === 'wllama');
+  if (premier && CANDIDATS.find((c) => c.id === sel.value)?.moteur === 'webllm') { sel.value = premier.id; sel.dispatchEvent(new Event('change')); }
+}
+
 function init() {
   $('#app').innerHTML = `
   <div class="card"><h2>1. Ce téléphone</h2><div id="appareil">Détection…</div></div>
@@ -179,7 +191,10 @@ function init() {
   $('#tester').onclick = tester;
   $('#copier').onclick = async () => { const t = texteRapport(); try { await navigator.clipboard.writeText(t); $('#copier').textContent = '✅ Copié'; } catch { ($('#rapport') as HTMLTextAreaElement).select(); document.execCommand('copy'); } };
   $('#dl').onclick = () => { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([texteRapport()], { type: 'text/plain' })); a.download = `rapport-labo-${new Date().toISOString().slice(0, 16).replace(/:/g, '')}.txt`; a.click(); };
-  detecter().then((a) => { rapport.appareil = a; afficherAppareil(a); majRapport(); });
+  detecter().then((a) => {
+    rapport.appareil = a; afficherAppareil(a); majRapport();
+    if (!a.webgpu) adapterSansWebGPU();
+  });
   // garder le modèle même si le téléphone manque de place
   navigator.storage?.persist?.().catch(() => {});
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(() => {});

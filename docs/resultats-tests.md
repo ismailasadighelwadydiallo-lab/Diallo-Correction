@@ -9,13 +9,16 @@ processeur du navigateur (émulation Chrome DevTools), à remplacer par des mesu
 
 | Suite | Commande | Résultat |
 |---|---|---|
-| oc-core, oc-server (Vitest) | `npm test` | **74 tests, tous passent** |
-| PWA en mode avion, labo, serveur (Playwright) | `npm run test:avion` | **5 tests, tous passent** |
+| oc-core, oc-server, oc-web (Vitest) | `npm test` | **78 tests, tous passent** |
+| PWA en mode avion, labo, serveur, installation (Playwright, Chrome Android + Chrome PC) | `npm run test:avion` | **11 passent**, 1 ignoré (le test serveur ne tourne qu'une fois) |
+| Moteur de Safari (WebKitGTK 2.52.6, WebDriver, serveur arrêté) | `npm run test:webkit` | **12 étapes, toutes réussies** |
+| Firefox, Safari iPhone/iPad/Mac, Edge (Playwright) | `npm run test:navigateurs` | **pas lancé ici** : navigateurs de test non téléchargeables dans mon environnement ; prévu sur GitHub |
 | Calculs des packs du Bac | `npm run verifier-packs` | **142 vérifications, toutes justes** |
 
 Détail Vitest : 8 tests moteur mathématique, 6 tests format des packs, 29 tests règles de
 barème (une ou plusieurs par règle de la section 7), 15 tests lecture des feuilles, 5 tests serveur,
-11 tests packs du Bac (validation, calculs, sensibilité des vérifications, copie simulée).
+11 tests packs du Bac (validation, calculs, sensibilité des vérifications, copie simulée),
+4 tests du conseil d'installation par navigateur. Détail par navigateur : `docs/navigateurs.md`.
 
 ### Lecture des feuilles simulées (30 questions : QCM simples, QCM multiples, cases de points)
 
@@ -70,4 +73,5 @@ coupé, l'application et le pack restent disponibles (🟢).
   ni téléphone ni GPU. La page labo produit ce rapport sur votre téléphone.
 - **Vraies photos** de copies : les tests utilisent des photos simulées. Il faut un lot de
   vraies photos (anonymisées) dans `fixtures/` pour mesurer la précision réelle.
+- **Firefox**, **Safari** lui-même (iPhone, Mac) et **Edge** : voir `docs/navigateurs.md`.
 - **Installation réelle sur Chrome Android** depuis le serveur de l'école (certificat compris).

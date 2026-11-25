@@ -12,7 +12,11 @@ const ip = Object.values(networkInterfaces()).flat().find((a) => a && a.family =
 const URL_HTTPS = `https://${ip}:9443`;
 let srv: ChildProcess;
 
-test.beforeAll(async () => {
+// Ce test lance lui-même un Chromium (certificat de l'école) : une seule fois, pas par navigateur.
+const ICI = 'android-chrome';
+
+test.beforeAll(async ({}, info) => {
+  if (info.project.name !== ICI) return;
   srv = spawn(process.execPath, ['packages/oc-server/src/main.ts'], { cwd: racine, env: { ...process.env, OC_PORT_HTTPS: '9443', OC_PORT_HTTP: '9080', OC_NOM: 'Test' }, stdio: 'pipe' });
   await new Promise<void>((ok, ko) => {
     const to = setTimeout(() => ko(new Error('serveur non démarré')), 20_000);
@@ -21,7 +25,8 @@ test.beforeAll(async () => {
 });
 test.afterAll(() => { srv?.kill(); });
 
-test('installation depuis le serveur local, puis fonctionnement sans serveur', async () => {
+test('installation depuis le serveur local, puis fonctionnement sans serveur', async ({}, info) => {
+  test.skip(info.project.name !== ICI, 'test du serveur : une seule fois, avec son propre Chromium');
   // Le Chromium de test fait confiance au certificat de l'école (empreinte de la clé),
   // comme un téléphone sur lequel ca.crt a été installé. Sans cela, Chrome refuse le service worker.
   const cert = new X509Certificate(readFileSync(resolve(racine, 'packages/oc-server/certs/serveur.crt')));

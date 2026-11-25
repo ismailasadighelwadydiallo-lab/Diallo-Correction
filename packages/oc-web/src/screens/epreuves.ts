@@ -1,6 +1,7 @@
 import { lirePack, specFeuille, feuilleSVG, W, H, type Pack, type QuestionQcm } from 'oc-core';
 import { db, uid } from '../db.ts';
 import { t } from '../i18n.ts';
+import { brancherCarteInstallation, carteInstallation } from '../installer.ts';
 import { $, $$, app, choisirFichiers, esc, nomFichier, telecharger, titre, toast, pts } from '../ui.ts';
 import { modeActuel } from '../statut.ts';
 
@@ -14,7 +15,9 @@ export function accueil() {
     ${carte('#/resultats', '📊', 'resultats', 'go-resultats')}
     ${carte('#/sauvegarde', '💾', 'sauvegarde', 'go-sauvegarde')}
     ${carte('./labo.html', '🧪', 'labo', 'go-labo')}
+    ${carteInstallation()}
     <p class="mut centre">${t('donnees_locales')}</p>`;
+  brancherCarteInstallation(accueil);
 }
 
 /** Liste des épreuves ; `cible` = écran ouvert quand on touche une épreuve. */

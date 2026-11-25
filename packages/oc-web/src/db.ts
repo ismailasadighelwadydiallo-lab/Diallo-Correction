@@ -15,8 +15,10 @@ export interface CopieEnregistree {
   eleve: string;
   copie: Copie;
   resultat: Resultat;
-  /** Photo réduite (JPEG) pour l'affichage de la copie corrigée. */
-  image?: Blob;
+  /** Photo réduite (JPEG) pour l'affichage de la copie corrigée.
+   *  Enregistrée en ArrayBuffer : Safari/WebKit refuse parfois les Blob dans IndexedDB
+   *  (« Error preparing Blob/File data to be stored in object store »). */
+  image?: ArrayBuffer | Blob;
   /** Positions des cases dans l'image (pour dessiner les cercles). */
   positions?: [number, number][][];
   reperes?: [number, number][];
@@ -30,20 +32,24 @@ export const db = new Dexie('offline-correction') as Dexie & {
 };
 db.version(1).stores({ packs: 'id, ajoute_le', copies: 'id, packId, date' });
 
+/** Photo d'une copie sous forme de Blob, qu'elle soit enregistrée en ArrayBuffer ou (anciennes copies) en Blob. */
+export const imageBlob = (c: Pick<CopieEnregistree, 'image'>) =>
+  c.image instanceof Blob ? c.image : c.image ? new Blob([c.image], { type: 'image/jpeg' }) : undefined;
+
 export const uid = () => (crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2) + Date.now().toString(36));
 
 /** Sauvegarde complète dans un objet JSON (images en base64). */
 export async function exporterTout(): Promise<string> {
   const packs = await db.packs.toArray();
   const copies = await db.copies.toArray();
-  const c2 = await Promise.all(copies.map(async (c) => ({ ...c, image: c.image ? await blobVersBase64(c.image) : undefined })));
+  const c2 = await Promise.all(copies.map(async (c) => ({ ...c, image: c.image ? await blobVersBase64(imageBlob(c)!) : undefined })));
   return JSON.stringify({ format: 'oc-sauvegarde/1', date: new Date().toISOString(), packs, copies: c2 });
 }
 
 export async function importerTout(texte: string): Promise<{ packs: number; copies: number }> {
   const d = JSON.parse(texte);
   if (d.format !== 'oc-sauvegarde/1' || !Array.isArray(d.packs) || !Array.isArray(d.copies)) throw new Error('format');
-  const copies = await Promise.all(d.copies.map(async (c: CopieEnregistree & { image?: string }) => ({ ...c, image: c.image ? await base64VersBlob(c.image) : undefined })));
+  const copies = await Promise.all(d.copies.map(async (c: CopieEnregistree & { image?: string }) => ({ ...c, image: c.image ? await (await base64VersBlob(c.image)).arrayBuffer() : undefined })));
   await db.transaction('rw', db.packs, db.copies, async () => {
     await db.packs.bulkPut(d.packs);
     await db.copies.bulkPut(copies as CopieEnregistree[]);
