@@ -1,0 +1,341 @@
+{
+  "format": "oc-pack/1",
+  "id": "bac-2026-complementaire-sciences-physiques-SN",
+  "titre": "Bac 2026 session complémentaire — Sciences physiques — Série SN (partiel : 10,5 pts)",
+  "serie": "SN",
+  "duree": "4h",
+  "session": "2026 complementaire",
+  "total": 10.5,
+  "langue": "fr",
+  "regles": {
+    "qcm_negatif": false
+  },
+  "questions": [
+    {
+      "id": "QCM-1",
+      "exercice": "QCM (2,5 pts) — une ou plusieurs réponses exactes",
+      "enonce": "Un amide monosubstitué est préparé à partir d'une amine :\nA) Primaire ; B) Secondaire ; C) Tertiaire",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "Une amine primaire R–NH₂ donne un amide N-monosubstitué.",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "A"
+      ]
+    },
+    {
+      "id": "QCM-2",
+      "exercice": "QCM (2,5 pts)",
+      "enonce": "Pour une monobase forte de concentration C, le pH a pour expression :\nA) pH = −log C ; B) pH = 14 + log C ; C) pH = 14 − log C",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "[HO⁻] = C ⇒ pH = 14 + log C (à 25 °C).",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "B"
+      ]
+    },
+    {
+      "id": "QCM-3",
+      "exercice": "QCM (2,5 pts)",
+      "enonce": "Projectile lancé avec v₀ = 5 m/s, α = 60° ; au sommet S, la vitesse est :\nA) Horizontale ; B) Nulle ; C) De valeur v_S = 2,5 m/s",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "Au sommet, v_y = 0 : vitesse horizontale, v_S = v₀cos60° = 2,5 m/s.",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "id": "QCM-4",
+      "exercice": "QCM (2,5 pts)",
+      "enonce": "Transition de l'électron de l'atome d'hydrogène du niveau n = 5 au niveau n = 3 :\nA) Due à l'absorption d'un photon ; B) Est une émission de photon ; C) Donne une radiation de la série de Paschen",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "Descente de niveau ⇒ émission ; arrivée sur n = 3 ⇒ série de Paschen.",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "QCM-5",
+      "exercice": "QCM (2,5 pts)",
+      "enonce": "Un satellite en orbite géostationnaire :\nA) Apparaît immobile pour un observateur terrestre ; B) Possède une altitude précise ; C) A une orbite passant par l'axe polaire Nord-Sud",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "Orbite équatoriale, période 24 h, altitude ≈ 36 000 km.",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "Ex1-1",
+      "exercice": "Exercice 1 (4 pts)",
+      "enonce": "pH₁ = 1, pH₂ = 2,55 ; V_A = 20 mL dosés par NaOH, C_B = 5×10⁻² mol/L ; V_E1 = 40 mL, V_E2 = 20 mL. Calculer C₁ et C₂.",
+      "points": 1,
+      "type": "numerique",
+      "attendu": "C₁ = C_B·V_E1/V_A = 0,1 mol/L ; C₂ = C_B·V_E2/V_A = 0,05 mol/L.",
+      "etapes": [
+        {
+          "critere": "Relation à l'équivalence",
+          "points": 0.5
+        },
+        {
+          "critere": "C₁ = 0,1 mol/L",
+          "points": 0.25,
+          "attendu": "0.1",
+          "tolerance": 0.02
+        },
+        {
+          "critere": "C₂ = 0,05 mol/L",
+          "points": 0.25,
+          "attendu": "0.05",
+          "tolerance": 0.02
+        }
+      ]
+    },
+    {
+      "id": "Ex1-2",
+      "exercice": "Exercice 1 (4 pts)",
+      "enonce": "Identifier, en justifiant, la nature (fort ou faible) de chaque acide.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "A₁H : pH₁ = −log C₁ = 1 ⇒ acide fort. A₂H : −log C₂ = 1,3 < 2,55 ⇒ acide faible.",
+      "etapes": [
+        {
+          "critere": "A₁H fort justifié",
+          "points": 0.25
+        },
+        {
+          "critere": "A₂H faible justifié",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1-3",
+      "exercice": "Exercice 1 (4 pts)",
+      "enonce": "Écrire les équations de dissolution des deux acides dans l'eau.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "A₁H + H₂O → A₁⁻ + H₃O⁺ (totale) ; A₂H + H₂O ⇌ A₂⁻ + H₃O⁺ (limitée).",
+      "etapes": [
+        {
+          "critere": "Équation de A₁H (flèche simple)",
+          "points": 0.25
+        },
+        {
+          "critere": "Équation de A₂H (double flèche)",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1-4",
+      "exercice": "Exercice 1 (4 pts)",
+      "enonce": "Calculer le pKa du couple acide/base présent dans la solution d'acide faible.",
+      "points": 1,
+      "type": "numerique",
+      "attendu": "[H₃O⁺] = 10^(−2,55) ≈ 2,82×10⁻³ mol/L ; Ka = [H₃O⁺]²/(C₂ − [H₃O⁺]) ≈ 1,68×10⁻⁴ ⇒ pKa ≈ 3,77 (≈ 3,8 avec l'approximation acide peu dissocié).",
+      "etapes": [
+        {
+          "critere": "Expression de Ka",
+          "points": 0.5
+        },
+        {
+          "critere": "Valeur pKa ≈ 3,8",
+          "points": 0.5
+        }
+      ],
+      "controles": [
+        "Valeur attendue pKa = 3,77 (tolérance 5 %), non rattachée à une étape."
+      ]
+    },
+    {
+      "id": "Ex1-5",
+      "exercice": "Exercice 1 (4 pts)",
+      "enonce": "Calculer V_A (acide faible) et V_B (base précédente) à mélanger pour obtenir 90 mL d'une solution tampon.",
+      "points": 1,
+      "type": "numerique",
+      "attendu": "Tampon (pH = pKa) : n(A₂H restant) = n(A₂⁻) ⇒ C₂V_A = 2C_BV_B ; C₂ = C_B ⇒ V_A = 2V_B et V_A + V_B = 90 mL ⇒ V_B = 30 mL, V_A = 60 mL.",
+      "etapes": [
+        {
+          "critere": "Condition du tampon",
+          "points": 0.5
+        },
+        {
+          "critere": "V_A = 60 mL",
+          "points": 0.25,
+          "attendu": "60",
+          "tolerance": 0.02
+        },
+        {
+          "critere": "V_B = 30 mL",
+          "points": 0.25,
+          "attendu": "30",
+          "tolerance": 0.02
+        }
+      ]
+    },
+    {
+      "id": "Ex2-1",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Mélange équimolaire de n₀ d'alcool C₃H₇–OH et de n₀ d'acide méthanoïque à 80 °C. Écrire l'équation de la réaction.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "HCOOH + C₃H₇OH ⇌ HCOOC₃H₇ + H₂O (estérification, lente et limitée).",
+      "etapes": [
+        {
+          "critere": "Équation avec double flèche",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex2-2",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Écrire l'équation-bilan de la réaction de dosage.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "HCOOH + HO⁻ → HCOO⁻ + H₂O.",
+      "etapes": [
+        {
+          "critere": "Équation juste",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex2-3",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Montrer que n_E(t) = n₀ − C_B·V_BE.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "Acide restant = C_B·V_BE (à l'équivalence) ; ester formé = acide consommé = n₀ − C_B·V_BE.",
+      "etapes": [
+        {
+          "critere": "Raisonnement complet",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex2-4",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "À partir du graphe, déterminer n₀, l'avancement final x_f, et la constante d'équilibre.",
+      "points": 1,
+      "type": "numerique",
+      "attendu": "t = 0 : V_BE = 25 mL ⇒ n₀ = 2 × 0,025 = 0,05 mol. Valeur finale lue sur le graphe (≈ 8,3 mL pour un alcool primaire) ⇒ x_f ≈ 0,033 mol, K = x_f²/(n₀ − x_f)² ≈ 4.",
+      "a_relire": "La valeur finale de V_BE se lit sur le graphe du sujet : vérifier la lecture.",
+      "etapes": [
+        {
+          "critere": "n₀ = 0,05 mol",
+          "points": 0.25,
+          "attendu": "0.05",
+          "tolerance": 0.02
+        },
+        {
+          "critere": "x_f à partir de la lecture",
+          "points": 0.25
+        },
+        {
+          "critere": "Expression de K",
+          "points": 0.25
+        },
+        {
+          "critere": "K ≈ 4",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex2-5",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Donner les formules semi-développées et les noms de l'alcool et de l'ester.",
+      "points": 1,
+      "type": "texte_court",
+      "attendu": "Alcool : CH₃–CH₂–CH₂–OH, propan-1-ol. Ester : H–COO–CH₂–CH₂–CH₃, méthanoate de propyle. (Si K ≈ 2,25 sur le graphe : propan-2-ol et méthanoate d'isopropyle.)",
+      "a_relire": "Confiance moyenne du corrigé proposé",
+      "etapes": [
+        {
+          "critere": "Formule de l'alcool",
+          "points": 0.25
+        },
+        {
+          "critere": "Nom de l'alcool",
+          "points": 0.25
+        },
+        {
+          "critere": "Formule de l'ester",
+          "points": 0.25
+        },
+        {
+          "critere": "Nom de l'ester",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex2-6",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Montrer que v = −C_B·dV_BE/dt, puis calculer sa valeur à t = 20 min.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "v = dn_E/dt = −C_B·dV_BE/dt. Valeur par la pente de la tangente à la courbe en t = 20 min (lecture graphique).",
+      "a_relire": "Réponse à valider par un professeur.",
+      "etapes": [
+        {
+          "critere": "Expression de v",
+          "points": 0.25
+        },
+        {
+          "critere": "Valeur par la tangente",
+          "points": 0.25
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "source": "Photo du sujet officiel, page 1. Converti depuis le « Pack Bac Mauritanie » (corrigé et barème proposés, non officiels). Coefficient : 7.",
+    "auteur": "Pack Bac Mauritanie (proposé) + vérifications Offline Correction",
+    "cree_le": "2026-11-25",
+    "avertissement": "Corrigés et barèmes proposés (non officiels), vérifiés par calcul ; les questions marquées « a_valider » doivent être relues par un professeur.",
+    "partiel": {
+      "total_epreuve": 20,
+      "manque": [
+        "Page 2 (≈ 9,5 pts)"
+      ]
+    },
+    "a_relire": [
+      "Ex2-4 : La valeur finale de V_BE se lit sur le graphe du sujet : vérifier la lecture.",
+      "Ex2-5 : Confiance moyenne du corrigé proposé",
+      "Ex2-6 : Réponse à valider par un professeur."
+    ]
+  }
+}

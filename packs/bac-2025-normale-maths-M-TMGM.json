@@ -1,0 +1,654 @@
+{
+  "format": "oc-pack/1",
+  "id": "bac-2025-normale-maths-M-TMGM",
+  "titre": "Bac 2025 session normale — Mathématiques — Séries M & TMGM (partiel : 10,5 pts)",
+  "serie": "M & TMGM",
+  "duree": "4h",
+  "session": "2025 normale",
+  "total": 10.5,
+  "langue": "fr",
+  "regles": {
+    "qcm_negatif": false
+  },
+  "questions": [
+    {
+      "id": "Ex1-1a",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "(E) : 62x − 5y = 2025. Justifier que (35 ; 29) est solution puis résoudre (E).",
+      "points": 1,
+      "type": "calcul",
+      "attendu": "62×35 − 5×29 = 2170 − 145 = 2025 ✓. 62(x − 35) = 5(y − 29), PGCD(62,5) = 1 (Gauss) ⇒ x = 35 + 5k, y = 29 + 62k, k ∈ ℤ.",
+      "etapes": [
+        {
+          "critere": "Vérification",
+          "points": 0.25
+        },
+        {
+          "critere": "Gauss justifié",
+          "points": 0.5
+        },
+        {
+          "critere": "Ensemble des solutions",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "(35 ; 29) est solution",
+          "expression": "62*35 - 5*29",
+          "egal_a": "2025"
+        },
+        {
+          "moteur": "math",
+          "quoi": "x = 35 + 5k, y = 29 + 62k sont solutions pour tout k",
+          "expression": "62*(35+5*k) - 5*(29+62*k)",
+          "egal_a": "2025"
+        }
+      ]
+    },
+    {
+      "id": "Ex1-1b",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Montrer que si (x ; y) est solution de (E) alors x est un multiple de 5.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "62x = 2025 + 5y = 5(405 + y) ⇒ 5 | 62x et PGCD(5, 62) = 1 ⇒ 5 | x (ou directement x = 35 + 5k).",
+      "etapes": [
+        {
+          "critere": "Justification complète",
+          "points": 0.5
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "x = 35 + 5k est multiple de 5 (k = −3..3)",
+          "expression": "sum(map(-3:3, f(k) = mod(35+5*k, 5)))",
+          "egal_a": "0"
+        }
+      ]
+    },
+    {
+      "id": "Ex1-2a",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "(F) : 62x¹⁰ − 5y¹⁰ = 2025. Montrer que pour tout entier a : a¹⁰ ≡ 1 [11] ou a¹⁰ ≡ 0 [11].",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "11 est premier. Si 11 ∤ a, petit théorème de Fermat : a¹⁰ ≡ 1 [11]. Si 11 | a : a¹⁰ ≡ 0 [11].",
+      "etapes": [
+        {
+          "critere": "Fermat (11 premier, 11 ∤ a)",
+          "points": 0.25
+        },
+        {
+          "critere": "Cas 11 | a",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "a¹⁰ ≡ 1 [11] pour a = 1..10 (Fermat)",
+          "expression": "sum(map(1:10, f(a) = mod(a^10, 11)))",
+          "egal_a": "10"
+        },
+        {
+          "moteur": "math",
+          "quoi": "a¹⁰ ≡ 0 [11] pour a = 11",
+          "expression": "mod(11^10, 11)",
+          "egal_a": "0"
+        }
+      ]
+    },
+    {
+      "id": "Ex1-2b",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Montrer que si (x ; y) est solution de (F) alors x ∧ 11 = 1 ou y ∧ 11 = 1.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "Si 11 | x et 11 | y, alors 11 | 62x¹⁰ − 5y¹⁰ = 2025 = 3⁴×5², impossible. Comme 11 est premier : x ∧ 11 = 1 ou y ∧ 11 = 1.",
+      "etapes": [
+        {
+          "critere": "Raisonnement par l'absurde",
+          "points": 0.25
+        },
+        {
+          "critere": "2025 non divisible par 11",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "2025 = 3⁴ × 5² n'est pas divisible par 11",
+          "expression": "mod(2025, 11) != 0 and 3^4*5^2 == 2025",
+          "egal_a": "true"
+        }
+      ]
+    },
+    {
+      "id": "Ex1-2c",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Déterminer le reste de la division euclidienne de 62x¹⁰ − 5y¹⁰ par 11. En déduire que (F) n'a pas de solution.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "62 ≡ 7 [11]. Cas (x¹⁰, y¹⁰) ≡ (1,1), (1,0), (0,1) : reste 2, 7 ou 6. Or 2025 ≡ 1 [11] ⇒ (F) n'a pas de solution.",
+      "etapes": [
+        {
+          "critere": "Les trois restes",
+          "points": 0.25
+        },
+        {
+          "critere": "Conclusion (2025 ≡ 1)",
+          "points": 0.25
+        }
+      ],
+      "controles": [
+        "restes possibles {2, 6, 7} ; 2025 mod 11 = 1 (contrôle déclaré par le pack d'origine)"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "62 ≡ 7 [11]",
+          "expression": "mod(62, 11)",
+          "egal_a": "7"
+        },
+        {
+          "moteur": "math",
+          "quoi": "cas (1,1) : 62 − 5 ≡ 2 [11]",
+          "expression": "mod(62 - 5, 11)",
+          "egal_a": "2"
+        },
+        {
+          "moteur": "math",
+          "quoi": "cas (1,0) : 62 ≡ 7 [11]",
+          "expression": "mod(62, 11)",
+          "egal_a": "7"
+        },
+        {
+          "moteur": "math",
+          "quoi": "cas (0,1) : −5 ≡ 6 [11]",
+          "expression": "mod(-5, 11)",
+          "egal_a": "6"
+        },
+        {
+          "moteur": "math",
+          "quoi": "2025 ≡ 1 [11]",
+          "expression": "mod(2025, 11)",
+          "egal_a": "1"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-1",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "P(z) = z³ − (6 + 4i sinα)z² + (8 + 16i sinα)z − 16i sinα, α ∈ ]−π/2 ; π/2[. Résoudre P(z) = 0 sachant qu'elle a une solution réelle z₀.",
+      "points": 1,
+      "type": "calcul",
+      "attendu": "z réel : partie imaginaire −4sinα(z − 2)² = 0 et partie réelle z³ − 6z² + 8z = 0 ⇒ z₀ = 2. P(z) = (z − 2)(z² − (4 + 4i sinα)z + 8i sinα). Δ = (4cosα)² ⇒ z₁ = 2 + 2e^(iα), z₂ = 2 − 2e^(−iα).",
+      "etapes": [
+        {
+          "critere": "z₀ = 2",
+          "points": 0.25
+        },
+        {
+          "critere": "Factorisation",
+          "points": 0.25
+        },
+        {
+          "critere": "Discriminant",
+          "points": 0.25
+        },
+        {
+          "critere": "z₁ et z₂",
+          "points": 0.25
+        }
+      ],
+      "controles": [
+        "P(2) = P(z₁) = P(z₂) = 0 (contrôle déclaré par le pack d'origine)"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "P(2) = 0",
+          "expression": "2^3 - (6+4*i*sin(a))*2^2 + (8+16*i*sin(a))*2 - 16*i*sin(a)",
+          "egal_a": "0"
+        },
+        {
+          "moteur": "math",
+          "quoi": "P(z₁) = 0, z₁ = 2 + 2e^(iα)",
+          "expression": "(2+2*exp(i*a))^3 - (6+4*i*sin(a))*(2+2*exp(i*a))^2 + (8+16*i*sin(a))*(2+2*exp(i*a)) - 16*i*sin(a)",
+          "egal_a": "0"
+        },
+        {
+          "moteur": "math",
+          "quoi": "P(z₂) = 0, z₂ = 2 − 2e^(−iα)",
+          "expression": "(2-2*exp(-i*a))^3 - (6+4*i*sin(a))*(2-2*exp(-i*a))^2 + (8+16*i*sin(a))*(2-2*exp(-i*a)) - 16*i*sin(a)",
+          "egal_a": "0"
+        },
+        {
+          "moteur": "math",
+          "quoi": "factorisation P(z) = (z − 2)(z² − (4 + 4i sinα)z + 8i sinα)",
+          "expression": "(z-2)*(z^2 - (4+4*i*sin(a))*z + 8*i*sin(a))",
+          "egal_a": "z^3 - (6+4*i*sin(a))*z^2 + (8+16*i*sin(a))*z - 16*i*sin(a)"
+        },
+        {
+          "moteur": "math",
+          "quoi": "Δ = (4cosα)²",
+          "expression": "(4+4*i*sin(a))^2 - 4*8*i*sin(a)",
+          "egal_a": "(4*cos(a))^2"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-2a",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "A, M₁, M₂ d'affixes z₀, z₁, z₂. Justifier que z₂ − 2 = −e^(−2iα)(z₁ − 2) et caractériser la rotation R qui transforme M₁ en M₂.",
+      "points": 0.75,
+      "type": "demonstration",
+      "attendu": "−e^(−2iα)(z₁ − 2) = −e^(−2iα)·2e^(iα) = −2e^(−iα) = z₂ − 2. R : centre A, angle π − 2α (car −e^(−2iα) = e^(i(π − 2α))).",
+      "etapes": [
+        {
+          "critere": "Égalité",
+          "points": 0.25
+        },
+        {
+          "critere": "Centre A",
+          "points": 0.25
+        },
+        {
+          "critere": "Angle π − 2α",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "z₂ − 2 = −e^(−2iα)(z₁ − 2)",
+          "expression": "-exp(-2*i*a)*(2*exp(i*a))",
+          "egal_a": "-2*exp(-i*a)"
+        },
+        {
+          "moteur": "math",
+          "quoi": "angle π − 2α : −e^(−2iα) = e^(i(π − 2α))",
+          "expression": "-exp(-2*i*a)",
+          "egal_a": "exp(i*(pi-2*a))"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-2b",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Déterminer α pour que le triangle AM₁M₂ soit équilatéral.",
+      "points": 0.25,
+      "type": "calcul",
+      "attendu": "AM₁ = AM₂ = 2 ; équilatéral ⇔ π − 2α ≡ ±π/3 [2π] ⇒ α = π/3 ou α = −π/3.",
+      "a_relire": "Confiance moyenne du corrigé proposé — Accepter aussi une seule valeur avec justification ; vérifier la consigne du barème officiel.",
+      "etapes": [
+        {
+          "critere": "Les deux valeurs",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "α = π/3 : angle π − 2α = π/3",
+          "expression": "exp(i*(pi-2*pi/3))",
+          "egal_a": "exp(i*pi/3)"
+        },
+        {
+          "moteur": "math",
+          "quoi": "α = −π/3 : angle ≡ −π/3",
+          "expression": "exp(i*(pi+2*pi/3))",
+          "egal_a": "exp(-i*pi/3)"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-2c",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Montrer que si α varie, M₁ et M₂ restent sur un même cercle à préciser.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "|z₁ − 2| = |z₂ − 2| = 2 ⇒ M₁ et M₂ sont sur le cercle de centre A(2) et de rayon 2.",
+      "etapes": [
+        {
+          "critere": "Modules",
+          "points": 0.25
+        },
+        {
+          "critere": "Cercle précisé",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "AM₁ = 2",
+          "expression": "abs(2*exp(i*a))",
+          "egal_a": "2"
+        },
+        {
+          "moteur": "math",
+          "quoi": "AM₂ = 2",
+          "expression": "abs(-2*exp(-i*a))",
+          "egal_a": "2"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-2d",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Montrer que si α varie, la droite (M₁M₂) garde une direction fixe.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "z₁ − z₂ = 2e^(iα) + 2e^(−iα) = 4cosα, réel non nul ⇒ (M₁M₂) est parallèle à l'axe des réels.",
+      "etapes": [
+        {
+          "critere": "Calcul de z₁ − z₂",
+          "points": 0.25
+        },
+        {
+          "critere": "Direction fixe",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "z₁ − z₂ = 4cosα (réel)",
+          "expression": "(2+2*exp(i*a)) - (2-2*exp(-i*a))",
+          "egal_a": "4*cos(a)"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-2e",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "G = bar{(A ; −12), (M₁ ; 21), (M₂ ; 3)}. Vérifier que z_G = 2 + 3cosα + 4i sinα. Justifier que G reste sur une ellipse dont on donnera l'équation réduite et l'excentricité.",
+      "points": 1,
+      "type": "calcul",
+      "attendu": "z_G = (−24 + 21z₁ + 3z₂)/12 = 2 + 3cosα + 4i sinα. x = 2 + 3cosα, y = 4sinα ⇒ (x − 2)²/9 + y²/16 = 1. a = 4, b = 3, c = √7, e = √7/4. (G décrit la demi-ellipse x > 2 car cosα > 0.)",
+      "etapes": [
+        {
+          "critere": "Calcul de z_G",
+          "points": 0.25
+        },
+        {
+          "critere": "Équation réduite",
+          "points": 0.5
+        },
+        {
+          "critere": "Excentricité √7/4",
+          "points": 0.25
+        }
+      ],
+      "controles": [
+        "z_G simplifié par SymPy (contrôle déclaré par le pack d'origine)"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "z_G = 2 + 3cosα + 4i sinα",
+          "expression": "(-12*2 + 21*(2+2*exp(i*a)) + 3*(2-2*exp(-i*a)))/12",
+          "egal_a": "2 + 3*cos(a) + 4*i*sin(a)"
+        },
+        {
+          "moteur": "math",
+          "quoi": "(x − 2)²/9 + y²/16 = 1",
+          "expression": "(3*cos(a))^2/9 + (4*sin(a))^2/16",
+          "egal_a": "1"
+        },
+        {
+          "moteur": "math",
+          "quoi": "excentricité e = √7/4",
+          "expression": "sqrt(16-9)/4",
+          "egal_a": "sqrt(7)/4"
+        }
+      ]
+    },
+    {
+      "id": "Ex3-1",
+      "exercice": "Exercice 3 (4 pts)",
+      "enonce": "ABC rectangle isocèle direct en A ; I, J, K, L, M milieux de [BC], [AI], [AB], [BI], [AC]. Faire une figure soignée.",
+      "points": 0.5,
+      "type": "figure",
+      "attendu": "Repère conseillé : A(0), B(1), C(i), I((1+i)/2), J((1+i)/4), K(1/2), L((3+i)/4), M(i/2).",
+      "a_relire": "Confiance moyenne du corrigé proposé",
+      "etapes": [
+        {
+          "critere": "Triangle et milieux bien placés",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex3-2",
+      "exercice": "Exercice 3 (4 pts)",
+      "enonce": "Montrer qu'il existe une rotation R transformant A en I et I en B. Caractériser R.",
+      "points": 0.75,
+      "type": "demonstration",
+      "attendu": "AI = IB et (AI⃗, IB⃗) = −π/2 ⇒ unique rotation d'angle −π/2. R(z) = −iz + (1 + i)/2, centre K (milieu de [AB]).",
+      "etapes": [
+        {
+          "critere": "Existence",
+          "points": 0.25
+        },
+        {
+          "critere": "Angle −π/2",
+          "points": 0.25
+        },
+        {
+          "critere": "Centre K",
+          "points": 0.25
+        }
+      ],
+      "controles": [
+        "R(A) = I, R(I) = B, point fixe 1/2 (contrôle déclaré par le pack d'origine)"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "R(A) = I",
+          "expression": "-i*0 + (1+i)/2",
+          "egal_a": "(1+i)/2"
+        },
+        {
+          "moteur": "math",
+          "quoi": "R(I) = B",
+          "expression": "-i*(1+i)/2 + (1+i)/2",
+          "egal_a": "1"
+        },
+        {
+          "moteur": "math",
+          "quoi": "centre K(1/2) fixe",
+          "expression": "-i*(1/2) + (1+i)/2",
+          "egal_a": "1/2"
+        }
+      ]
+    },
+    {
+      "id": "Ex3-3a",
+      "exercice": "Exercice 3 (4 pts)",
+      "enonce": "g antidéplacement qui transforme A en I et I en B. Montrer que g est une symétrie glissante et donner sa forme réduite.",
+      "points": 1,
+      "type": "demonstration",
+      "attendu": "g(z) = z̄ + (1 + i)/2. g∘g est la translation de vecteur 1 = AB⃗ (non nulle) ⇒ symétrie glissante. Forme réduite : vecteur AK⃗ (= ½AB⃗), axe (JL) (droite y = 1/4).",
+      "etapes": [
+        {
+          "critere": "Écriture de g",
+          "points": 0.25
+        },
+        {
+          "critere": "Symétrie glissante justifiée",
+          "points": 0.25
+        },
+        {
+          "critere": "Vecteur AK⃗",
+          "points": 0.25
+        },
+        {
+          "critere": "Axe (JL)",
+          "points": 0.25
+        }
+      ],
+      "controles": [
+        "g(A) = I, g(I) = B, g∘g(z) = z + 1 (contrôle déclaré par le pack d'origine)"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "g(A) = I",
+          "expression": "conj(0) + (1+i)/2",
+          "egal_a": "(1+i)/2"
+        },
+        {
+          "moteur": "math",
+          "quoi": "g(I) = B",
+          "expression": "conj((1+i)/2) + (1+i)/2",
+          "egal_a": "1"
+        },
+        {
+          "moteur": "math",
+          "quoi": "g∘g(z) = z + 1",
+          "expression": "conj(conj(z) + (1+i)/2) + (1+i)/2",
+          "egal_a": "z + 1"
+        },
+        {
+          "moteur": "math",
+          "quoi": "axe y = 1/4 conservé, glissement de 1/2",
+          "expression": "conj(x + i/4) + (1+i)/2",
+          "egal_a": "x + 1/2 + i/4"
+        }
+      ]
+    },
+    {
+      "id": "Ex3-3b",
+      "exercice": "Exercice 3 (4 pts)",
+      "enonce": "Déterminer la droite Δ telle que g = S_Δ∘R.",
+      "points": 0.25,
+      "type": "calcul",
+      "attendu": "S_Δ = g∘R⁻¹ : z ↦ −i·z̄ + 1 + i, réflexion d'axe x + y = 1 ⇒ Δ = (BC).",
+      "etapes": [
+        {
+          "critere": "Δ = (BC)",
+          "points": 0.25
+        }
+      ],
+      "controles": [
+        "g∘R⁻¹ involutive, axe x + y = 1 (contrôle déclaré par le pack d'origine)"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "S_Δ∘R = g avec S_Δ(z) = −i z̄ + 1 + i",
+          "expression": "-i*conj(-i*z + (1+i)/2) + 1 + i",
+          "egal_a": "conj(z) + (1+i)/2"
+        },
+        {
+          "moteur": "math",
+          "quoi": "points de la droite x + y = 1 fixes",
+          "expression": "-i*conj(x + i*(1-x)) + 1 + i",
+          "egal_a": "x + i*(1-x)"
+        }
+      ]
+    },
+    {
+      "id": "Ex3-4a",
+      "exercice": "Exercice 3 (4 pts)",
+      "enonce": "S similitude directe qui transforme A en B et I en A. Déterminer le rapport et une mesure de l'angle de S.",
+      "points": 0.5,
+      "type": "calcul",
+      "attendu": "S(z) = (−1 + i)z + 1. Rapport √2, angle 3π/4.",
+      "etapes": [
+        {
+          "critere": "Rapport √2",
+          "points": 0.25
+        },
+        {
+          "critere": "Angle 3π/4",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "S(A) = B",
+          "expression": "(-1+i)*0 + 1",
+          "egal_a": "1"
+        },
+        {
+          "moteur": "math",
+          "quoi": "S(I) = A",
+          "expression": "(-1+i)*(1+i)/2 + 1",
+          "egal_a": "0"
+        },
+        {
+          "moteur": "math",
+          "quoi": "rapport √2, angle 3π/4",
+          "expression": "-1+i",
+          "egal_a": "sqrt(2)*exp(3*i*pi/4)"
+        }
+      ]
+    },
+    {
+      "id": "Ex3-4b",
+      "exercice": "Exercice 3 (4 pts)",
+      "enonce": "Prouver que le centre Ω de S appartient aux cercles de diamètres [AC] et [IB].",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "Ω = (2 + i)/5. |Ω − z_M| = 1/2 = AC/2 et |Ω − z_L| = √2/4 = IB/2 ⇒ Ω est sur les deux cercles. Une démonstration géométrique juste est aussi acceptée.",
+      "etapes": [
+        {
+          "critere": "Centre Ω",
+          "points": 0.25
+        },
+        {
+          "critere": "Appartenance aux deux cercles",
+          "points": 0.25
+        }
+      ],
+      "controles": [
+        "distances 1/2 et √2/4 (contrôle déclaré par le pack d'origine)"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "centre Ω = (2 + i)/5 fixe",
+          "expression": "(-1+i)*(2+i)/5 + 1",
+          "egal_a": "(2+i)/5"
+        },
+        {
+          "moteur": "math",
+          "quoi": "ΩM = AC/2 = 1/2",
+          "expression": "abs((2+i)/5 - i/2)",
+          "egal_a": "1/2"
+        },
+        {
+          "moteur": "math",
+          "quoi": "ΩL = IB/2 = √2/4",
+          "expression": "abs((2+i)/5 - (3+i)/4)",
+          "egal_a": "sqrt(2)/4"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "source": "Photo du sujet officiel, page 1/2. Converti depuis le « Pack Bac Mauritanie » (corrigé et barème proposés, non officiels). Coefficient : 9 & 6.",
+    "auteur": "Pack Bac Mauritanie (proposé) + vérifications Offline Correction",
+    "cree_le": "2026-11-25",
+    "avertissement": "Corrigés et barèmes proposés (non officiels), vérifiés par calcul ; les questions marquées « a_valider » doivent être relues par un professeur.",
+    "partiel": {
+      "total_epreuve": 20,
+      "manque": [
+        "Page 2/2 (≈ 9,5 pts) : la fin de l'exercice 3 (0,5 pt sur 4 non visible) et les exercices suivants"
+      ]
+    },
+    "a_relire": [
+      "Ex2-2b : Confiance moyenne du corrigé proposé — Accepter aussi une seule valeur avec justification ; vérifier la consigne du barème officiel.",
+      "Ex3-1 : Confiance moyenne du corrigé proposé"
+    ]
+  }
+}

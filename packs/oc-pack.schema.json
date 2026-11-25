@@ -75,6 +75,27 @@
         "cree_le": {
           "type": "string"
         },
+        "avertissement": {
+          "type": "string"
+        },
+        "partiel": {
+          "type": "object",
+          "required": [
+            "total_epreuve",
+            "manque"
+          ],
+          "properties": {
+            "total_epreuve": {
+              "type": "number"
+            },
+            "manque": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
         "a_relire": {
           "type": "array",
           "items": {
@@ -141,43 +162,121 @@
                   "type": "string"
                 },
                 "verification": {
-                  "type": "object",
-                  "required": [
-                    "moteur",
-                    "expression"
-                  ],
-                  "additionalProperties": false,
-                  "properties": {
-                    "moteur": {
-                      "const": "math"
-                    },
-                    "type": {
-                      "enum": [
-                        "egal",
-                        "racines",
-                        "primitive"
-                      ]
-                    },
-                    "expression": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "egal_a": {
-                      "type": "string"
-                    },
-                    "valeurs": {
-                      "type": "array",
-                      "items": {
-                        "type": [
-                          "number",
-                          "string"
-                        ]
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "moteur",
+                        "expression"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "moteur": {
+                          "const": "math"
+                        },
+                        "type": {
+                          "enum": [
+                            "egal",
+                            "racines",
+                            "primitive",
+                            "limite",
+                            "vrai"
+                          ]
+                        },
+                        "expression": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "egal_a": {
+                          "type": "string"
+                        },
+                        "valeurs": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "number",
+                              "string"
+                            ]
+                          }
+                        },
+                        "variable": {
+                          "type": "string"
+                        },
+                        "vers": {
+                          "type": "string"
+                        },
+                        "domaine": {
+                          "type": "string"
+                        },
+                        "quoi": {
+                          "type": "string"
+                        }
                       }
                     },
-                    "variable": {
-                      "type": "string"
+                    {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "moteur",
+                          "expression"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "moteur": {
+                            "const": "math"
+                          },
+                          "type": {
+                            "enum": [
+                              "egal",
+                              "racines",
+                              "primitive",
+                              "limite",
+                              "vrai"
+                            ]
+                          },
+                          "expression": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "egal_a": {
+                            "type": "string"
+                          },
+                          "valeurs": {
+                            "type": "array",
+                            "items": {
+                              "type": [
+                                "number",
+                                "string"
+                              ]
+                            }
+                          },
+                          "variable": {
+                            "type": "string"
+                          },
+                          "vers": {
+                            "type": "string"
+                          },
+                          "domaine": {
+                            "type": "string"
+                          },
+                          "quoi": {
+                            "type": "string"
+                          }
+                        }
+                      }
                     }
+                  ]
+                },
+                "controles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
                   }
+                },
+                "consigne": {
+                  "type": "string"
                 },
                 "etapes": {
                   "type": "array",
@@ -220,6 +319,14 @@
                       "tolerance": {
                         "type": "number",
                         "exclusiveMinimum": 0
+                      },
+                      "reponses": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
                       }
                     }
                   }
@@ -270,8 +377,17 @@
               }
             },
             "then": {
-              "required": [
-                "valeur"
+              "anyOf": [
+                {
+                  "required": [
+                    "valeur"
+                  ]
+                },
+                {
+                  "required": [
+                    "etapes"
+                  ]
+                }
               ],
               "additionalProperties": false,
               "properties": {
@@ -293,43 +409,121 @@
                   "type": "string"
                 },
                 "verification": {
-                  "type": "object",
-                  "required": [
-                    "moteur",
-                    "expression"
-                  ],
-                  "additionalProperties": false,
-                  "properties": {
-                    "moteur": {
-                      "const": "math"
-                    },
-                    "type": {
-                      "enum": [
-                        "egal",
-                        "racines",
-                        "primitive"
-                      ]
-                    },
-                    "expression": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "egal_a": {
-                      "type": "string"
-                    },
-                    "valeurs": {
-                      "type": "array",
-                      "items": {
-                        "type": [
-                          "number",
-                          "string"
-                        ]
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "moteur",
+                        "expression"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "moteur": {
+                          "const": "math"
+                        },
+                        "type": {
+                          "enum": [
+                            "egal",
+                            "racines",
+                            "primitive",
+                            "limite",
+                            "vrai"
+                          ]
+                        },
+                        "expression": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "egal_a": {
+                          "type": "string"
+                        },
+                        "valeurs": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "number",
+                              "string"
+                            ]
+                          }
+                        },
+                        "variable": {
+                          "type": "string"
+                        },
+                        "vers": {
+                          "type": "string"
+                        },
+                        "domaine": {
+                          "type": "string"
+                        },
+                        "quoi": {
+                          "type": "string"
+                        }
                       }
                     },
-                    "variable": {
-                      "type": "string"
+                    {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "moteur",
+                          "expression"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "moteur": {
+                            "const": "math"
+                          },
+                          "type": {
+                            "enum": [
+                              "egal",
+                              "racines",
+                              "primitive",
+                              "limite",
+                              "vrai"
+                            ]
+                          },
+                          "expression": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "egal_a": {
+                            "type": "string"
+                          },
+                          "valeurs": {
+                            "type": "array",
+                            "items": {
+                              "type": [
+                                "number",
+                                "string"
+                              ]
+                            }
+                          },
+                          "variable": {
+                            "type": "string"
+                          },
+                          "vers": {
+                            "type": "string"
+                          },
+                          "domaine": {
+                            "type": "string"
+                          },
+                          "quoi": {
+                            "type": "string"
+                          }
+                        }
+                      }
                     }
+                  ]
+                },
+                "controles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
                   }
+                },
+                "consigne": {
+                  "type": "string"
                 },
                 "etapes": {
                   "type": "array",
@@ -372,6 +566,14 @@
                       "tolerance": {
                         "type": "number",
                         "exclusiveMinimum": 0
+                      },
+                      "reponses": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
                       }
                     }
                   }
@@ -425,8 +627,17 @@
               }
             },
             "then": {
-              "required": [
-                "reponses"
+              "anyOf": [
+                {
+                  "required": [
+                    "reponses"
+                  ]
+                },
+                {
+                  "required": [
+                    "etapes"
+                  ]
+                }
               ],
               "additionalProperties": false,
               "properties": {
@@ -448,43 +659,121 @@
                   "type": "string"
                 },
                 "verification": {
-                  "type": "object",
-                  "required": [
-                    "moteur",
-                    "expression"
-                  ],
-                  "additionalProperties": false,
-                  "properties": {
-                    "moteur": {
-                      "const": "math"
-                    },
-                    "type": {
-                      "enum": [
-                        "egal",
-                        "racines",
-                        "primitive"
-                      ]
-                    },
-                    "expression": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "egal_a": {
-                      "type": "string"
-                    },
-                    "valeurs": {
-                      "type": "array",
-                      "items": {
-                        "type": [
-                          "number",
-                          "string"
-                        ]
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "moteur",
+                        "expression"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "moteur": {
+                          "const": "math"
+                        },
+                        "type": {
+                          "enum": [
+                            "egal",
+                            "racines",
+                            "primitive",
+                            "limite",
+                            "vrai"
+                          ]
+                        },
+                        "expression": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "egal_a": {
+                          "type": "string"
+                        },
+                        "valeurs": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "number",
+                              "string"
+                            ]
+                          }
+                        },
+                        "variable": {
+                          "type": "string"
+                        },
+                        "vers": {
+                          "type": "string"
+                        },
+                        "domaine": {
+                          "type": "string"
+                        },
+                        "quoi": {
+                          "type": "string"
+                        }
                       }
                     },
-                    "variable": {
-                      "type": "string"
+                    {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "moteur",
+                          "expression"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "moteur": {
+                            "const": "math"
+                          },
+                          "type": {
+                            "enum": [
+                              "egal",
+                              "racines",
+                              "primitive",
+                              "limite",
+                              "vrai"
+                            ]
+                          },
+                          "expression": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "egal_a": {
+                            "type": "string"
+                          },
+                          "valeurs": {
+                            "type": "array",
+                            "items": {
+                              "type": [
+                                "number",
+                                "string"
+                              ]
+                            }
+                          },
+                          "variable": {
+                            "type": "string"
+                          },
+                          "vers": {
+                            "type": "string"
+                          },
+                          "domaine": {
+                            "type": "string"
+                          },
+                          "quoi": {
+                            "type": "string"
+                          }
+                        }
+                      }
                     }
+                  ]
+                },
+                "controles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
                   }
+                },
+                "consigne": {
+                  "type": "string"
                 },
                 "etapes": {
                   "type": "array",
@@ -527,6 +816,14 @@
                       "tolerance": {
                         "type": "number",
                         "exclusiveMinimum": 0
+                      },
+                      "reponses": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
                       }
                     }
                   }
@@ -585,43 +882,121 @@
                   "type": "string"
                 },
                 "verification": {
-                  "type": "object",
-                  "required": [
-                    "moteur",
-                    "expression"
-                  ],
-                  "additionalProperties": false,
-                  "properties": {
-                    "moteur": {
-                      "const": "math"
-                    },
-                    "type": {
-                      "enum": [
-                        "egal",
-                        "racines",
-                        "primitive"
-                      ]
-                    },
-                    "expression": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "egal_a": {
-                      "type": "string"
-                    },
-                    "valeurs": {
-                      "type": "array",
-                      "items": {
-                        "type": [
-                          "number",
-                          "string"
-                        ]
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "required": [
+                        "moteur",
+                        "expression"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "moteur": {
+                          "const": "math"
+                        },
+                        "type": {
+                          "enum": [
+                            "egal",
+                            "racines",
+                            "primitive",
+                            "limite",
+                            "vrai"
+                          ]
+                        },
+                        "expression": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "egal_a": {
+                          "type": "string"
+                        },
+                        "valeurs": {
+                          "type": "array",
+                          "items": {
+                            "type": [
+                              "number",
+                              "string"
+                            ]
+                          }
+                        },
+                        "variable": {
+                          "type": "string"
+                        },
+                        "vers": {
+                          "type": "string"
+                        },
+                        "domaine": {
+                          "type": "string"
+                        },
+                        "quoi": {
+                          "type": "string"
+                        }
                       }
                     },
-                    "variable": {
-                      "type": "string"
+                    {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "moteur",
+                          "expression"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "moteur": {
+                            "const": "math"
+                          },
+                          "type": {
+                            "enum": [
+                              "egal",
+                              "racines",
+                              "primitive",
+                              "limite",
+                              "vrai"
+                            ]
+                          },
+                          "expression": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "egal_a": {
+                            "type": "string"
+                          },
+                          "valeurs": {
+                            "type": "array",
+                            "items": {
+                              "type": [
+                                "number",
+                                "string"
+                              ]
+                            }
+                          },
+                          "variable": {
+                            "type": "string"
+                          },
+                          "vers": {
+                            "type": "string"
+                          },
+                          "domaine": {
+                            "type": "string"
+                          },
+                          "quoi": {
+                            "type": "string"
+                          }
+                        }
+                      }
                     }
+                  ]
+                },
+                "controles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
                   }
+                },
+                "consigne": {
+                  "type": "string"
                 },
                 "etapes": {
                   "type": "array",
@@ -665,6 +1040,14 @@
                       "tolerance": {
                         "type": "number",
                         "exclusiveMinimum": 0
+                      },
+                      "reponses": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string",
+                          "minLength": 1
+                        }
                       }
                     }
                   }

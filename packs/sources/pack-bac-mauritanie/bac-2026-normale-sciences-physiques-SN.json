@@ -1,0 +1,812 @@
+{
+  "id": "bac-2026-normale-sciences-physiques-SN",
+  "titre": "Bac 2026 session normale — Sciences physiques — Série SN",
+  "pays": "Mauritanie",
+  "annee": 2026,
+  "session": "normale",
+  "matiere": "Sciences physiques",
+  "serie": "SN",
+  "coefficient": "7",
+  "duree": "4h",
+  "total": 20,
+  "langue": "fr",
+  "complet": true,
+  "pages_manquantes": [],
+  "source": "Sujet officiel (2 pages) publié sur Facebook par Papeterie Sériyatak (groupe « SVt en mauritanie 7D, 7C »), 4 juillet 2026. Recoupé avec le corrigé proposé de Sidi Med Med Abdellahi (non officiel).",
+  "regles": {
+    "granularite": 0.25,
+    "montrer_que_sans_demo": 0,
+    "erreur_entrainee": true,
+    "qcm_points_negatifs": false,
+    "methode_differente_acceptee": true
+  },
+  "questions": [
+    {
+      "id": "QCM-1",
+      "exercice": "QCM (2,5 pts) — une ou plusieurs réponses exactes",
+      "enonce": "Le mouvement d'une charge q qui rentre dans un champ magnétique B avec une vitesse v parallèle à B est toujours :",
+      "points": 0.5,
+      "type": "qcm",
+      "choix": {
+        "A": "Circulaire uniforme",
+        "B": "Rectiligne uniforme",
+        "C": "Sinusoïdal"
+      },
+      "bonnes_reponses": [
+        "B"
+      ],
+      "regle_qcm": "plusieurs",
+      "attendu": "v ∥ B ⇒ force de Lorentz nulle ⇒ mouvement rectiligne uniforme.",
+      "etapes": [
+        {
+          "critere": "Bonne(s) réponse(s)",
+          "points": 0.5
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "QCM-2",
+      "exercice": "QCM (2,5 pts)",
+      "enonce": "Le travail d'extraction W₀ caractéristique du métal de la cathode d'une cellule photoémissive est :",
+      "points": 0.5,
+      "type": "qcm",
+      "choix": {
+        "A": "W₀ = hν₀",
+        "B": "W₀ = hν − Ec_max",
+        "C": "W₀ = h/ν₀"
+      },
+      "bonnes_reponses": [
+        "A",
+        "B"
+      ],
+      "regle_qcm": "plusieurs",
+      "attendu": "Seuil : W₀ = hν₀ ; Einstein : hν = W₀ + Ec_max.",
+      "etapes": [
+        {
+          "critere": "Bonne(s) réponse(s)",
+          "points": 0.5
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "QCM-3",
+      "exercice": "QCM (2,5 pts)",
+      "enonce": "L'estérification d'un alcool par un chlorure d'acyle est une réaction :",
+      "points": 0.5,
+      "type": "qcm",
+      "choix": {
+        "A": "Rapide",
+        "B": "Limitée",
+        "C": "Totale"
+      },
+      "bonnes_reponses": [
+        "A",
+        "C"
+      ],
+      "regle_qcm": "plusieurs",
+      "attendu": "Avec un chlorure d'acyle : rapide et totale.",
+      "etapes": [
+        {
+          "critere": "Bonne(s) réponse(s)",
+          "points": 0.5
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "QCM-4",
+      "exercice": "QCM (2,5 pts)",
+      "enonce": "La dilution d'un acide faible augmente :",
+      "points": 0.5,
+      "type": "qcm",
+      "choix": {
+        "A": "Le pH",
+        "B": "La concentration",
+        "C": "Le coefficient d'ionisation"
+      },
+      "bonnes_reponses": [
+        "A",
+        "C"
+      ],
+      "regle_qcm": "plusieurs",
+      "attendu": "Le pH augmente et l'acide se dissocie davantage (α augmente) ; la concentration diminue.",
+      "etapes": [
+        {
+          "critere": "Bonne(s) réponse(s)",
+          "points": 0.5
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "QCM-5",
+      "exercice": "QCM (2,5 pts)",
+      "enonce": "La différence de marche δ est donnée par :",
+      "points": 0.5,
+      "type": "qcm",
+      "choix": {
+        "A": "δ = ax/D",
+        "B": "δ = (2k+1)λ/2",
+        "C": "δ = xλ/i"
+      },
+      "bonnes_reponses": [
+        "A",
+        "C"
+      ],
+      "regle_qcm": "plusieurs",
+      "attendu": "δ = ax/D et i = λD/a ⇒ δ = xλ/i ; (2k+1)λ/2 ne vaut que pour les franges sombres.",
+      "etapes": [
+        {
+          "critere": "Bonne(s) réponse(s)",
+          "points": 0.5
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex1-1",
+      "exercice": "Exercice 1 (4,25 pts)",
+      "enonce": "Composés : (A) CH₃–CH₂–CH(OH)–CH₃ ; (B) C₂H₅COOH ; (C) CH₃–CH(CH₃)–CHO ; (D) C₂H₅COOC₂H₅. Préciser la fonction et le nom de chacun.",
+      "points": 1,
+      "type": "texte_court",
+      "attendu": "A : alcool secondaire, butan-2-ol. B : acide carboxylique, acide propanoïque. C : aldéhyde, 2-méthylpropanal. D : ester, propanoate d'éthyle.",
+      "etapes": [
+        {
+          "critere": "A",
+          "points": 0.25
+        },
+        {
+          "critere": "B",
+          "points": 0.25
+        },
+        {
+          "critere": "C",
+          "points": 0.25
+        },
+        {
+          "critere": "D",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex1-2.1",
+      "exercice": "Exercice 1 (4,25 pts)",
+      "enonce": "Oxydation ménagée de A par le permanganate : formule semi-développée et nom de E.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "E : CH₃–CH₂–CO–CH₃, butan-2-one (butanone).",
+      "etapes": [
+        {
+          "critere": "Formule",
+          "points": 0.25
+        },
+        {
+          "critere": "Nom",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex1-2.2",
+      "exercice": "Exercice 1 (4,25 pts)",
+      "enonce": "Écrire l'équation de la réaction d'oxydation de A (couple MnO₄⁻/Mn²⁺).",
+      "points": 0.25,
+      "type": "texte_court",
+      "attendu": "5 CH₃–CH₂–CHOH–CH₃ + 2 MnO₄⁻ + 6 H⁺ → 5 CH₃–CH₂–CO–CH₃ + 2 Mn²⁺ + 8 H₂O.",
+      "etapes": [
+        {
+          "critere": "Équation équilibrée",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex1-3.1",
+      "exercice": "Exercice 1 (4,25 pts)",
+      "enonce": "0,6 mol de B + la même quantité de F donnent D et de l'eau. Formule semi-développée et nom de F.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "F : CH₃–CH₂–OH, éthanol.",
+      "etapes": [
+        {
+          "critere": "Formule",
+          "points": 0.25
+        },
+        {
+          "critere": "Nom",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex1-3.2",
+      "exercice": "Exercice 1 (4,25 pts)",
+      "enonce": "Écrire l'équation de la réaction et préciser ses caractéristiques.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "CH₃–CH₂–COOH + CH₃–CH₂–OH ⇌ CH₃–CH₂–COO–CH₂–CH₃ + H₂O ; lente, limitée, athermique.",
+      "etapes": [
+        {
+          "critere": "Équation",
+          "points": 0.25
+        },
+        {
+          "critere": "Caractéristiques",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex1-3.3",
+      "exercice": "Exercice 1 (4,25 pts)",
+      "enonce": "À l'équilibre, m(D) − m(B) = 26 g. Montrer à l'aide d'un tableau d'avancement que x_f = 0,4 mol.",
+      "points": 0.75,
+      "type": "calcul",
+      "attendu": "m(D) = 102·x_f et m(B) = 74·(0,6 − x_f) ⇒ 102x_f − 74(0,6 − x_f) = 26 ⇒ 176x_f = 70,4 ⇒ x_f = 0,4 mol.",
+      "etapes": [
+        {
+          "critere": "Tableau d'avancement",
+          "points": 0.25
+        },
+        {
+          "critere": "Masses molaires (102 et 74 g/mol)",
+          "points": 0.25
+        },
+        {
+          "critere": "x_f = 0,4 mol",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "(26 + 74×0,6)/176 = 0,4"
+      }
+    },
+    {
+      "id": "Ex1-3.4",
+      "exercice": "Exercice 1 (4,25 pts)",
+      "enonce": "Composition finale du mélange et constante d'équilibre K.",
+      "points": 0.75,
+      "type": "calcul",
+      "attendu": "Acide 0,2 mol ; alcool 0,2 mol ; ester 0,4 mol ; eau 0,4 mol. K = (0,4 × 0,4)/(0,2 × 0,2) = 4.",
+      "etapes": [
+        {
+          "critere": "Composition",
+          "points": 0.25
+        },
+        {
+          "critere": "Expression de K",
+          "points": 0.25
+        },
+        {
+          "critere": "K = 4",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex2-1",
+      "exercice": "Exercice 2 (3,75 pts)",
+      "enonce": "V₁ = 100 mL d'eau oxygénée (C₁ = 6·10⁻² mol/L) et V₂ = 400 mL d'iodure de potassium (C₂ = 4·10⁻² mol/L). Calculer n₀(H₂O₂) et n₀(I⁻) ; en déduire le réactif limitant.",
+      "points": 1,
+      "type": "calcul",
+      "attendu": "n₀(H₂O₂) = 6·10⁻³ mol ; n₀(I⁻) = 1,6·10⁻² mol. n₀(H₂O₂)/1 = 6·10⁻³ < n₀(I⁻)/2 = 8·10⁻³ ⇒ H₂O₂ est le réactif limitant.",
+      "etapes": [
+        {
+          "critere": "n₀(H₂O₂)",
+          "points": 0.25
+        },
+        {
+          "critere": "n₀(I⁻)",
+          "points": 0.25
+        },
+        {
+          "critere": "Comparaison avec les coefficients",
+          "points": 0.25
+        },
+        {
+          "critere": "Réactif limitant H₂O₂",
+          "points": 0.25
+        }
+      ],
+      "confiance": "moyenne",
+      "note": "Concentrations lues sur une photo : vérifier C₁ et C₂ sur le sujet papier."
+    },
+    {
+      "id": "Ex2-2.1",
+      "exercice": "Exercice 2 (3,75 pts)",
+      "enonce": "Utilité de l'empois d'amidon et de l'eau glacée ; facteur(s) cinétique(s) mis en évidence.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Empois d'amidon : indicateur révélant le diiode (repérage de l'équivalence du dosage). Eau glacée : refroidissement et dilution qui bloquent la réaction (trempe). Facteurs cinétiques : température et concentration.",
+      "etapes": [
+        {
+          "critere": "Rôle de l'empois et de l'eau glacée",
+          "points": 0.25
+        },
+        {
+          "critere": "Facteurs : température, concentration",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex2-2.2",
+      "exercice": "Exercice 2 (3,75 pts)",
+      "enonce": "Définir et écrire l'expression de la vitesse volumique en fonction de n(I₂) et du volume V_T.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "v = (1/V_T)·dx/dt avec x = n(I₂) ⇒ v = (1/V_T)·dn(I₂)/dt, V_T = 0,5 L.",
+      "etapes": [
+        {
+          "critere": "Définition",
+          "points": 0.25
+        },
+        {
+          "critere": "Expression",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex2-2.3",
+      "exercice": "Exercice 2 (3,75 pts)",
+      "enonce": "Calculer cette vitesse à t = 5 min.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "Pente de la tangente à la courbe en t = 5 min (lecture : ≈ 0,4 mmol/min) ⇒ v ≈ 8·10⁻⁴ mol·L⁻¹·min⁻¹.",
+      "etapes": [
+        {
+          "critere": "Méthode de la tangente",
+          "points": 0.25
+        },
+        {
+          "critere": "Valeur ≈ 8·10⁻⁴ mol·L⁻¹·min⁻¹",
+          "points": 0.25
+        }
+      ],
+      "confiance": "a_valider",
+      "note": "Valeur dépendant de la lecture graphique : tolérance large.",
+      "valeurs": {
+        "v": {
+          "valeur": 0.0008,
+          "unite": "mol/L/min",
+          "tolerance": 0.25
+        }
+      }
+    },
+    {
+      "id": "Ex2-2.4",
+      "exercice": "Exercice 2 (3,75 pts)",
+      "enonce": "Déduire la vitesse de disparition des ions iodure à t = 5 min.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "v(I⁻) = 2v ≈ 1,6·10⁻³ mol·L⁻¹·min⁻¹.",
+      "etapes": [
+        {
+          "critere": "Coefficient 2",
+          "points": 0.25
+        },
+        {
+          "critere": "Valeur",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "valeurs": {
+        "vI": {
+          "valeur": 0.0016,
+          "unite": "mol/L/min",
+          "tolerance": 0.25
+        }
+      }
+    },
+    {
+      "id": "Ex2-3",
+      "exercice": "Exercice 2 (3,75 pts)",
+      "enonce": "Définir et déterminer le temps de demi-réaction.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "Durée au bout de laquelle l'avancement atteint la moitié de sa valeur finale (x_max = 6 mmol ⇒ x = 3 mmol). Lecture : t₁/₂ ≈ 3 min.",
+      "etapes": [
+        {
+          "critere": "Définition",
+          "points": 0.25
+        },
+        {
+          "critere": "Lecture t₁/₂ ≈ 3 min",
+          "points": 0.25
+        }
+      ],
+      "confiance": "moyenne"
+    },
+    {
+      "id": "Ex2-4",
+      "exercice": "Exercice 2 (3,75 pts)",
+      "enonce": "À quel instant n(I⁻) = (6/5)·n(I₂) ?",
+      "points": 0.25,
+      "type": "numerique",
+      "attendu": "n(I⁻) = 1,6·10⁻² − 2x = (6/5)x ⇒ x = 5·10⁻³ mol = 5 mmol ⇒ lecture sur la courbe : t = 10 min.",
+      "etapes": [
+        {
+          "critere": "x = 5 mmol et lecture t = 10 min",
+          "points": 0.25
+        }
+      ],
+      "confiance": "moyenne"
+    },
+    {
+      "id": "Ex3-1.1",
+      "exercice": "Exercice 3 (4,25 pts)",
+      "enonce": "Corde élastique L = SE = 0,5 m ; a = 2 mm ; c = 5 m/s. Rôle de la pelote de coton ?",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Elle absorbe l'énergie de l'onde et empêche sa réflexion en E.",
+      "etapes": [
+        {
+          "critere": "Absorption / pas de réflexion",
+          "points": 0.5
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex3-1.2",
+      "exercice": "Exercice 3 (4,25 pts)",
+      "enonce": "L'onde est-elle longitudinale ou transversale ? Justifier.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Transversale : la perturbation (verticale) est perpendiculaire à la direction de propagation (horizontale).",
+      "etapes": [
+        {
+          "critere": "Transversale",
+          "points": 0.25
+        },
+        {
+          "critere": "Justification",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex3-2.1",
+      "exercice": "Exercice 3 (4,25 pts)",
+      "enonce": "Déterminer à partir de la courbe la longueur d'onde λ et l'instant t₁.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "Lecture : λ = 10 cm ; front d'onde à x₁ = 0,25 m ⇒ t₁ = x₁/c = 0,05 s.",
+      "etapes": [
+        {
+          "critere": "λ = 10 cm",
+          "points": 0.25
+        },
+        {
+          "critere": "t₁ = 0,05 s",
+          "points": 0.25
+        }
+      ],
+      "confiance": "moyenne"
+    },
+    {
+      "id": "Ex3-2.2",
+      "exercice": "Exercice 3 (4,25 pts)",
+      "enonce": "Calculer la fréquence N de la lame.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "N = c/λ = 5/0,1 = 50 Hz.",
+      "etapes": [
+        {
+          "critere": "Formule",
+          "points": 0.25
+        },
+        {
+          "critere": "N = 50 Hz",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex3-3",
+      "exercice": "Exercice 3 (4,25 pts)",
+      "enonce": "Montrer qu'à t₂ = 0,06 s l'onde n'a pas encore atteint E.",
+      "points": 0.25,
+      "type": "calcul",
+      "attendu": "x₂ = c·t₂ = 0,3 m < 0,5 m.",
+      "etapes": [
+        {
+          "critere": "Comparaison juste",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex3-4",
+      "exercice": "Exercice 3 (4,25 pts)",
+      "enonce": "Représenter le diagramme du mouvement d'un point M₂ situé à x₂ = 20 cm de S.",
+      "points": 0.5,
+      "type": "figure",
+      "attendu": "Retard θ = x₂/c = 0,04 s = 2T : M₂ est immobile jusqu'à 0,04 s puis oscille comme S (amplitude 2 mm, période 0,02 s) ; tracé jusqu'à t_f = L/c = 0,1 s.",
+      "etapes": [
+        {
+          "critere": "Retard 0,04 s",
+          "points": 0.25
+        },
+        {
+          "critere": "Sinusoïde correcte après le retard",
+          "points": 0.25
+        }
+      ],
+      "confiance": "moyenne"
+    },
+    {
+      "id": "Ex3-5.1",
+      "exercice": "Exercice 3 (4,25 pts)",
+      "enonce": "Sources S₁, S₂ (d = 8 cm, N = 100 Hz, V = 4 m/s) ; y_S1 = a·cos(ωt + π), y_S2 = a·cos(ωt + π/2). Équation horaire de M (distances d₁, d₂).",
+      "points": 1,
+      "type": "calcul",
+      "attendu": "λ = V/N = 4 cm. y_M = 2a·cos[π(d₂ − d₁)/λ + π/4]·cos[200πt − π(d₁ + d₂)/λ + 3π/4].",
+      "etapes": [
+        {
+          "critere": "y₁ et y₂ au point M",
+          "points": 0.25
+        },
+        {
+          "critere": "Somme et formule de transformation",
+          "points": 0.25
+        },
+        {
+          "critere": "Amplitude",
+          "points": 0.25
+        },
+        {
+          "critere": "Phase",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "cos p + cos q appliqué ; λ = 0,04 m"
+      }
+    },
+    {
+      "id": "Ex3-5.2",
+      "exercice": "Exercice 3 (4,25 pts)",
+      "enonce": "Différence de marche si M est sur une frange d'amplitude nulle ; nombre de ces franges sur [S₁S₂].",
+      "points": 0.5,
+      "type": "calcul",
+      "attendu": "Amplitude nulle : δ = d₂ − d₁ = (4k + 1)λ/4. −d ≤ δ ≤ d ⇒ −2,25 ≤ k ≤ 1,75 ⇒ k ∈ {−2 ; −1 ; 0 ; 1} : 4 franges.",
+      "etapes": [
+        {
+          "critere": "Expression de δ",
+          "points": 0.25
+        },
+        {
+          "critere": "4 franges",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex4-1.1",
+      "exercice": "Exercice 4 (5,25 pts)",
+      "enonce": "Ressort horizontal (K), solide m = 250 g. Équation différentielle et période propre.",
+      "points": 1,
+      "type": "calcul",
+      "attendu": "RFD projetée sur x'x : −Kx = mẍ ⇒ ẍ + (K/m)x = 0. T₀ = 2π√(m/K).",
+      "etapes": [
+        {
+          "critere": "Bilan des forces",
+          "points": 0.25
+        },
+        {
+          "critere": "Équation différentielle",
+          "points": 0.5
+        },
+        {
+          "critere": "Période",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex4-1.2",
+      "exercice": "Exercice 4 (5,25 pts)",
+      "enonce": "Expressions de Ec et Ep en fonction du temps ; montrer que le système est conservatif.",
+      "points": 0.75,
+      "type": "demonstration",
+      "attendu": "x = x_m·cos(ω₀t + φ) : Ec = ½Kx_m²·sin²(ω₀t + φ), Ep = ½Kx_m²·cos²(ω₀t + φ) ⇒ E = ½Kx_m² = constante.",
+      "etapes": [
+        {
+          "critere": "Ec(t)",
+          "points": 0.25
+        },
+        {
+          "critere": "Ep(t)",
+          "points": 0.25
+        },
+        {
+          "critere": "E constante",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex4-1.3.1",
+      "exercice": "Exercice 4 (5,25 pts)",
+      "enonce": "Montrer que la courbe C₁ représente Ep.",
+      "points": 0.25,
+      "type": "texte_court",
+      "attendu": "À t = 0 le solide, écarté de x₀, part vers O : Ep décroît vers 0. C₁ commence à décroître vers 0, c'est donc Ep.",
+      "etapes": [
+        {
+          "critere": "Justification",
+          "points": 0.25
+        }
+      ],
+      "confiance": "moyenne"
+    },
+    {
+      "id": "Ex4-1.3.2",
+      "exercice": "Exercice 4 (5,25 pts)",
+      "enonce": "Avec K = 25 N/m, déterminer x₀, V₀ et l'amplitude x_m (lecture : Ep₀ = 45 mJ, Ec₀ = 80 mJ).",
+      "points": 1,
+      "type": "numerique",
+      "attendu": "x₀ = √(2Ep₀/K) = 6·10⁻² m ; V₀ = √(2Ec₀/m) = 0,8 m/s ; E = 125 mJ ⇒ x_m = √(2E/K) = 0,1 m.",
+      "etapes": [
+        {
+          "critere": "x₀ = 6 cm",
+          "points": 0.25
+        },
+        {
+          "critere": "V₀ = 0,8 m/s",
+          "points": 0.25
+        },
+        {
+          "critere": "E = 125 mJ",
+          "points": 0.25
+        },
+        {
+          "critere": "x_m = 10 cm",
+          "points": 0.25
+        }
+      ],
+      "confiance": "moyenne",
+      "note": "Ep₀ et Ec₀ sont lus sur la figure 2 du sujet.",
+      "valeurs": {
+        "x0": {
+          "valeur": 0.06,
+          "unite": "m",
+          "tolerance": 0.03
+        },
+        "V0": {
+          "valeur": 0.8,
+          "unite": "m/s",
+          "tolerance": 0.03
+        },
+        "xm": {
+          "valeur": 0.1,
+          "unite": "m",
+          "tolerance": 0.03
+        }
+      }
+    },
+    {
+      "id": "Ex4-2.1",
+      "exercice": "Exercice 4 (5,25 pts)",
+      "enonce": "Tige AB (m = 34 g, R = 2 Ω), rails d = 10 cm, E = 12 V, r = 1 Ω, B = 0,4 T. Intensité du courant.",
+      "points": 0.25,
+      "type": "numerique",
+      "attendu": "I = E/(R + r) = 12/3 = 4 A.",
+      "etapes": [
+        {
+          "critere": "I = 4 A",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex4-2.2",
+      "exercice": "Exercice 4 (5,25 pts)",
+      "enonce": "Caractéristiques de la force électromagnétique F exercée sur la tige.",
+      "points": 0.5,
+      "type": "calcul",
+      "attendu": "Point d'application : milieu de la tige ; direction verticale ; sens vers le bas (règle de la main droite, d'après la figure) ; F = I·d·B = 4 × 0,1 × 0,4 = 0,16 N.",
+      "etapes": [
+        {
+          "critere": "Direction et sens",
+          "points": 0.25
+        },
+        {
+          "critere": "F = 0,16 N",
+          "points": 0.25
+        }
+      ],
+      "confiance": "moyenne",
+      "note": "Le sens dépend de la figure 3 du sujet."
+    },
+    {
+      "id": "Ex4-2.3",
+      "exercice": "Exercice 4 (5,25 pts)",
+      "enonce": "La tige est attachée à un ressort fixé au sol ; calculer la compression Δl à l'équilibre.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "P + F + T = 0 ⇒ KΔl = mg + IdB ⇒ Δl = (0,34 + 0,16)/25 = 2·10⁻² m.",
+      "etapes": [
+        {
+          "critere": "Bilan à l'équilibre",
+          "points": 0.25
+        },
+        {
+          "critere": "Δl = 2 cm",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "valeurs": {
+        "dl": {
+          "valeur": 0.02,
+          "unite": "m",
+          "tolerance": 0.03
+        }
+      }
+    },
+    {
+      "id": "Ex4-2.4.1",
+      "exercice": "Exercice 4 (5,25 pts)",
+      "enonce": "Générateur remplacé par un fil ; tige déplacée à V = 6 m/s. Montrer qu'une f.é.m. induite apparaît et calculer sa valeur.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "La surface du circuit varie ⇒ le flux varie ⇒ f.é.m. induite. e = B·d·V = 0,4 × 0,1 × 6 = 0,24 V.",
+      "etapes": [
+        {
+          "critere": "Variation de flux",
+          "points": 0.25
+        },
+        {
+          "critere": "e = 0,24 V",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex4-2.4.2",
+      "exercice": "Exercice 4 (5,25 pts)",
+      "enonce": "Énoncer la loi de Lenz et calculer l'intensité du courant induit.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "Loi de Lenz : le courant induit, par ses effets, s'oppose à la cause qui lui a donné naissance. i = e/R = 0,24/2 = 0,12 A.",
+      "etapes": [
+        {
+          "critere": "Énoncé de la loi de Lenz",
+          "points": 0.25
+        },
+        {
+          "critere": "i = 0,12 A",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    }
+  ]
+}

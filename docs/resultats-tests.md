@@ -9,11 +9,13 @@ processeur du navigateur (émulation Chrome DevTools), à remplacer par des mesu
 
 | Suite | Commande | Résultat |
 |---|---|---|
-| oc-core, oc-server (Vitest) | `npm test` | **58 tests, tous passent** |
-| PWA en mode avion, labo, serveur (Playwright) | `npm run test:avion` | **4 tests, tous passent** |
+| oc-core, oc-server (Vitest) | `npm test` | **74 tests, tous passent** |
+| PWA en mode avion, labo, serveur (Playwright) | `npm run test:avion` | **5 tests, tous passent** |
+| Calculs des packs du Bac | `npm run verifier-packs` | **142 vérifications, toutes justes** |
 
-Détail Vitest : 5 tests moteur mathématique, 6 tests format des packs, 27 tests règles de
-barème (une ou plusieurs par règle de la section 7), 15 tests lecture des feuilles, 5 tests serveur.
+Détail Vitest : 8 tests moteur mathématique, 6 tests format des packs, 29 tests règles de
+barème (une ou plusieurs par règle de la section 7), 15 tests lecture des feuilles, 5 tests serveur,
+11 tests packs du Bac (validation, calculs, sensibilité des vérifications, copie simulée).
 
 ### Lecture des feuilles simulées (30 questions : QCM simples, QCM multiples, cases de points)
 

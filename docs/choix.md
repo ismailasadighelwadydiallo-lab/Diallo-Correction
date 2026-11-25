@@ -13,7 +13,7 @@ Toutes les bibliothèques ci-dessous autorisent un **usage commercial**. Les tai
 | Stockage local | IndexedDB via Dexie | 4.4.7 | Apache-2.0 | 98 Ko (minifié, dans main.js) | Copies, packs, photos réduites (JPEG). `navigator.storage.persist()` demandé. |
 | Lecture des feuilles | Code de `correcteur.html` porté dans `oc-core` | — | (projet) | 13 Ko de source TypeScript | Vision classique, sans IA. |
 | Validation des packs | JSON Schema (draft-07) + Ajv | 8.20.0 | MIT | 121 Ko (minifié) | Schéma exporté dans `packs/oc-pack.schema.json`. |
-| Moteur mathématique | math.js | 15.3.0 | Apache-2.0 | 737 Ko (minifié, seul) | Dérivées symboliques, comparaison numérique d'expressions. |
+| Moteur mathématique | math.js | 15.3.0 | Apache-2.0 | 737 Ko (minifié, seul) | Dérivées symboliques, comparaison numérique d'expressions (réels, complexes, matrices), limites et inégalités contrôlées numériquement. |
 | IA locale (WebGPU) | WebLLM (@mlc-ai/web-llm) | 0.2.89 | Apache-2.0 | 6,2 Mo (chargé seulement par la page labo) | Modèles téléchargés une fois depuis Hugging Face ou le serveur local. |
 | IA locale (sans WebGPU) | wllama (llama.cpp en WebAssembly) | 4.0.0 | MIT | 105 Ko + 10,8 Mo de wasm (page labo seulement) | Fonctionne sur le processeur, plus lent. |
 | Serveur local | Node + Fastify + @fastify/static | 5.12.8 / 9.3.0 | MIT | — | Sert la PWA, les packs, les modèles. |

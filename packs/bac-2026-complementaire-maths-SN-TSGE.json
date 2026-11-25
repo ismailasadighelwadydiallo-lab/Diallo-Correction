@@ -1,0 +1,444 @@
+{
+  "format": "oc-pack/1",
+  "id": "bac-2026-complementaire-maths-SN-TSGE",
+  "titre": "Bac 2026 session complémentaire — Mathématiques — Séries SN & TSGE (partiel : 8,5 pts)",
+  "serie": "SN & TSGE",
+  "duree": "4h",
+  "session": "2026 complementaire",
+  "total": 8.5,
+  "langue": "fr",
+  "regles": {
+    "qcm_negatif": false
+  },
+  "questions": [
+    {
+      "id": "Ex1-Q1",
+      "exercice": "Exercice 1 (3 pts) — u₀ = 2, uₙ₊₁ = 3uₙ + 4ⁿ, vₙ = 4uₙ − uₙ₊₁",
+      "enonce": "La valeur de v₁ est égale à :\nA) 3 ; B) 7 ; C) 28",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "u₁ = 7, u₂ = 25, v₁ = 4×7 − 25 = 3.",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "A"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "u₁ = 7, u₂ = 25, v₁ = 4u₁ − u₂ = 3 (réponse A)",
+          "expression": "4*(3*2+4^0) - (3*(3*2+4^0)+4^1)",
+          "egal_a": "3"
+        }
+      ]
+    },
+    {
+      "id": "Ex1-Q2",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Pour tout n, vₙ = …\nA) 3uₙ − 4ⁿ ; B) uₙ + 4ⁿ ; C) uₙ − 4ⁿ",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "vₙ = 4uₙ − 3uₙ − 4ⁿ = uₙ − 4ⁿ.",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "C"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "vₙ = 4uₙ − (3uₙ + 4ⁿ) = uₙ − 4ⁿ (réponse C)",
+          "expression": "4*u - (3*u + 4^n)",
+          "egal_a": "u - 4^n"
+        }
+      ]
+    },
+    {
+      "id": "Ex1-Q3",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Le terme général de (vₙ) est :\nA) 3ⁿ ; B) 4ⁿ ; C) 2×3ⁿ",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "vₙ₊₁ = 3vₙ et v₀ = 1.",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "A"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "vₙ₊₁ = 3vₙ avec uₙ = 3ⁿ + 4ⁿ",
+          "expression": "(3*(3^n+4^n)+4^n) - 4^(n+1)",
+          "egal_a": "3*3^n"
+        },
+        {
+          "moteur": "math",
+          "quoi": "v₀ = 1",
+          "expression": "2 - 4^0",
+          "egal_a": "1"
+        }
+      ]
+    },
+    {
+      "id": "Ex1-Q4",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Pour tout n, uₙ = …\nA) 4ⁿ − 3ⁿ ; B) 4ⁿ + 3ⁿ ; C) 3×4ⁿ",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "uₙ = vₙ + 4ⁿ.",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "B"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "uₙ = 3ⁿ + 4ⁿ vérifie la récurrence (réponse B)",
+          "expression": "3^(n+1)+4^(n+1)",
+          "egal_a": "3*(3^n+4^n)+4^n"
+        },
+        {
+          "moteur": "math",
+          "quoi": "u₀ = 2",
+          "expression": "3^0+4^0",
+          "egal_a": "2"
+        }
+      ]
+    },
+    {
+      "id": "Ex1-Q5",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "La suite (uₙ) est :\nA) Croissante ; B) Décroissante ; C) Non monotone",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "Somme de deux suites croissantes.",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "A"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "uₙ₊₁ − uₙ > 0 (croissante, réponse A)",
+          "expression": "(3^(n+1)+4^(n+1)) - (3^n+4^n) > 0",
+          "type": "vrai",
+          "domaine": "n >= 0"
+        }
+      ]
+    },
+    {
+      "id": "Ex1-Q6",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Sₙ = u₀ + u₁ + … + uₙ est égale à :\nA) (3ⁿ⁺¹ − 3)/2 ; B) (4ⁿ⁺¹ − 4)/3 ; C) (2×4ⁿ⁺¹ + 3ⁿ⁺² − 5)/6",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "(3ⁿ⁺¹ − 1)/2 + (4ⁿ⁺¹ − 1)/3.",
+      "choix": [
+        "A",
+        "B",
+        "C"
+      ],
+      "bonnes": [
+        "C"
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "Sₙ = (3ⁿ⁺¹ − 1)/2 + (4ⁿ⁺¹ − 1)/3 = (2×4ⁿ⁺¹ + 3ⁿ⁺² − 5)/6 (réponse C)",
+          "expression": "(3^(n+1)-1)/2 + (4^(n+1)-1)/3",
+          "egal_a": "(2*4^(n+1)+3^(n+2)-5)/6"
+        },
+        {
+          "moteur": "math",
+          "quoi": "S₅ calculée terme à terme",
+          "expression": "sum(map(0:5, f(k) = 3^k+4^k))",
+          "egal_a": "(2*4^6 + 3^7 - 5)/6"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-1a",
+      "exercice": "Exercice 2 (5,5 pts)",
+      "enonce": "f(x) = (2x² − 1 − 2ln x)/x² sur ]0 ; +∞[. Montrer que lim(0⁺) f = +∞ et interpréter.",
+      "points": 1.25,
+      "type": "calcul",
+      "attendu": "Numérateur → +∞ (−2ln x → +∞), dénominateur → 0⁺ ⇒ +∞. Asymptote verticale x = 0.",
+      "etapes": [
+        {
+          "critere": "Calcul de la limite",
+          "points": 0.75
+        },
+        {
+          "critere": "Asymptote verticale x = 0",
+          "points": 0.5
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "lim f en 0⁺ = +∞",
+          "expression": "(2*x^2-1-2*log(x))/x^2",
+          "egal_a": "+inf",
+          "type": "limite",
+          "variable": "x",
+          "vers": "0+"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-1b",
+      "exercice": "Exercice 2 (5,5 pts)",
+      "enonce": "Montrer que lim(+∞) f = 2 et en déduire une asymptote (D).",
+      "points": 1.25,
+      "type": "calcul",
+      "attendu": "f(x) = 2 − 1/x² − 2(ln x)/x², et (ln x)/x² → 0 ⇒ lim = 2. (D) : y = 2.",
+      "etapes": [
+        {
+          "critere": "Calcul de la limite",
+          "points": 0.75
+        },
+        {
+          "critere": "(D) : y = 2",
+          "points": 0.5
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "lim f en +∞ = 2",
+          "expression": "(2*x^2-1-2*log(x))/x^2",
+          "egal_a": "2",
+          "type": "limite",
+          "variable": "x",
+          "vers": "+inf"
+        },
+        {
+          "moteur": "math",
+          "quoi": "f(x) = 2 − 1/x² − 2ln(x)/x²",
+          "expression": "(2*x^2-1-2*log(x))/x^2",
+          "egal_a": "2 - 1/x^2 - 2*log(x)/x^2"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-1c",
+      "exercice": "Exercice 2 (5,5 pts)",
+      "enonce": "Étudier la position relative de (C) et (D).",
+      "points": 0.25,
+      "type": "calcul",
+      "attendu": "f(x) − 2 = (−1 − 2ln x)/x² : (C) au-dessus de (D) sur ]0 ; e^(−1/2)[, en dessous sur ]e^(−1/2) ; +∞[, intersection en x = 1/√e.",
+      "etapes": [
+        {
+          "critere": "Position et point d'intersection",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "f(x) − 2 = (−1 − 2ln x)/x²",
+          "expression": "(2*x^2-1-2*log(x))/x^2 - 2",
+          "egal_a": "(-1-2*log(x))/x^2"
+        },
+        {
+          "moteur": "math",
+          "quoi": "intersection en x = e^(−1/2)",
+          "expression": "-1-2*log(exp(-1/2))",
+          "egal_a": "0"
+        },
+        {
+          "moteur": "math",
+          "quoi": "(C) au-dessus de (D) avant e^(−1/2)",
+          "expression": "(-1-2*log(x))/x^2 > 0",
+          "type": "vrai",
+          "domaine": "x > 0 and x < exp(-1/2)"
+        },
+        {
+          "moteur": "math",
+          "quoi": "(C) en dessous de (D) après e^(−1/2)",
+          "expression": "(-1-2*log(x))/x^2 < 0",
+          "type": "vrai",
+          "domaine": "x > exp(-1/2)"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-2a",
+      "exercice": "Exercice 2 (5,5 pts)",
+      "enonce": "Montrer que f'(x) = 4ln x / x³.",
+      "points": 0.5,
+      "type": "calcul",
+      "attendu": "Dérivation de 2 − x⁻² − 2ln x·x⁻² : 2/x³ − 2/x³ + 4ln x/x³.",
+      "etapes": [
+        {
+          "critere": "Calcul juste",
+          "points": 0.5
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "expression": "diff((2*x**2-1-2*log(x))/x**2, x)",
+          "egal_a": "4*log(x)/x**3",
+          "quoi": "vérification du pack d'origine"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-2b",
+      "exercice": "Exercice 2 (5,5 pts)",
+      "enonce": "Dresser le tableau de variation de f.",
+      "points": 0.5,
+      "type": "calcul",
+      "attendu": "f décroissante sur ]0 ; 1], croissante sur [1 ; +∞[ ; minimum f(1) = 1 ; limites +∞ et 2.",
+      "etapes": [
+        {
+          "critere": "Signe de f' et variations",
+          "points": 0.25
+        },
+        {
+          "critere": "Valeurs et limites dans le tableau",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "minimum f(1) = 1",
+          "expression": "(2*1^2-1-2*log(1))/1^2",
+          "egal_a": "1"
+        },
+        {
+          "moteur": "math",
+          "quoi": "f' ≤ 0 sur ]0 ; 1]",
+          "expression": "4*log(x)/x^3 <= 0",
+          "type": "vrai",
+          "domaine": "x > 0 and x <= 1"
+        },
+        {
+          "moteur": "math",
+          "quoi": "f' ≥ 0 sur [1 ; +∞[",
+          "expression": "4*log(x)/x^3 >= 0",
+          "type": "vrai",
+          "domaine": "x >= 1"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-3a",
+      "exercice": "Exercice 2 (5,5 pts)",
+      "enonce": "g restriction de f à I = [1 ; +∞[. Montrer que g est une bijection de I sur un intervalle J à déterminer.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "g continue et strictement croissante sur [1 ; +∞[ ⇒ bijection de I sur J = [1 ; 2[.",
+      "etapes": [
+        {
+          "critere": "Continuité et stricte monotonie",
+          "points": 0.25
+        },
+        {
+          "critere": "J = [1 ; 2[",
+          "points": 0.25
+        }
+      ],
+      "verification": [
+        {
+          "moteur": "math",
+          "quoi": "g(1) = 1",
+          "expression": "(2*1^2-1-2*log(1))/1^2",
+          "egal_a": "1"
+        },
+        {
+          "moteur": "math",
+          "quoi": "g tend vers 2 en +∞ : J = [1 ; 2[",
+          "expression": "(2*x^2-1-2*log(x))/x^2",
+          "egal_a": "2",
+          "type": "limite",
+          "variable": "x",
+          "vers": "+inf"
+        },
+        {
+          "moteur": "math",
+          "quoi": "g < 2 sur [1 ; +∞[",
+          "expression": "(2*x^2-1-2*log(x))/x^2 < 2",
+          "type": "vrai",
+          "domaine": "x >= 1"
+        }
+      ]
+    },
+    {
+      "id": "Ex2-3b",
+      "exercice": "Exercice 2 (5,5 pts)",
+      "enonce": "Dresser le tableau de variation de g⁻¹.",
+      "points": 0.5,
+      "type": "calcul",
+      "attendu": "g⁻¹ strictement croissante sur [1 ; 2[, g⁻¹(1) = 1, lim(x→2⁻) g⁻¹ = +∞.",
+      "etapes": [
+        {
+          "critere": "Sens de variation",
+          "points": 0.25
+        },
+        {
+          "critere": "Valeur et limite",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex2-4",
+      "exercice": "Exercice 2 (5,5 pts)",
+      "enonce": "Construire (D), (C) et (C'), courbe de g⁻¹.",
+      "points": 0.75,
+      "type": "figure",
+      "attendu": "(C') est le symétrique de la partie de (C) sur [1 ; +∞[ par rapport à la droite y = x ; asymptote verticale x = 2 pour (C').",
+      "a_relire": "Confiance moyenne du corrigé proposé",
+      "etapes": [
+        {
+          "critere": "(D) et (C)",
+          "points": 0.25
+        },
+        {
+          "critere": "(C') symétrique par rapport à y = x",
+          "points": 0.25
+        },
+        {
+          "critere": "Asymptote x = 2 de (C')",
+          "points": 0.25
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "source": "Photo du sujet officiel, page 1/2. Converti depuis le « Pack Bac Mauritanie » (corrigé et barème proposés, non officiels). Coefficient : 6.",
+    "auteur": "Pack Bac Mauritanie (proposé) + vérifications Offline Correction",
+    "cree_le": "2026-11-25",
+    "avertissement": "Corrigés et barèmes proposés (non officiels), vérifiés par calcul ; les questions marquées « a_valider » doivent être relues par un professeur.",
+    "partiel": {
+      "total_epreuve": 20,
+      "manque": [
+        "Page 2/2 (≈ 11,5 pts)"
+      ]
+    },
+    "a_relire": [
+      "Ex2-4 : Confiance moyenne du corrigé proposé"
+    ]
+  }
+}

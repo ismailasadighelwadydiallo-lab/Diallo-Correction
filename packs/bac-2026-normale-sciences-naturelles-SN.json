@@ -1,0 +1,740 @@
+{
+  "format": "oc-pack/1",
+  "id": "bac-2026-normale-sciences-naturelles-SN",
+  "titre": "Bac 2026 session normale — Sciences naturelles — Série SN (partiel : 19,5 pts)",
+  "serie": "SN",
+  "duree": "4h",
+  "session": "2026 normale",
+  "total": 19.5,
+  "langue": "fr",
+  "regles": {
+    "qcm_negatif": false
+  },
+  "questions": [
+    {
+      "id": "QCM-1",
+      "exercice": "I.1 QCM (2 pts)",
+      "enonce": "Croisement de deux drosophiles [A₁B₁] ; femelles : 6 [A₁B₁], 2 [A₁B₂] ; mâles : 3 [A₁B₁], 1 [A₁B₂], 3 [A₂B₁], 1 [A₂B₂]. Il s'agit de deux gènes :\na) portés par X ; b) autosomaux ; c) indépendants ; d) liés",
+      "points": 0.25,
+      "type": "qcm",
+      "attendu": "Le gène A est lié à X (femelles toutes [A₁], mâles 1:1), le gène B est autosomal (3:1 dans les deux sexes) : gènes indépendants.",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "c"
+      ]
+    },
+    {
+      "id": "QCM-2",
+      "exercice": "I.1 QCM (2 pts)",
+      "enonce": "Ovocyte II d'une drosophile double hybride [A₁B₂] (chromatides A₁/A₁ et B₂/B₁) :\na) gènes en position cis ; b) gènes en position trans ; c) génotype possible A₁B₂//A₁B₂ ; d) génotype possible A₁B₁//A₂B₂",
+      "points": 0.25,
+      "type": "qcm",
+      "attendu": "Réponse retenue par les deux corrigés proposés : a (cis). Un crossing-over a eu lieu (B₁ et B₂ sur les deux chromatides). La proposition d (A₁B₁//A₂B₂) décrit aussi une position cis : à trancher avec le corrigé officiel.",
+      "a_relire": "Réponse à valider par un professeur.",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "a"
+      ]
+    },
+    {
+      "id": "QCM-3",
+      "exercice": "I.1 QCM (2 pts)",
+      "enonce": "F₁ × F₁ (parents de races pures) donne 3/8 [AB], 1/8 [Ab], 1/8 [aB], 3/8 [ab]. Il s'agit de deux gènes :\na) portés par X ; b) autosomaux ; c) indépendants ; d) l'un autosomal et l'autre porté par X",
+      "points": 0.25,
+      "type": "qcm",
+      "attendu": "Deux gènes liés sur X : les descendants reflètent les gamètes de la femelle F₁ (mâle F₁ hémizygote récessif), 25 % de recombinés.",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "a"
+      ]
+    },
+    {
+      "id": "QCM-4",
+      "exercice": "I.1 QCM (2 pts)",
+      "enonce": "Distance de 10 cM ; femelle Ab/aB × mâle ab/ab. Parmi la descendance :\na) 40 % [AB] ; b) 5 % [Ab] ; c) 10 % [ab] ; d) 45 % [aB]",
+      "points": 0.25,
+      "type": "qcm",
+      "attendu": "Parentaux Ab et aB : 45 % chacun ; recombinés AB et ab : 5 % chacun.",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "d"
+      ]
+    },
+    {
+      "id": "QCM-5",
+      "exercice": "I.1 QCM (2 pts)",
+      "enonce": "Chez les angiospermes, la fécondation des noyaux du sac donne :\na) L'embryon ; b) Le fruit ; c) L'endosperme ; d) Le nucelle",
+      "points": 0.25,
+      "type": "qcm",
+      "attendu": "",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "c"
+      ]
+    },
+    {
+      "id": "QCM-6",
+      "exercice": "I.1 QCM (2 pts)",
+      "enonce": "Quel élément donne directement naissance au gamétophyte femelle ?\na) La microspore ; b) L'ovaire ; c) La mégaspore ; d) L'embryon",
+      "points": 0.25,
+      "type": "qcm",
+      "attendu": "",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "c"
+      ]
+    },
+    {
+      "id": "QCM-7",
+      "exercice": "I.1 QCM (2 pts)",
+      "enonce": "La méiose chez les angiospermes produit directement :\na) des gamètes ; b) des spores ; c) des ovules ; d) des grains de pollen",
+      "points": 0.25,
+      "type": "qcm",
+      "attendu": "",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "b"
+      ]
+    },
+    {
+      "id": "QCM-8",
+      "exercice": "I.1 QCM (2 pts)",
+      "enonce": "Dans une fleur, les sacs polliniques se trouvent dans :\na) Le pistil ; b) Les grains de pollen ; c) Les anthères ; d) Le sac embryonnaire",
+      "points": 0.25,
+      "type": "qcm",
+      "attendu": "",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "c"
+      ]
+    },
+    {
+      "id": "QROC-1",
+      "exercice": "I.2 QROC (5 pts)",
+      "enonce": "Identifier les structures S₁, S₂, S₃ et donner la légende de 1 à 4.",
+      "points": 1.5,
+      "type": "texte_court",
+      "attendu": "S₁ : ovocyte II bloqué en métaphase II (expulsé à l'ovulation). S₂ : coupe transversale de tube séminifère. S₃ : follicule mûr (de De Graaf). 1 : corona radiata (cellules folliculaires) ; 2 : 1er globule polaire ; 3 : cellule de Sertoli ; 4 : antrum (cavité folliculaire).",
+      "a_relire": "Confiance moyenne du corrigé proposé — Légendes tirées du corrigé proposé ; la légende 2 (globule polaire ou zone pellucide) est à confirmer sur le schéma.",
+      "etapes": [
+        {
+          "critere": "S₁",
+          "points": 0.25
+        },
+        {
+          "critere": "S₂",
+          "points": 0.25
+        },
+        {
+          "critere": "S₃",
+          "points": 0.25,
+          "reponses": [
+            "follicule mûr",
+            "follicule de De Graaf",
+            "follicule cavitaire mûr"
+          ]
+        },
+        {
+          "critere": "Légendes 1 et 2",
+          "points": 0.25
+        },
+        {
+          "critere": "Légende 3",
+          "points": 0.25
+        },
+        {
+          "critere": "Légende 4",
+          "points": 0.25,
+          "reponses": [
+            "antrum",
+            "cavité folliculaire"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "QROC-2",
+      "exercice": "I.2 QROC (5 pts)",
+      "enonce": "Schématiser les cellules C₁ et C₂ en prenant 2n = 4 dont 2 gonosomes.",
+      "points": 0.5,
+      "type": "figure",
+      "attendu": "C₁ : ovocyte II en métaphase II, n = 2 chromosomes à 2 chromatides (un autosome + X). C₂ : spermatocyte en division méiotique, 2n = 4 (une paire d'autosomes + X et Y).",
+      "a_relire": "Confiance moyenne du corrigé proposé",
+      "etapes": [
+        {
+          "critere": "C₁ correcte",
+          "points": 0.25
+        },
+        {
+          "critere": "C₂ correcte",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "QROC-3",
+      "exercice": "I.2 QROC (5 pts)",
+      "enonce": "Indiquer pour S₃ le phénomène à l'origine de sa formation.",
+      "points": 0.25,
+      "type": "texte_court",
+      "attendu": "La folliculogenèse.",
+      "etapes": [
+        {
+          "critere": "Folliculogenèse",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "QROC-4a",
+      "exercice": "I.2 QROC (5 pts)",
+      "enonce": "S₁ est observée suite à un événement E du 19 juin. Identifier E.",
+      "points": 0.25,
+      "type": "texte_court",
+      "attendu": "L'ovulation.",
+      "etapes": [
+        {
+          "critere": "Ovulation",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "QROC-4b",
+      "exercice": "I.2 QROC (5 pts)",
+      "enonce": "Donner la date approximative de l'observation de S₃.",
+      "points": 0.25,
+      "type": "texte_court",
+      "attendu": "Juste avant l'ovulation : vers le 17 juin (follicule mûr).",
+      "a_relire": "Confiance moyenne du corrigé proposé — Accepter une date de fin de phase folliculaire (17-18 juin).",
+      "etapes": [
+        {
+          "critere": "Date juste avant le 19 juin",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "QROC-4c",
+      "exercice": "I.2 QROC (5 pts)",
+      "enonce": "Décrire l'état de l'endomètre au jour de l'événement E.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Endomètre épaissi et développé, bien vascularisé (fin de phase proliférative).",
+      "etapes": [
+        {
+          "critere": "Épaissi / développé",
+          "points": 0.25
+        },
+        {
+          "critere": "Vascularisé",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "QROC-4d",
+      "exercice": "I.2 QROC (5 pts)",
+      "enonce": "Quelles sont les structures ovariennes marquant les jours 5 et 22 juin ?",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "5 juin : follicules primordiaux, primaires, secondaires et cavitaires (phase folliculaire). 22 juin : corps jaune principalement (avec des follicules primordiaux, primaires et secondaires).",
+      "etapes": [
+        {
+          "critere": "5 juin : follicules en croissance",
+          "points": 0.25
+        },
+        {
+          "critere": "22 juin : corps jaune",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "QROC-5",
+      "exercice": "I.2 QROC (5 pts)",
+      "enonce": "Citer les hormones produites par S₂ et S₃.",
+      "points": 0.75,
+      "type": "texte_court",
+      "attendu": "S₂ : inhibine (cellules de Sertoli) ; testostérone (tissu interstitiel, cellules de Leydig). S₃ : œstrogènes.",
+      "etapes": [
+        {
+          "critere": "Inhibine",
+          "points": 0.25
+        },
+        {
+          "critere": "Testostérone",
+          "points": 0.25
+        },
+        {
+          "critere": "Œstrogènes",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "QROC-6",
+      "exercice": "I.2 QROC (5 pts)",
+      "enonce": "Deux particularités cytologiques permettant à X d'aller à la rencontre de C₁.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Un flagelle bien organisé (mobilité) ; de nombreuses mitochondries (énergie). Accepter aussi : acrosome riche en enzymes.",
+      "etapes": [
+        {
+          "critere": "Première particularité",
+          "points": 0.25
+        },
+        {
+          "critere": "Deuxième particularité",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1A-1a",
+      "exercice": "II. Exercice 1 (annoncé 6 pts)",
+      "enonce": "Expliquer les différences entre C₁ et C₂.",
+      "points": 0.25,
+      "type": "texte_court",
+      "attendu": "C₁ : PA monophasique simple (seules les fibres a, plus excitables, répondent à I₁). C₂ : PA complexe à 2 ondes a et b : I₂ excite aussi les fibres b, moins excitables et plus lentes.",
+      "etapes": [
+        {
+          "critere": "Recrutement des fibres b",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1A-1b",
+      "exercice": "II. Exercice 1",
+      "enonce": "Expliquer les différences entre C₂ et C₃.",
+      "points": 0.25,
+      "type": "texte_court",
+      "attendu": "À T₃ les fibres b sont en période réfractaire (stimulation trop rapprochée) : elles sont inexcitables, seule l'onde a apparaît.",
+      "etapes": [
+        {
+          "critere": "Période réfractaire des fibres b",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1A-2",
+      "exercice": "II. Exercice 1",
+      "enonce": "Que concluez-vous concernant la structure de ce nerf ?",
+      "points": 0.75,
+      "type": "texte_court",
+      "attendu": "Nerf formé de fibres hétérogènes (types a et b) qui diffèrent par leur nombre (Na > Nb), leur vitesse de conduction (Va > Vb) et leur excitabilité (seuil).",
+      "etapes": [
+        {
+          "critere": "Fibres hétérogènes",
+          "points": 0.25
+        },
+        {
+          "critere": "Vitesses différentes",
+          "points": 0.25
+        },
+        {
+          "critere": "Excitabilités / nombres différents",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1B-1",
+      "exercice": "II. Exercice 1 — B (réflexe, FNM)",
+      "enonce": "Que déduisez-vous des enregistrements obtenus en O₂ (fréquence des PA 3, 8, 10 selon l'étirement) ?",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Le message nerveux est codé en modulation de fréquence : plus l'étirement est grand, plus la fréquence des PA est élevée.",
+      "etapes": [
+        {
+          "critere": "Codage en fréquence",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex1B-2",
+      "exercice": "II. Exercice 1 — B",
+      "enonce": "Nommer chacun des enregistrements obtenus en O₁.",
+      "points": 0.25,
+      "type": "texte_court",
+      "attendu": "Des potentiels de récepteur (potentiels générateurs) d'amplitude croissante, supraliminaires.",
+      "etapes": [
+        {
+          "critere": "Potentiel de récepteur",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1B-3",
+      "exercice": "II. Exercice 1 — B",
+      "enonce": "Déterminer le rôle du FNM.",
+      "points": 0.25,
+      "type": "texte_court",
+      "attendu": "Le fuseau neuromusculaire est un mécanorécepteur sensible à l'étirement du muscle.",
+      "etapes": [
+        {
+          "critere": "Mécanorécepteur sensible à l'étirement",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1B-4",
+      "exercice": "II. Exercice 1 — B",
+      "enonce": "On verse un acide fort à des concentrations croissantes sur le FNM : fréquence des PA en O₂ ? Justifier.",
+      "points": 0.75,
+      "type": "texte_court",
+      "attendu": "La fréquence reste celle du repos (3 PA) pour toutes les concentrations : le FNM est un mécanorécepteur, pas un chimiorécepteur.",
+      "etapes": [
+        {
+          "critere": "Fréquence inchangée (3)",
+          "points": 0.25
+        },
+        {
+          "critere": "Justification : récepteur spécifique",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex1B-5a",
+      "exercice": "II. Exercice 1 — B",
+      "enonce": "Deux stimulations I₁ successives : réponses en O₃, O₅, O₆ et O₇.",
+      "points": 1,
+      "type": "texte_court",
+      "attendu": "O₃ : PA ; O₅ : PPSI ; O₆ : PA ; O₇ : potentiel de repos.",
+      "a_relire": "Confiance moyenne du corrigé proposé — Dépend du schéma du circuit (positions des oscilloscopes).",
+      "etapes": [
+        {
+          "critere": "O₃",
+          "points": 0.25
+        },
+        {
+          "critere": "O₅",
+          "points": 0.25
+        },
+        {
+          "critere": "O₆",
+          "points": 0.25
+        },
+        {
+          "critere": "O₇",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1B-5b",
+      "exercice": "II. Exercice 1 — B",
+      "enonce": "États des muscles M₁ et M₂.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "M₁ contracté ; M₂ relâché.",
+      "etapes": [
+        {
+          "critere": "M₁ contracté",
+          "points": 0.25
+        },
+        {
+          "critere": "M₂ relâché",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1B-6",
+      "exercice": "II. Exercice 1 — B",
+      "enonce": "Caractéristiques fonctionnelles des synapses S₁ et S₂.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "S₁ excitatrice : canaux Na⁺, PPSE, favorise un PA, acétylcholine. S₂ inhibitrice : canaux K⁺/Cl⁻, PPSI, empêche un PA, GABA.",
+      "etapes": [
+        {
+          "critere": "S₁ excitatrice",
+          "points": 0.25
+        },
+        {
+          "critere": "S₂ inhibitrice",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1B-7",
+      "exercice": "II. Exercice 1 — B",
+      "enonce": "V = 40 m/s, distance 80 cm, délai synaptique 0,5 ms : temps entre l'étirement et la contraction.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "Conduction : t = d/V = 0,8/40 = 0,02 s = 20 ms ; avec le délai d'une synapse : ≈ 20,5 ms.",
+      "a_relire": "Le corrigé proposé donne 20 ms ; accepter 20 ou 20,5 ms selon le barème officiel.",
+      "etapes": [
+        {
+          "critere": "Calcul d/V",
+          "points": 0.25
+        },
+        {
+          "critere": "Ajout du délai synaptique",
+          "points": 0.25
+        }
+      ],
+      "controles": [
+        "Valeur attendue t = 20,5 ms (tolérance 5 %), non rattachée à une étape."
+      ]
+    },
+    {
+      "id": "Ex2-1a",
+      "exercice": "II. Exercice 2 (3 pts)",
+      "enonce": "Analyser l'expérience 1 (IgE anti-A et substance S chez R₁ et R₂) pour identifier le rat présentant le dysfonctionnement.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Avant l'antigène : IgE et S quasi nulles chez les deux rats. Chez R₂, la 1ʳᵉ injection augmente légèrement les IgE (sensibilisation) et la 2ᵉ les augmente fortement avec libération de S (réaction allergique) ; R₁ reste inchangé. Le rat malade est R₂.",
+      "etapes": [
+        {
+          "critere": "Analyse comparée",
+          "points": 0.25
+        },
+        {
+          "critere": "R₂",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex2-1b",
+      "exercice": "II. Exercice 2",
+      "enonce": "Déterminer le dysfonctionnement étudié.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Une hypersensibilité immédiate (allergie) : hyperfonctionnement du système immunitaire.",
+      "etapes": [
+        {
+          "critere": "Allergie / hypersensibilité",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex2-1c",
+      "exercice": "II. Exercice 2",
+      "enonce": "Nommer la substance S.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "L'histamine.",
+      "etapes": [
+        {
+          "critere": "Histamine",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex2-2",
+      "exercice": "II. Exercice 2",
+      "enonce": "Déduire l'effet de la substance S sur la pression artérielle.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "L'histamine provoque une vasodilatation des artérioles qui diminue la pression artérielle (hypotension).",
+      "etapes": [
+        {
+          "critere": "Vasodilatation ⇒ hypotension",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex2-3",
+      "exercice": "II. Exercice 2",
+      "enonce": "Expliquer le mécanisme correcteur mis en évidence.",
+      "points": 1,
+      "type": "texte_court",
+      "attendu": "Hypotension ⇒ baisse de stimulation des barorécepteurs sino-aortiques ⇒ moins de messages vers le centre bulbaire ⇒ levée d'inhibition du centre cardio-accélérateur et vasoconstricteur ⇒ stimulation orthosympathique ⇒ vasoconstriction des artérioles et cardioaccélération ⇒ retour de la pression à la normale.",
+      "etapes": [
+        {
+          "critere": "Barorécepteurs",
+          "points": 0.25
+        },
+        {
+          "critere": "Centres bulbaires",
+          "points": 0.25
+        },
+        {
+          "critere": "Voie orthosympathique",
+          "points": 0.25
+        },
+        {
+          "critere": "Effets et retour à la normale",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3-1a",
+      "exercice": "II. Exercice 3 (4 pts)",
+      "enonce": "Analyse d'ADN de 5 membres (A₁ : + − + + + ; A₂ : + + + − −). Préciser la localisation du gène.",
+      "points": 0.75,
+      "type": "texte_court",
+      "attendu": "A et C sont hétérozygotes ; les deux femmes ont des génotypes différents, donc un homme est hétérozygote, impossible si le gène était sur X ⇒ gène autosomal.",
+      "etapes": [
+        {
+          "critere": "A et C hétérozygotes",
+          "points": 0.25
+        },
+        {
+          "critere": "Un homme hétérozygote",
+          "points": 0.25
+        },
+        {
+          "critere": "Gène autosomal",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3-1b",
+      "exercice": "II. Exercice 3",
+      "enonce": "Préciser la relation de dominance entre les allèles.",
+      "points": 0.75,
+      "type": "texte_court",
+      "attendu": "Deux hypothèses : A₁ muté (A₂ > A₁) ou A₂ muté (A₁ > A₂). Les trois hommes ont des génotypes différents (A₁A₁, A₁A₂, A₂A₂) dont deux sains ⇒ l'hétérozygote est sain ⇒ l'allèle muté est récessif.",
+      "etapes": [
+        {
+          "critere": "Les deux hypothèses",
+          "points": 0.25
+        },
+        {
+          "critere": "Raisonnement sur les hommes",
+          "points": 0.25
+        },
+        {
+          "critere": "Allèle muté récessif",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3-2",
+      "exercice": "II. Exercice 3",
+      "enonce": "On a dénombré 4 allèles mutés dans la famille. Que concluez-vous ?",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "A₂ est présent 4 fois (A, C, B ×2) ⇒ A₂ est l'allèle muté, récessif : A₁ (normal) > A₂ (hypothèse 2 confirmée).",
+      "etapes": [
+        {
+          "critere": "A₂ muté",
+          "points": 0.25
+        },
+        {
+          "critere": "A₁ > A₂",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3-3",
+      "exercice": "II. Exercice 3",
+      "enonce": "Préciser la quantité d'ADN chez D (23 paires de chromosomes homologues).",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "B (A₂A₂) = 0,8 kb ⇒ A₂ = 0,4 kb ; A (A₁A₂) = 1 kb ⇒ A₁ = 0,6 kb. D (A₁A₁) : 0,6 + 0,6 = 1,2 kb.",
+      "etapes": [
+        {
+          "critere": "Valeur de A₁",
+          "points": 0.25
+        },
+        {
+          "critere": "1,2 kb",
+          "points": 0.25,
+          "attendu": "1.2",
+          "tolerance": 0.02
+        }
+      ]
+    },
+    {
+      "id": "Ex3-4",
+      "exercice": "II. Exercice 3",
+      "enonce": "Représenter le pédigrée de la famille avec les lettres et les génotypes.",
+      "points": 1.5,
+      "type": "figure",
+      "attendu": "Parents C (homme, A₁A₂) × A (femme, A₁A₂) ; enfants B (garçon malade, A₂A₂), E (garçon, A₁A₁), D (fille, A₁A₁). Les lettres A et C peuvent être inversées.",
+      "etapes": [
+        {
+          "critere": "Parents hétérozygotes",
+          "points": 0.5
+        },
+        {
+          "critere": "B garçon malade A₂A₂",
+          "points": 0.5
+        },
+        {
+          "critere": "D et E A₁A₁ avec bons sexes",
+          "points": 0.5
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "source": "Sujet officiel (2 pages) : photos de l'utilisateur + publication Facebook du groupe « SVt en mauritanie 7D, 7C » (30 juin 2026). Recoupé avec deux corrigés proposés (non officiels) publiés par Papeterie Sériyatak (2 juillet 2026).. Converti depuis le « Pack Bac Mauritanie » (corrigé et barème proposés, non officiels). Coefficient : 8.",
+    "auteur": "Pack Bac Mauritanie (proposé) + vérifications Offline Correction",
+    "cree_le": "2026-11-25",
+    "avertissement": "Corrigés et barèmes proposés (non officiels), vérifiés par calcul ; les questions marquées « a_valider » doivent être relues par un professeur.",
+    "partiel": {
+      "total_epreuve": 20,
+      "manque": [
+        "L'exercice 1 est annoncé sur 6 pts mais ses questions totalisent 5,5 pts (sujet et corrigé proposé concordent) : total réel 19,5. À vérifier avec le barème officiel."
+      ]
+    },
+    "a_relire": [
+      "QCM-2 : Réponse à valider par un professeur.",
+      "QROC-1 : Confiance moyenne du corrigé proposé — Légendes tirées du corrigé proposé ; la légende 2 (globule polaire ou zone pellucide) est à confirmer sur le schéma.",
+      "QROC-2 : Confiance moyenne du corrigé proposé",
+      "QROC-4b : Confiance moyenne du corrigé proposé — Accepter une date de fin de phase folliculaire (17-18 juin).",
+      "Ex1B-5a : Confiance moyenne du corrigé proposé — Dépend du schéma du circuit (positions des oscilloscopes).",
+      "Ex1B-7 : Le corrigé proposé donne 20 ms ; accepter 20 ou 20,5 ms selon le barème officiel.",
+      "Barème : L'exercice 1 est annoncé sur 6 pts mais ses questions totalisent 5,5 pts (sujet et corrigé proposé concordent) : total réel 19,5. À vérifier avec le barème officiel."
+    ]
+  }
+}

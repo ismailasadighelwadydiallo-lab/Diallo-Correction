@@ -1,0 +1,64 @@
+{
+  "nom": "Pack Bac Mauritanie — Offline Correction",
+  "version": "0.1",
+  "date": "2026-11-25",
+  "avertissement": "Corrigés et barèmes proposés (non officiels), vérifiés par calcul ; les questions marquées « a_valider » doivent être relues par un professeur.",
+  "epreuves": [
+    {
+      "fichier": "bac-2026-normale-maths-M-TMGM.json",
+      "titre": "Bac 2026 session normale — Mathématiques — Séries M & TMGM",
+      "complet": true,
+      "points_couverts": 20.0,
+      "questions": 27,
+      "a_valider": 0
+    },
+    {
+      "fichier": "bac-2025-normale-maths-M-TMGM.json",
+      "titre": "Bac 2025 session normale — Mathématiques — Séries M & TMGM",
+      "complet": false,
+      "points_couverts": 10.5,
+      "questions": 17,
+      "a_valider": 0
+    },
+    {
+      "fichier": "bac-2026-complementaire-maths-SN-TSGE.json",
+      "titre": "Bac 2026 session complémentaire — Mathématiques — Séries SN & TSGE",
+      "complet": false,
+      "points_couverts": 8.5,
+      "questions": 14,
+      "a_valider": 0
+    },
+    {
+      "fichier": "bac-2026-normale-sciences-naturelles-SN.json",
+      "titre": "Bac 2026 session normale — Sciences naturelles — Série SN",
+      "complet": true,
+      "points_couverts": 19.5,
+      "questions": 38,
+      "a_valider": 2
+    },
+    {
+      "fichier": "bac-2026-complementaire-sciences-physiques-SN.json",
+      "titre": "Bac 2026 session complémentaire — Sciences physiques — Série SN",
+      "complet": false,
+      "points_couverts": 10.5,
+      "questions": 16,
+      "a_valider": 2
+    },
+    {
+      "fichier": "bac-2026-normale-sciences-physiques-SN.json",
+      "titre": "Bac 2026 session normale — Sciences physiques — Série SN",
+      "complet": true,
+      "points_couverts": 20.0,
+      "questions": 36,
+      "a_valider": 1
+    },
+    {
+      "fichier": "bac-2026-complementaire-sciences-naturelles-SN.json",
+      "titre": "Bac 2026 session complémentaire — Sciences naturelles — Série SN",
+      "complet": true,
+      "points_couverts": 20.0,
+      "questions": 29,
+      "a_valider": 0
+    }
+  ]
+}

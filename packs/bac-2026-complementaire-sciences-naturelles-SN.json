@@ -1,0 +1,596 @@
+{
+  "format": "oc-pack/1",
+  "id": "bac-2026-complementaire-sciences-naturelles-SN",
+  "titre": "Bac 2026 session complémentaire — Sciences naturelles — Série SN",
+  "serie": "SN",
+  "duree": "4h",
+  "session": "2026 complementaire",
+  "total": 20,
+  "langue": "fr",
+  "regles": {
+    "qcm_negatif": false
+  },
+  "questions": [
+    {
+      "id": "QCM-1",
+      "exercice": "I. QCM (3 pts)",
+      "enonce": "La surface de la membrane du T₈ comporte des :\na) molécules HLA_II ; b) récepteurs TCR ; c) marqueurs CD₄ ; d) immunoglobulines de surface",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "b"
+      ]
+    },
+    {
+      "id": "QCM-2",
+      "exercice": "I. QCM (3 pts)",
+      "enonce": "Les ganglions lymphatiques sont le siège de :\na) l'acquisition de l'immunocompétence ; b) la différenciation des pré-lymphocytes ; c) l'induction de la réponse immunitaire non spécifique ; d) la rencontre entre les cellules immunitaires et l'antigène",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "d"
+      ]
+    },
+    {
+      "id": "QCM-3",
+      "exercice": "I. QCM (3 pts)",
+      "enonce": "La sélection clonale se fait au :\na) niveau du thymus ; b) niveau de la moelle osseuse ; c) cours de la phase effectrice ; d) cours de la phase d'induction",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "d"
+      ]
+    },
+    {
+      "id": "QCM-4",
+      "exercice": "I. QCM (3 pts)",
+      "enonce": "Le support de la mémoire immunitaire est un ensemble :\na) de cellules effectrices ; b) de cellules phagocytaires ; c) d'anticorps spécifiques de l'antigène ; d) de cellules immunitaires de longue durée de vie",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "d"
+      ]
+    },
+    {
+      "id": "QCM-5",
+      "exercice": "I. QCM (3 pts)",
+      "enonce": "La vaccinothérapie est un traitement qui :\na) assure une immunité durable grâce à l'introduction d'antigènes atténués ; b) consiste à introduire des substances qui tuent les microbes ; c) apporte une immunité immédiate grâce à des anticorps spécifiques ; d) est une technique de prévention de courte durée grâce à la mémoire immunologique",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "a"
+      ]
+    },
+    {
+      "id": "QCM-6",
+      "exercice": "I. QCM (3 pts)",
+      "enonce": "Le VIH est un virus qui :\na) se lie spécifiquement aux plasmocytes ; b) déclenche parallèlement une RIMH et une RIMC ; c) déclenche uniquement une RIMH ; d) possède deux molécules de transcriptase réverse capables de transcrire ADN en ARN",
+      "points": 0.5,
+      "type": "qcm",
+      "attendu": "",
+      "choix": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "bonnes": [
+        "b"
+      ]
+    },
+    {
+      "id": "QROC-1",
+      "exercice": "I. QROC (3 pts)",
+      "enonce": "Nerf N et glande X : la stimulation de N fait sécréter H₁ par C₁ ; l'injection de H₂ fait sécréter H₃ par C₂. Identifier N, C₁, C₂, H₁, H₂, H₃.",
+      "points": 2,
+      "type": "texte_court",
+      "attendu": "N : nerf orthosympathique (splanchnique). C₁ : cellules de la médullosurrénale ; C₂ : cellules de la corticosurrénale. H₁ : adrénaline ; H₂ : angiotensine ; H₃ : aldostérone.",
+      "etapes": [
+        {
+          "critere": "Nerf N",
+          "points": 0.25
+        },
+        {
+          "critere": "C₁",
+          "points": 0.25
+        },
+        {
+          "critere": "C₂",
+          "points": 0.25
+        },
+        {
+          "critere": "H₁",
+          "points": 0.5
+        },
+        {
+          "critere": "H₂",
+          "points": 0.25
+        },
+        {
+          "critere": "H₃",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "QROC-2",
+      "exercice": "I. QROC (3 pts)",
+      "enonce": "Expliquer, en conditions normales, la perturbation de la pression artérielle à l'origine de la stimulation du nerf N.",
+      "points": 1,
+      "type": "texte_court",
+      "attendu": "Une baisse de la pression artérielle (hypotension) lève l'inhibition du centre vasomoteur bulbaire ; le centre cardio-accélérateur médullaire est activé et stimule les nerfs orthosympathiques splanchniques ⇒ sécrétion d'adrénaline, cardio-accélération et vasoconstriction ⇒ correction de l'hypotension.",
+      "etapes": [
+        {
+          "critere": "Hypotension à l'origine",
+          "points": 0.5
+        },
+        {
+          "critere": "Voie nerveuse et effet de l'adrénaline",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex1-1",
+      "exercice": "II. Exercice 1 (5 pts)",
+      "enonce": "Courbes de température des femmes A et B. Déterminer la date de l'ovulation chez A.",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "Vers le 14ᵉ jour (dernier point bas avant la montée thermique).",
+      "a_relire": "Confiance moyenne du corrigé proposé",
+      "etapes": [
+        {
+          "critere": "14ᵉ jour",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex1-2",
+      "exercice": "II. Exercice 1 (5 pts)",
+      "enonce": "Jours correspondant à la période de fécondité de A (ovule : 48 h ; spermatozoïdes : 72 h).",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "Du 11ᵉ au 16ᵉ jour (3 jours avant l'ovulation pour les spermatozoïdes, 2 jours après pour l'ovule).",
+      "etapes": [
+        {
+          "critere": "Début : 11ᵉ jour",
+          "points": 0.25
+        },
+        {
+          "critere": "Fin : 16ᵉ jour",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1-3",
+      "exercice": "II. Exercice 1 (5 pts)",
+      "enonce": "Nommer les événements remarqués chez B et donner leur date approximative.",
+      "points": 0.75,
+      "type": "texte_court",
+      "attendu": "La température reste haute au-delà de 14 jours : grossesse. Fécondation ≈ 24 h après l'ovulation (≈ 15ᵉ jour), nidation ≈ 7 jours après (≈ 21ᵉ jour).",
+      "etapes": [
+        {
+          "critere": "Fécondation et date",
+          "points": 0.25
+        },
+        {
+          "critere": "Nidation et date",
+          "points": 0.25
+        },
+        {
+          "critere": "Grossesse (plateau maintenu)",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex1-4",
+      "exercice": "II. Exercice 1 (5 pts)",
+      "enonce": "Représenter la courbe de température si A prenait une pilule combinée.",
+      "points": 0.5,
+      "type": "figure",
+      "attendu": "Courbe plate, sous 37 °C pendant tout le cycle (pas d'ovulation, pas de phase lutéale).",
+      "etapes": [
+        {
+          "critere": "Courbe sans montée thermique",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex1-5a",
+      "exercice": "II. Exercice 1 (5 pts)",
+      "enonce": "Dosages de LH/FSH (cycle A : pilule à faible dose de progestérone ; cycle B : pilule combinée). Déduire l'action de la pilule B sur le CHH, l'ovaire, l'endomètre et le col utérin.",
+      "points": 2,
+      "type": "texte_court",
+      "attendu": "Cycle A : les pics préovulatoires de LH et FSH existent ⇒ ovulation. Cycle B : pas de pic. Pilule B : CHH inhibé (rétrocontrôle négatif) ; ovaire bloqué (pas de croissance folliculaire ni d'ovulation) ; endomètre au développement anormal, impropre à la nidation ; glaire cervicale imperméable aux spermatozoïdes.",
+      "etapes": [
+        {
+          "critere": "CHH inhibé",
+          "points": 0.5
+        },
+        {
+          "critere": "Ovaire au repos, pas d'ovulation",
+          "points": 0.5
+        },
+        {
+          "critere": "Endomètre impropre à la nidation",
+          "points": 0.5
+        },
+        {
+          "critere": "Glaire imperméable",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex1-5b",
+      "exercice": "II. Exercice 1 (5 pts)",
+      "enonce": "En quoi la pilule A peut-elle être contraceptive ?",
+      "points": 0.75,
+      "type": "texte_court",
+      "attendu": "Elle ne bloque pas l'ovulation, mais elle rend l'endomètre impropre à la nidation et la glaire cervicale imperméable aux spermatozoïdes.",
+      "etapes": [
+        {
+          "critere": "N'empêche pas l'ovulation",
+          "points": 0.25
+        },
+        {
+          "critere": "Effet sur l'endomètre",
+          "points": 0.25
+        },
+        {
+          "critere": "Effet sur la glaire",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex2-1a",
+      "exercice": "II. Exercice 2 (4 pts)",
+      "enonce": "Mâle [A₁B₂] × femelle [A₂B₁] → F₁ toute [A₁B₂]. Relation de dominance entre les allèles de chaque gène.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "F₁ homogène [A₁B₂] (1ʳᵉ loi de Mendel) ⇒ A₁ domine A₂ et B₂ domine B₁.",
+      "etapes": [
+        {
+          "critere": "A₁ > A₂",
+          "points": 0.25
+        },
+        {
+          "critere": "B₂ > B₁",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex2-1b",
+      "exercice": "II. Exercice 2 (4 pts)",
+      "enonce": "Mâle F₁ × femelle [A₂B₁] → 198 [A₁B₂] et 201 [A₂B₁]. Discuter la localisation des deux gènes.",
+      "points": 1,
+      "type": "texte_court",
+      "attendu": "Test-cross avec le mâle (pas de crossing-over chez le mâle drosophile) : 2 phénotypes parentaux équiprobables au lieu de 4 ⇒ gènes liés sur le même chromosome (autosomal : mêmes résultats dans les deux sexes). F₁ : A₁B₂//A₂B₁.",
+      "etapes": [
+        {
+          "critere": "Deux phénotypes au lieu de quatre",
+          "points": 0.25
+        },
+        {
+          "critere": "Gènes liés",
+          "points": 0.5
+        },
+        {
+          "critere": "Génotype de F₁",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex2-2a",
+      "exercice": "II. Exercice 2 (4 pts)",
+      "enonce": "F₁ × F₁ ; 17 % de [A₂B₁] en F₂. Types de gamètes des F₁ et leurs pourcentages.",
+      "points": 1,
+      "type": "calcul",
+      "attendu": "Mâle (sans crossing-over) : A₁B₂ 50 %, A₂B₁ 50 %. Femelle : P([A₂B₁]) = 0,5 × (1 − p)/2 = 0,17 ⇒ parentaux A₁B₂ et A₂B₁ : 34 % chacun ; recombinés A₁B₁ et A₂B₂ : 16 % chacun.",
+      "etapes": [
+        {
+          "critere": "Gamètes du mâle",
+          "points": 0.25
+        },
+        {
+          "critere": "Raisonnement sur 17 %",
+          "points": 0.25
+        },
+        {
+          "critere": "Parentaux 34 %",
+          "points": 0.25
+        },
+        {
+          "critere": "Recombinés 16 %",
+          "points": 0.25
+        }
+      ],
+      "controles": [
+        "0,5 × 0,34 = 0,17 (contrôle déclaré par le pack d'origine)"
+      ]
+    },
+    {
+      "id": "Ex2-2b",
+      "exercice": "II. Exercice 2 (4 pts)",
+      "enonce": "Résultats statistiques attendus en F₂ sur 1000 drosophiles.",
+      "points": 1,
+      "type": "numerique",
+      "attendu": "[A₁B₂] : 670 ; [A₂B₁] : 170 ; [A₁B₁] : 80 ; [A₂B₂] : 80 (échiquier 2 × 4).",
+      "etapes": [
+        {
+          "critere": "Échiquier",
+          "points": 0.25
+        },
+        {
+          "critere": "[A₁B₂] 670",
+          "points": 0.25,
+          "attendu": "670"
+        },
+        {
+          "critere": "[A₂B₁] 170",
+          "points": 0.25,
+          "attendu": "170"
+        },
+        {
+          "critere": "[A₁B₁] et [A₂B₂] 80",
+          "points": 0.25,
+          "attendu": "80"
+        }
+      ],
+      "controles": [
+        "Valeur attendue A2B2 = 80, non rattachée à une étape."
+      ]
+    },
+    {
+      "id": "Ex2-2c",
+      "exercice": "II. Exercice 2 (4 pts)",
+      "enonce": "Dresser la carte génétique.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Les gènes A et B sont distants de 32 cM (32 % de recombinés).",
+      "etapes": [
+        {
+          "critere": "32 cM",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex3A-1",
+      "exercice": "II. Exercice 3 (5 pts)",
+      "enonce": "Grenouille spinale : acide sur les doigts de la patte gauche ⇒ flexion (mouvement A, puis B). Réaction volontaire ou involontaire ? Justifier.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Involontaire (réflexe) : la grenouille est spinale (privée d'encéphale) ; le centre est la moelle épinière.",
+      "etapes": [
+        {
+          "critere": "Involontaire",
+          "points": 0.25
+        },
+        {
+          "critere": "Justification",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3A-2",
+      "exercice": "II. Exercice 3",
+      "enonce": "Nommer cette réaction selon la nature du mouvement.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Mouvement A : réaction unilatérale (réflexe de flexion) ; mouvement B : réaction symétrique.",
+      "etapes": [
+        {
+          "critere": "A unilatérale",
+          "points": 0.25
+        },
+        {
+          "critere": "B symétrique",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3A-3a",
+      "exercice": "II. Exercice 3",
+      "enonce": "Comportement des muscles fléchisseurs et extenseurs au cours des réactions.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Le fléchisseur se contracte, l'extenseur se relâche.",
+      "etapes": [
+        {
+          "critere": "Fléchisseur contracté",
+          "points": 0.25
+        },
+        {
+          "critere": "Extenseur relâché",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3A-3b",
+      "exercice": "II. Exercice 3",
+      "enonce": "Comment qualifie-t-on ces muscles ?",
+      "points": 0.25,
+      "type": "texte_court",
+      "attendu": "Muscles antagonistes.",
+      "etapes": [
+        {
+          "critere": "Antagonistes",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3A-4",
+      "exercice": "II. Exercice 3",
+      "enonce": "Représenter l'arc réflexe du mouvement A.",
+      "points": 0.5,
+      "type": "figure",
+      "attendu": "Récepteurs cutanés (peau) → neurone sensitif (voie centripète) → moelle épinière (centre, interneurones) → motoneurones (voie centrifuge) → fléchisseur activé, extenseur inhibé.",
+      "etapes": [
+        {
+          "critere": "Récepteur, voie centripète, centre",
+          "points": 0.25
+        },
+        {
+          "critere": "Voie centrifuge, effecteurs (activation/inhibition)",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3B-1",
+      "exercice": "II. Exercice 3 — B",
+      "enonce": "Fibre géante de calmar ; analyser le tracé de la réponse en O₁.",
+      "points": 0.75,
+      "type": "texte_court",
+      "attendu": "Potentiel de repos −70 mV, puis potentiel d'action : dépolarisation jusqu'à +40 mV, repolarisation, hyperpolarisation, retour au repos.",
+      "etapes": [
+        {
+          "critere": "Potentiel de repos",
+          "points": 0.25
+        },
+        {
+          "critere": "Dépolarisation / repolarisation",
+          "points": 0.25
+        },
+        {
+          "critere": "Hyperpolarisation",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3B-2",
+      "exercice": "II. Exercice 3 — B",
+      "enonce": "Déduire deux propriétés de la fibre.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "L'excitabilité et la conductibilité.",
+      "etapes": [
+        {
+          "critere": "Excitabilité",
+          "points": 0.25
+        },
+        {
+          "critere": "Conductibilité",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3B-3",
+      "exercice": "II. Exercice 3 — B",
+      "enonce": "Proposer une expérience pour mettre en évidence une troisième propriété.",
+      "points": 0.5,
+      "type": "texte_court",
+      "attendu": "Stimuler la fibre avec des intensités croissantes : en dessous du seuil aucun PA, au-dessus PA d'amplitude constante ⇒ loi du tout ou rien. (Accepter aussi la période réfractaire.)",
+      "a_relire": "Confiance moyenne du corrigé proposé",
+      "etapes": [
+        {
+          "critere": "Expérience proposée",
+          "points": 0.25
+        },
+        {
+          "critere": "Propriété : tout ou rien",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3B-4",
+      "exercice": "II. Exercice 3 — B",
+      "enonce": "Tracé obtenu si l'oscilloscope est placé juste sous les électrodes stimulatrices ; justifier.",
+      "points": 0.5,
+      "type": "figure",
+      "attendu": "PA sans temps de latence, confondu avec l'artefact de stimulation (pas de distance à parcourir).",
+      "a_relire": "Confiance moyenne du corrigé proposé",
+      "etapes": [
+        {
+          "critere": "PA immédiat",
+          "points": 0.25
+        },
+        {
+          "critere": "Justification",
+          "points": 0.25
+        }
+      ]
+    },
+    {
+      "id": "Ex3B-5",
+      "exercice": "II. Exercice 3 — B",
+      "enonce": "Calculer la vitesse de l'influx nerveux (distance O₁O₂ = 7,5 cm).",
+      "points": 0.5,
+      "type": "numerique",
+      "attendu": "Δt = t₂ − t₁ = 3 − 1,5 = 1,5 ms (lecture du document 2) ⇒ v = 0,075/1,5·10⁻³ = 50 m/s.",
+      "etapes": [
+        {
+          "critere": "Δt lu",
+          "points": 0.25
+        },
+        {
+          "critere": "v = 50 m/s",
+          "points": 0.25,
+          "attendu": "50",
+          "tolerance": 0.1
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "source": "Sujet officiel (2 pages) publié sur Facebook par Papeterie Sériyatak (groupe « SVt en mauritanie 7D, 7C »), 4 août 2026. Recoupé avec le corrigé manuscrit proposé publié avec le sujet (non officiel).. Converti depuis le « Pack Bac Mauritanie » (corrigé et barème proposés, non officiels). Coefficient : 8.",
+    "auteur": "Pack Bac Mauritanie (proposé) + vérifications Offline Correction",
+    "cree_le": "2026-11-25",
+    "avertissement": "Corrigés et barèmes proposés (non officiels), vérifiés par calcul ; les questions marquées « a_valider » doivent être relues par un professeur.",
+    "a_relire": [
+      "Ex1-1 : Confiance moyenne du corrigé proposé",
+      "Ex3B-3 : Confiance moyenne du corrigé proposé",
+      "Ex3B-4 : Confiance moyenne du corrigé proposé"
+    ]
+  }
+}

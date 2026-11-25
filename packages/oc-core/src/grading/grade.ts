@@ -66,7 +66,7 @@ export function lireNombreEtUnite(s: string): { valeur: number | null; unite: st
   return { valeur: evaluerNombre(s), unite: '' };
 }
 
-function noterNumerique(q: QuestionNumerique, r: ReponseNumerique | undefined) {
+function noterNumerique(q: QuestionNumerique & { valeur: number }, r: ReponseNumerique | undefined) {
   const etape = (points: number, explication?: string): ResultatEtape => ({ id: 'reponse', critere: 'Valeur', points, max: q.points, explication });
   if (!r || !r.valeur.trim()) return { points: 0, etapes: [etape(0, 'Pas de réponse.')], explications: ['Pas de réponse.'], notation: 1 };
   const { valeur, unite } = lireNombreEtUnite(r.valeur);
@@ -107,7 +107,7 @@ function noterNumerique(q: QuestionNumerique, r: ReponseNumerique | undefined) {
 }
 
 // ---------------------------------------------------------------- Texte court
-function noterTexte(q: QuestionTexteCourt, r: ReponseTexte | undefined) {
+function noterTexte(q: QuestionTexteCourt & { reponses: string[] }, r: ReponseTexte | undefined) {
   const etape = (points: number, explication?: string): ResultatEtape => ({ id: 'reponse', critere: 'Réponse', points, max: q.points, explication });
   if (!r || !r.texte.trim()) return { points: 0, etapes: [etape(0, 'Pas de réponse.')], explications: ['Pas de réponse.'], notation: 1 };
   if (texteCorrespond(r.texte, q.reponses)) return { points: q.points, etapes: [etape(q.points)], explications: [], notation: 1 };
@@ -119,8 +119,11 @@ function noterTexte(q: QuestionTexteCourt, r: ReponseTexte | undefined) {
 // ---------------------------------------------------------------- Étapes (règles 1, 3, 4, 6, 7)
 const confianceSource = (s: Source | undefined) => (s === 'ia' ? 0.6 : s === undefined ? 0.9 : 1);
 
-function cibleFinale(q: QuestionEtapes): MathNode | null {
-  if (q.verification?.egal_a) return developper(parse(q.verification.egal_a));
+type AvecEtapes = Question & { etapes: NonNullable<Question['etapes']>; montrer_que?: boolean };
+
+function cibleFinale(q: AvecEtapes): MathNode | null {
+  const v = [q.verification ?? []].flat().find((x) => x.egal_a && (x.type ?? 'egal') === 'egal');
+  if (v) return developper(parse(v.egal_a!));
   const scope: Record<string, MathNode> = {};
   let dernier: MathNode | null = null;
   for (const e of q.etapes) {
@@ -131,7 +134,7 @@ function cibleFinale(q: QuestionEtapes): MathNode | null {
   return dernier;
 }
 
-function noterEtapes(q: QuestionEtapes, r: ReponseEtapes | undefined) {
+function noterEtapes(q: AvecEtapes, r: ReponseEtapes | undefined) {
   const montrerQue = q.montrer_que ?? q.type === 'demonstration';
   const explications: string[] = [];
   const vide = !r || (Object.keys(r.etapes).length === 0 && !r.methode_alternative);
@@ -172,7 +175,14 @@ function noterEtapes(q: QuestionEtapes, r: ReponseEtapes | undefined) {
       attendu = developper(parse(x.attendu), attenduScope);
       if (x.variable) attenduScope[x.variable] = attendu;
     }
-    if (attendu && re?.valeur !== undefined && re.valeur.trim() !== '') {
+    if (x.reponses && re?.valeur !== undefined && re.valeur.trim() !== '') {
+      // étape à réponse courte (synonymes acceptés)
+      if (texteCorrespond(re.valeur, x.reponses)) res.points = x.points;
+      else {
+        res.explication = `${x.critere} : « ${re.valeur.trim()} » au lieu de « ${x.reponses[0]} ».`;
+        notation = Math.min(notation, 0.85);
+      }
+    } else if (attendu && re?.valeur !== undefined && re.valeur.trim() !== '') {
       let eleve: MathNode | null = null;
       try { eleve = parse(re.valeur); } catch { eleve = null; }
       if (!eleve) {
@@ -247,9 +257,10 @@ export function noterQuestion(q: Question, r: Reponse | undefined, regles: Regle
   let out: { points: number; etapes: ResultatEtape[]; explications: string[]; notation: number };
   if (r && 'points' in r) out = noterPoints(q, r);
   else if (q.type === 'qcm') out = noterQcm(q, r as ReponseQcm | undefined, regles);
-  else if (q.type === 'numerique') out = noterNumerique(q, r as ReponseNumerique | undefined);
-  else if (q.type === 'texte_court') out = noterTexte(q, r as ReponseTexte | undefined);
-  else out = noterEtapes(q, r as ReponseEtapes | undefined);
+  else if (q.type === 'numerique' && q.valeur !== undefined) out = noterNumerique(q as QuestionNumerique & { valeur: number }, r as ReponseNumerique | undefined);
+  else if (q.type === 'texte_court' && q.reponses) out = noterTexte(q as QuestionTexteCourt & { reponses: string[] }, r as ReponseTexte | undefined);
+  else if (q.etapes?.length) out = noterEtapes(q as AvecEtapes, r as ReponseEtapes | undefined);
+  else throw new Error(`${q.id} : ni réponse attendue ni étapes`);
   const lecture = r?.lecture?.confiance ?? 1;
   return {
     id: q.id,

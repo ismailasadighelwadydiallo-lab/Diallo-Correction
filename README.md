@@ -19,6 +19,8 @@ copies douteuses signalées sans rien bloquer. Interface en français et en arab
   exercice), export CSV, sauvegarde dans un fichier.
 - **Page labo** pour mesurer l'IA locale sur votre téléphone.
 - **Serveur local de l'école** : sert l'application et les packs sur le Wi-Fi, sans Internet.
+- **7 packs du Bac mauritanien** (2025-2026) dans `packs/`, dont **Maths M & TMGM 2026 complet**,
+  avec 142 calculs vérifiés par le moteur. Ce qui reste à relire : `docs/packs-bac-relecture.md`.
 
 Ce qui manque encore : voir `docs/resultats-tests.md` (section « Pas encore mesuré ») et
 `docs/choix.md` (section « Limites connues »).
@@ -44,7 +46,7 @@ Il faut **Node.js 22.18 ou plus récent** (https://nodejs.org, version LTS).
 
 ```bash
 npm install              # une fois, avec Internet
-npm test                 # tests automatiques (58 tests)
+npm test                 # tests automatiques (74 tests)
 npm run build            # construit l'application dans packages/oc-web/dist
 npm run serveur          # lance le serveur local (construit d'abord l'application)
 ```
@@ -68,6 +70,7 @@ qu'**aucune requête** ne part vers Internet. Il teste aussi la page labo et le 
 | `npm run typecheck` | Vérification des types TypeScript |
 | `npm run fixtures` | Régénère le pack de démonstration et les photos simulées |
 | `npm run verifier-packs` | Valide tous les packs de `packs/` et vérifie leurs calculs avec math.js |
+| `node scripts/convertir-packs-bac.ts <dossier> packs` | Convertit des packs préparés ailleurs (format « Pack Bac Mauritanie ») au format `oc-pack/1` |
 
 ## Installer l'application sur les téléphones de l'école (sans Internet)
 
@@ -130,6 +133,9 @@ Voir `packs/oc-pack.schema.json` (schéma JSON) et `packs/demo-devoir-qcm.json`.
 ```
 
 Types : `qcm`, `numerique`, `texte_court`, `calcul`, `demonstration`, `figure`, `redaction`.
+Vérifications possibles (`verification`, une ou une liste) : `egal` (expressions, nombres complexes,
+matrices, `diff(f, x, n)`), `racines`, `primitive`, `limite` (contrôle numérique) et `vrai` (inégalité
+sur un domaine). Une étape peut avoir des `reponses` (réponse courte avec synonymes).
 Une étape avec `attendu` et `variable` permet l'**erreur entraînée** : une étape suivante qui
 utilise cette variable et reste cohérente avec la valeur (fausse) de l'élève garde ses points.
 

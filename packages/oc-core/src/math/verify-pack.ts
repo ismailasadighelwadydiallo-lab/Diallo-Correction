@@ -14,9 +14,9 @@ export interface RapportVerification {
 export function verifierPackMath(pack: Pack): RapportVerification[] {
   const out: RapportVerification[] = [];
   for (const q of pack.questions) {
-    if (q.verification) {
-      const r = verifier(q.verification);
-      out.push({ question: q.id, quoi: 'vérification', ...r });
+    for (const v of [q.verification ?? []].flat()) {
+      const r = verifier(v);
+      out.push({ question: q.id, quoi: v.quoi ?? `vérification ${v.type ?? 'egal'}`, ...r });
     }
     const scope: Record<string, MathNode> = {};
     q.etapes?.forEach((e, i) => {

@@ -1,0 +1,669 @@
+{
+  "id": "bac-2026-normale-maths-M-TMGM",
+  "titre": "Bac 2026 session normale — Mathématiques — Séries M & TMGM",
+  "pays": "Mauritanie",
+  "annee": 2026,
+  "session": "normale",
+  "matiere": "Mathématiques",
+  "serie": "M & TMGM",
+  "coefficient": "9 & 6",
+  "duree": "4h",
+  "total": 20,
+  "langue": "fr",
+  "complet": true,
+  "pages_manquantes": [],
+  "source": "Photos du sujet officiel (Direction des Examens et des Concours), pages 1/2 et 2/2",
+  "regles": {
+    "granularite": 0.25,
+    "montrer_que_sans_demo": 0,
+    "erreur_entrainee": true,
+    "qcm_points_negatifs": false,
+    "methode_differente_acceptee": true
+  },
+  "questions": [
+    {
+      "id": "Ex1-1a",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Calculer A² et montrer par récurrence que pour n ≥ 1, Aⁿ = [[1, 3ⁿ−1, 0],[0, 3ⁿ, 0],[0, 0, 5ⁿ]], avec A = [[1,2,0],[0,3,0],[0,0,5]].",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "A² = [[1,8,0],[0,9,0],[0,0,25]]. Initialisation n=1 : 3¹−1 = 2 ✓. Hérédité : Aⁿ⁺¹ = Aⁿ·A donne en ligne 1 : 2 + 3(3ⁿ−1) = 3ⁿ⁺¹−1, et 3ⁿ⁺¹, 5ⁿ⁺¹ sur la diagonale.",
+      "etapes": [
+        {
+          "critere": "A² juste",
+          "points": 0.25
+        },
+        {
+          "critere": "Récurrence complète (initialisation + hérédité)",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "A^k vérifié pour k = 1..5"
+      }
+    },
+    {
+      "id": "Ex1-1b",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "En déduire que xₙ = yₙ = 3ⁿ et zₙ = 3×5ⁿ, avec M₀(1,1,3) et Xₙ₊₁ = A·Xₙ.",
+      "points": 0.5,
+      "type": "calcul",
+      "attendu": "Xₙ = Aⁿ·X₀ : xₙ = 1 + (3ⁿ−1) = 3ⁿ, yₙ = 3ⁿ, zₙ = 3×5ⁿ.",
+      "etapes": [
+        {
+          "critere": "Utiliser Xₙ = Aⁿ X₀",
+          "points": 0.25
+        },
+        {
+          "critere": "Résultats justes",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex1-2a",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Représentation paramétrique de la droite (D) passant par B(0,1,2), de vecteur directeur u(3,5,4).",
+      "points": 0.5,
+      "type": "calcul",
+      "attendu": "x = 3t ; y = 1 + 5t ; z = 2 + 4t, t ∈ ℝ.",
+      "etapes": [
+        {
+          "critere": "Représentation juste",
+          "points": 0.5
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex1-2b",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Montrer que M(x,y,z) à coordonnées entières de (D) vérifie z ≡ 0 [15] si et seulement s'il existe des entiers t et k tels que z = 2 + 4t et 15k − 4t = 2.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "x = 3t et y = 1 + 5t entiers ⇒ 5t et 3t entiers ⇒ t = 2(3t) − 5t entier, et z = 2 + 4t. z ≡ 0 [15] ⇔ ∃k ∈ ℤ, 2 + 4t = 15k ⇔ 15k − 4t = 2.",
+      "etapes": [
+        {
+          "critere": "t est entier (justifié)",
+          "points": 0.25
+        },
+        {
+          "critere": "Équivalence avec 15k − 4t = 2",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex1-3",
+      "exercice": "Exercice 1 (3 pts)",
+      "enonce": "Vérifier que (−2 ; −8) est solution de 15x − 4y = 2, résoudre dans ℤ² et en déduire l'ensemble (E).",
+      "points": 1,
+      "type": "calcul",
+      "attendu": "15(−2) − 4(−8) = 2 ✓. 15(x+2) = 4(y+8), PGCD(15,4)=1 (Gauss) ⇒ x = −2 + 4m, y = −8 + 15m, m ∈ ℤ. Donc t = −8 + 15m et (E) = {(45m − 24 ; 75m − 39 ; 60m − 30), m ∈ ℤ}.",
+      "etapes": [
+        {
+          "critere": "Vérification du couple",
+          "points": 0.25
+        },
+        {
+          "critere": "Solutions générales (Gauss justifié)",
+          "points": 0.5
+        },
+        {
+          "critere": "Ensemble (E)",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "z ≡ 0 [15] vérifié pour m = −2..2"
+      }
+    },
+    {
+      "id": "Ex2-1",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "f(x) = x·e^(2−x). Calculer lim f en +∞, lim f en −∞ et lim f(x)/x en −∞. Interpréter.",
+      "points": 1.25,
+      "type": "calcul",
+      "attendu": "lim(+∞) f = 0 ⇒ asymptote horizontale y = 0 en +∞. lim(−∞) f = −∞. lim(−∞) f(x)/x = lim e^(2−x) = +∞ ⇒ branche parabolique de direction (Oy) en −∞.",
+      "etapes": [
+        {
+          "critere": "lim en +∞ = 0",
+          "points": 0.25
+        },
+        {
+          "critere": "Asymptote y = 0",
+          "points": 0.25
+        },
+        {
+          "critere": "lim en −∞ = −∞",
+          "points": 0.25
+        },
+        {
+          "critere": "lim f(x)/x = +∞",
+          "points": 0.25
+        },
+        {
+          "critere": "Branche parabolique (Oy)",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "limites calculées par SymPy"
+      }
+    },
+    {
+      "id": "Ex2-2",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Déterminer f'(x) et dresser le tableau de variation de f.",
+      "points": 0.75,
+      "type": "calcul",
+      "attendu": "f'(x) = (1 − x)e^(2−x). f croissante sur ]−∞ ; 1], décroissante sur [1 ; +∞[, maximum f(1) = e.",
+      "etapes": [
+        {
+          "critere": "Dérivée juste",
+          "points": 0.5
+        },
+        {
+          "critere": "Tableau de variation juste",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "expression": "diff(x*exp(2-x), x)",
+        "egal_a": "(1-x)*exp(2-x)"
+      }
+    },
+    {
+      "id": "Ex2-3",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Montrer que (C) admet un point d'inflexion A à préciser. Construire (C).",
+      "points": 1,
+      "type": "figure",
+      "attendu": "f''(x) = (x − 2)e^(2−x), s'annule en changeant de signe en x = 2 ⇒ point d'inflexion A(2 ; 2). Courbe : max (1 ; e), passe par O, asymptote y = 0 en +∞.",
+      "etapes": [
+        {
+          "critere": "f'' et changement de signe",
+          "points": 0.25
+        },
+        {
+          "critere": "A(2 ; 2)",
+          "points": 0.25
+        },
+        {
+          "critere": "Courbe : allure, asymptote, points remarquables",
+          "points": 0.5
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "expression": "diff(x*exp(2-x), x, 2)",
+        "egal_a": "(x-2)*exp(2-x)"
+      }
+    },
+    {
+      "id": "Ex2-4a",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "uₙ = ∫₀¹ xⁿ⁻¹ f(x) dx. Montrer que (uₙ) est décroissante et minorée.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "uₙ = ∫₀¹ xⁿ e^(2−x) dx. uₙ₊₁ − uₙ = ∫₀¹ xⁿ(x − 1)e^(2−x) dx ≤ 0 car x − 1 ≤ 0 sur [0 ; 1] ⇒ décroissante. Intégrande ≥ 0 ⇒ uₙ ≥ 0 : minorée par 0.",
+      "etapes": [
+        {
+          "critere": "Décroissance justifiée",
+          "points": 0.25
+        },
+        {
+          "critere": "Minoration justifiée",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex2-4b",
+      "exercice": "Exercice 2 (4 pts)",
+      "enonce": "Montrer que e/(n+1) ≤ uₙ ≤ e²/(n+1), puis calculer lim uₙ.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "Sur [0 ; 1] : e ≤ e^(2−x) ≤ e², donc e·xⁿ ≤ xⁿe^(2−x) ≤ e²·xⁿ ; on intègre : ∫₀¹ xⁿ dx = 1/(n+1). Par encadrement, lim uₙ = 0.",
+      "etapes": [
+        {
+          "critere": "Encadrement justifié",
+          "points": 0.25
+        },
+        {
+          "critere": "Limite 0",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "u1, u2, u5 calculés numériquement dans l'encadrement"
+      }
+    },
+    {
+      "id": "Ex3-1",
+      "exercice": "Exercice 3 (5 pts)",
+      "enonce": "ABCD carré direct de centre O ; AEB, BFC, CGD, DHA rectangles isocèles directs en E, F, G, H. Faire une figure soignée.",
+      "points": 0.75,
+      "type": "figure",
+      "attendu": "Les triangles sont construits à l'extérieur du carré ; EFGH est un carré de centre O. Repère conseillé : A(1), B(i), C(−1), D(−i), E(1+i), F(−1+i), G(−1−i), H(1−i).",
+      "etapes": [
+        {
+          "critere": "Carré ABCD direct",
+          "points": 0.25
+        },
+        {
+          "critere": "Triangles extérieurs, rectangles isocèles",
+          "points": 0.25
+        },
+        {
+          "critere": "Points E, F, G, H bien placés",
+          "points": 0.25
+        }
+      ],
+      "confiance": "moyenne",
+      "note": "Figure dessinée : notation par grille de critères."
+    },
+    {
+      "id": "Ex3-2",
+      "exercice": "Exercice 3 (5 pts)",
+      "enonce": "Montrer qu'il existe une unique symétrie glissante f transformant B en D et E en O. Caractériser f.",
+      "points": 0.75,
+      "type": "demonstration",
+      "attendu": "BE = DO = AB/√2 et B ≠ E ⇒ il existe un unique antidéplacement f avec f(B) = D, f(E) = O. Forme complexe : f(z) = i·z̄ − 1 − i ; f∘f est la translation de vecteur −2−2i (non nulle) ⇒ symétrie glissante d'axe (EG) (droite y = x) et de vecteur EO⃗.",
+      "etapes": [
+        {
+          "critere": "Existence et unicité (BE = DO)",
+          "points": 0.25
+        },
+        {
+          "critere": "Axe (EG)",
+          "points": 0.25
+        },
+        {
+          "critere": "Vecteur EO⃗",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "f(B) = D, f(E) = O, f∘f = translation −2−2i"
+      }
+    },
+    {
+      "id": "Ex3-3",
+      "exercice": "Exercice 3 (5 pts)",
+      "enonce": "Montrer qu'il existe une unique rotation R transformant B en C et E en G. Caractériser R.",
+      "points": 0.75,
+      "type": "demonstration",
+      "attendu": "BE = CG et (BE⃗, CG⃗) = −π/2 ≠ 0 ⇒ unique rotation, d'angle −π/2. R(z) = −iz − 2, centre F (−1+i). R = rotation de centre F et d'angle −π/2.",
+      "etapes": [
+        {
+          "critere": "Existence et unicité",
+          "points": 0.25
+        },
+        {
+          "critere": "Angle −π/2",
+          "points": 0.25
+        },
+        {
+          "critere": "Centre F",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "R(B) = C, R(E) = G, point fixe −1+i"
+      }
+    },
+    {
+      "id": "Ex3-4",
+      "exercice": "Exercice 3 (5 pts)",
+      "enonce": "Montrer qu'il existe une unique homothétie h transformant C en B et G en D. Déterminer son rapport et placer son centre I.",
+      "points": 0.75,
+      "type": "demonstration",
+      "attendu": "(CG) ∥ (BD) et BD⃗ = 2·CG⃗ ⇒ unique homothétie de rapport 2. Centre I(−2 − i) : C est le milieu de [IB] et G le milieu de [ID].",
+      "etapes": [
+        {
+          "critere": "Existence et unicité",
+          "points": 0.25
+        },
+        {
+          "critere": "Rapport 2",
+          "points": 0.25
+        },
+        {
+          "critere": "Centre I justifié",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "h(z) = 2z + 2 + i ; point fixe −2−i"
+      }
+    },
+    {
+      "id": "Ex3-5",
+      "exercice": "Exercice 3 (5 pts)",
+      "enonce": "S = h∘R. Déterminer S(B), caractériser S, puis déterminer S(A).",
+      "points": 1.25,
+      "type": "demonstration",
+      "attendu": "S(B) = h(R(B)) = h(C) = B. S est une similitude directe de rapport 2 et d'angle −π/2 ; elle fixe B ⇒ centre B. S(z) = −2iz − 2 + i ; S(A) = −2 − i = I.",
+      "etapes": [
+        {
+          "critere": "S(B) = B",
+          "points": 0.25
+        },
+        {
+          "critere": "Rapport 2",
+          "points": 0.25
+        },
+        {
+          "critere": "Angle −π/2",
+          "points": 0.25
+        },
+        {
+          "critere": "Centre B",
+          "points": 0.25
+        },
+        {
+          "critere": "S(A) = I",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "S(B) = i, S(1) = −2−i"
+      }
+    },
+    {
+      "id": "Ex3-6",
+      "exercice": "Exercice 3 (5 pts)",
+      "enonce": "g = R∘S. Montrer que g est une homothétie, préciser son rapport et écrire son centre J comme barycentre de B et C.",
+      "points": 0.75,
+      "type": "demonstration",
+      "attendu": "g est une similitude directe de rapport 2 et d'angle −π/2 − π/2 = −π ⇒ homothétie de rapport −2. g(z) = −2z − 1 + 2i, centre J = (−1 + 2i)/3 = bar{(B, 2), (C, 1)}.",
+      "etapes": [
+        {
+          "critere": "Homothétie de rapport −2",
+          "points": 0.25
+        },
+        {
+          "critere": "Calcul du centre",
+          "points": 0.25
+        },
+        {
+          "critere": "J = bar{(B,2),(C,1)}",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "point fixe −1/3 + 2i/3"
+      }
+    },
+    {
+      "id": "Ex4-1a",
+      "exercice": "Exercice 4 (4 pts)",
+      "enonce": "Eₘ : z² − 2(m + i)z + (m + i)² + 4e^(2iθ) = 0. Montrer que Δ = (4ie^(iθ))² puis résoudre.",
+      "points": 1,
+      "type": "calcul",
+      "attendu": "Δ = 4(m+i)² − 4[(m+i)² + 4e^(2iθ)] = −16e^(2iθ) = (4ie^(iθ))². z₁ = m + i + 2ie^(iθ), z₂ = m + i − 2ie^(iθ).",
+      "etapes": [
+        {
+          "critere": "Discriminant",
+          "points": 0.5
+        },
+        {
+          "critere": "Les deux solutions",
+          "points": 0.5
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "P(z₁) = P(z₂) = 0"
+      }
+    },
+    {
+      "id": "Ex4-1b",
+      "exercice": "Exercice 4 (4 pts)",
+      "enonce": "Montrer que PQ = 4 et que le milieu I de [PQ] appartient à une droite fixe.",
+      "points": 0.75,
+      "type": "demonstration",
+      "attendu": "PQ = |z₁ − z₂| = |4ie^(iθ)| = 4. z_I = (z₁ + z₂)/2 = m + i ⇒ I appartient à la droite d'équation y = 1.",
+      "etapes": [
+        {
+          "critere": "PQ = 4",
+          "points": 0.25
+        },
+        {
+          "critere": "Affixe du milieu",
+          "points": 0.25
+        },
+        {
+          "critere": "Droite y = 1",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex4-2a",
+      "exercice": "Exercice 4 (4 pts)",
+      "enonce": "z_A = 3 + i, z_B = −1 + i, z_C = 1 − (3/2)i, z_D = 1 + (5/2)i ; E ellipse de sommets A et C et de foyer D. Reconnaître l'axe focal et montrer que B est un sommet.",
+      "points": 0.75,
+      "type": "demonstration",
+      "attendu": "Le foyer D et le sommet C sont sur la droite x = 1 : c'est l'axe focal. A n'y est pas ⇒ A est un sommet de l'axe non focal, perpendiculaire passant par A : y = 1. Centre Ω(1 + i). B est le symétrique de A par rapport à Ω ⇒ B est un sommet.",
+      "etapes": [
+        {
+          "critere": "Axe focal x = 1",
+          "points": 0.25
+        },
+        {
+          "critere": "Centre Ω(1+i)",
+          "points": 0.25
+        },
+        {
+          "critere": "B sommet (symétrie)",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex4-2b",
+      "exercice": "Exercice 4 (4 pts)",
+      "enonce": "Déterminer les affixes du centre, du 2ᵉ foyer et du 4ᵉ sommet de E.",
+      "points": 0.75,
+      "type": "calcul",
+      "attendu": "Centre Ω : 1 + i. Second foyer : symétrique de D, 1 − (1/2)i. Quatrième sommet : symétrique de C, 1 + (7/2)i.",
+      "etapes": [
+        {
+          "critere": "Centre",
+          "points": 0.25
+        },
+        {
+          "critere": "Second foyer",
+          "points": 0.25
+        },
+        {
+          "critere": "Quatrième sommet",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex4-2c",
+      "exercice": "Exercice 4 (4 pts)",
+      "enonce": "Écrire une équation de E dans le repère (O ; u, v), puis construire E.",
+      "points": 0.75,
+      "type": "figure",
+      "attendu": "a = ΩC = 5/2 (axe focal vertical), b = ΩA = 2, c = ΩD = 3/2 (a² = b² + c² ✓). E : (x − 1)²/4 + (y − 1)²/(25/4) = 1.",
+      "etapes": [
+        {
+          "critere": "Équation juste",
+          "points": 0.5
+        },
+        {
+          "critere": "Construction",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "A, B, C sur l'ellipse ; c = 3/2"
+      }
+    },
+    {
+      "id": "Ex5-1",
+      "exercice": "Exercice 5 (4 pts)",
+      "enonce": "g(x) = ln(1 + x)/x sur ]0 ; +∞[. Calculer et interpréter lim g en 0⁺ et en +∞.",
+      "points": 1,
+      "type": "calcul",
+      "attendu": "lim(0⁺) g = 1 (nombre dérivé de ln en 1) : Γ s'arrête au point (0 ; 1) (g prolongeable par continuité). lim(+∞) g = 0 : asymptote y = 0.",
+      "etapes": [
+        {
+          "critere": "lim en 0⁺ = 1",
+          "points": 0.25
+        },
+        {
+          "critere": "Interprétation",
+          "points": 0.25
+        },
+        {
+          "critere": "lim en +∞ = 0",
+          "points": 0.25
+        },
+        {
+          "critere": "Asymptote y = 0",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex5-2a",
+      "exercice": "Exercice 5 (4 pts)",
+      "enonce": "Pour t ∈ ]0, x], montrer que 1/(1 + x) ≤ 1/(1 + t) ≤ 1, puis que x/(1 + x) ≤ ln(1 + x) ≤ x.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "1 ≤ 1 + t ≤ 1 + x ⇒ l'encadrement. On intègre sur [0, x] : x/(1 + x) ≤ ∫₀ˣ dt/(1 + t) = ln(1 + x) ≤ x.",
+      "etapes": [
+        {
+          "critere": "Encadrement de 1/(1+t)",
+          "points": 0.25
+        },
+        {
+          "critere": "Intégration",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex5-2b",
+      "exercice": "Exercice 5 (4 pts)",
+      "enonce": "Calculer g'(x) et déduire de 2.a que g'(x) est négative.",
+      "points": 1,
+      "type": "demonstration",
+      "attendu": "g'(x) = [x/(1 + x) − ln(1 + x)]/x². D'après 2.a, x/(1 + x) − ln(1 + x) ≤ 0 ⇒ g'(x) ≤ 0.",
+      "etapes": [
+        {
+          "critere": "Calcul de g'(x)",
+          "points": 0.5
+        },
+        {
+          "critere": "Signe justifié par 2.a",
+          "points": 0.5
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "expression": "diff(log(1+x)/x, x)"
+      }
+    },
+    {
+      "id": "Ex5-3a",
+      "exercice": "Exercice 5 (4 pts)",
+      "enonce": "Pₙ = ∏ₖ₌₁ⁿ (1 + 1/k)^(1/k), uₙ = ln Pₙ. Montrer que uₙ = Σ (1/k²)g(1/k) et que (uₙ) est croissante.",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "uₙ = Σ (1/k)ln(1 + 1/k) et (1/k²)g(1/k) = (1/k²)·k·ln(1 + 1/k) = (1/k)ln(1 + 1/k). uₙ₊₁ − uₙ = (1/(n+1))ln(1 + 1/(n+1)) > 0.",
+      "etapes": [
+        {
+          "critere": "Égalité",
+          "points": 0.25
+        },
+        {
+          "critere": "Croissance",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex5-3b",
+      "exercice": "Exercice 5 (4 pts)",
+      "enonce": "Déduire que Σ 1/(k(k+1)) ≤ uₙ ≤ Σ 1/k².",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "2.a avec x = 1/k : 1/(k+1) ≤ ln(1 + 1/k) ≤ 1/k ; on multiplie par 1/k et on somme.",
+      "etapes": [
+        {
+          "critere": "Utilisation de 2.a avec x = 1/k",
+          "points": 0.25
+        },
+        {
+          "critere": "Somme",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee"
+    },
+    {
+      "id": "Ex5-3c",
+      "exercice": "Exercice 5 (4 pts)",
+      "enonce": "Vérifier que pour k > 1, 1/k² ≤ 1/(k−1) − 1/k, et montrer que e ≤ lim Pₙ ≤ e².",
+      "points": 0.5,
+      "type": "demonstration",
+      "attendu": "1/k² ≤ 1/(k(k−1)) = 1/(k−1) − 1/k ⇒ Σ 1/k² ≤ 2 − 1/n ≤ 2 (somme télescopique). Σ 1/(k(k+1)) = 1 − 1/(n+1). (uₙ) croissante et majorée par 2 ⇒ converge vers L avec 1 ≤ L ≤ 2 ⇒ e ≤ lim Pₙ = e^L ≤ e².",
+      "etapes": [
+        {
+          "critere": "Inégalité et télescopage",
+          "points": 0.25
+        },
+        {
+          "critere": "Convergence et encadrement de la limite",
+          "points": 0.25
+        }
+      ],
+      "confiance": "elevee",
+      "verification": {
+        "moteur": "math",
+        "controle": "u₁₉₉₉ ≈ 1,257 ∈ [1 ; 2]"
+      }
+    }
+  ]
+}

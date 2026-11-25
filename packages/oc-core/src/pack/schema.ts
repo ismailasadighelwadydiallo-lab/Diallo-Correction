@@ -12,6 +12,7 @@ const etape = {
     attendu: { type: 'string' },
     variable: { type: 'string', pattern: '^[A-Za-z_][A-Za-z0-9_]*$' },
     tolerance: { type: 'number', exclusiveMinimum: 0 },
+    reponses: { type: 'array', minItems: 1, items: { type: 'string', minLength: 1 } },
   },
 } as const;
 
@@ -21,11 +22,14 @@ const verification = {
   additionalProperties: false,
   properties: {
     moteur: { const: 'math' },
-    type: { enum: ['egal', 'racines', 'primitive'] },
+    type: { enum: ['egal', 'racines', 'primitive', 'limite', 'vrai'] },
     expression: { type: 'string', minLength: 1 },
     egal_a: { type: 'string' },
     valeurs: { type: 'array', items: { type: ['number', 'string'] } },
     variable: { type: 'string' },
+    vers: { type: 'string' },
+    domaine: { type: 'string' },
+    quoi: { type: 'string' },
   },
 } as const;
 
@@ -35,7 +39,9 @@ const base = {
   enonce: { type: 'string' },
   points: { type: 'number', exclusiveMinimum: 0 },
   attendu: { type: 'string' },
-  verification,
+  verification: { anyOf: [verification, { type: 'array', minItems: 1, items: verification }] },
+  controles: { type: 'array', items: { type: 'string' } },
+  consigne: { type: 'string' },
   etapes: { type: 'array', items: etape },
   a_relire: { type: 'string' },
 } as const;
@@ -71,6 +77,12 @@ export const packSchema = {
         source: { type: 'string' },
         auteur: { type: 'string' },
         cree_le: { type: 'string' },
+        avertissement: { type: 'string' },
+        partiel: {
+          type: 'object',
+          required: ['total_epreuve', 'manque'],
+          properties: { total_epreuve: { type: 'number' }, manque: { type: 'array', items: { type: 'string' } } },
+        },
         a_relire: { type: 'array', items: { type: 'string' } },
       },
     },
@@ -100,7 +112,7 @@ export const packSchema = {
           {
             if: { properties: { type: { const: 'numerique' } } },
             then: {
-              required: ['valeur'],
+              anyOf: [{ required: ['valeur'] }, { required: ['etapes'] }],
               additionalProperties: false,
               properties: {
                 ...base,
@@ -120,7 +132,7 @@ export const packSchema = {
           {
             if: { properties: { type: { const: 'texte_court' } } },
             then: {
-              required: ['reponses'],
+              anyOf: [{ required: ['reponses'] }, { required: ['etapes'] }],
               additionalProperties: false,
               properties: {
                 ...base,

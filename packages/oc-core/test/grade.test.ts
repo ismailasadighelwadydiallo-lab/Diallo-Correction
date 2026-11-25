@@ -204,3 +204,24 @@ describe('copie complète, confiance, modification par l\'enseignant', () => {
     expect(csv).toContain('"10,5"');
   });
 });
+
+describe('formats des packs du Bac : étapes à réponse courte ou numérique', () => {
+  it('texte court en plusieurs éléments, avec synonymes', () => {
+    const q = { id: 'QROC-1', type: 'texte_court', enonce: '', points: 0.5, etapes: [
+      { id: 's3', critere: 'S₃', points: 0.25, reponses: ['follicule mûr', 'follicule de De Graaf'] },
+      { id: 'l4', critere: 'Légende 4', points: 0.25, reponses: ['antrum', 'cavité folliculaire'] },
+    ] } as Question;
+    const r = noterQuestion(q, { etapes: { s3: { valeur: 'Follicule de de Graaf' }, l4: { valeur: 'noyau' } } });
+    expect(r.points).toBe(0.25);
+    expect(r.explications[0]).toMatch(/Légende 4 : « noyau » au lieu de « antrum »/);
+  });
+  it('numérique à plusieurs valeurs (une par étape)', () => {
+    const q = { id: 'Ex2-2b', type: 'numerique', enonce: '', points: 0.75, etapes: [
+      { id: 'a', critere: '[A₁B₂] 670', points: 0.25, attendu: '670' },
+      { id: 'b', critere: '[A₂B₁] 170', points: 0.25, attendu: '170' },
+      { id: 'c', critere: 'échiquier', points: 0.25 },
+    ] } as Question;
+    const r = noterQuestion(q, { etapes: { a: { valeur: '670' }, b: { valeur: '160' }, c: { statut: 'juste', source: 'enseignant' } } });
+    expect(r.points).toBe(0.5);
+  });
+});

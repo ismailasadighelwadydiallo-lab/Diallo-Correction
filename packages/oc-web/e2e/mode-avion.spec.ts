@@ -85,3 +85,20 @@ test('feuille illisible : message clair, rien de bloqué', async ({ page }) => {
   await (await fc2).setFiles(resolve(racine, 'packages/oc-web/public/icone-512.png'));
   await expect(page.locator('#echec')).toContainText('Copie non reconnue');
 });
+
+test('mode avion : le pack réel Maths M & TMGM 2026 s\'importe et sa feuille-réponse s\'affiche', async ({ page, context }) => {
+  await page.goto('/');
+  await page.evaluate(async () => { await navigator.serviceWorker.ready; });
+  await page.reload();
+  await context.setOffline(true);
+  await page.reload();
+  await page.click('#go-epreuves');
+  const fc = page.waitForEvent('filechooser');
+  await page.click('#imp');
+  await (await fc).setFiles(resolve(racine, 'packs/bac-2026-normale-maths-M-TMGM.json'));
+  await expect(page.locator('main h2')).toContainText('Mathématiques — Séries M & TMGM');
+  await expect(page.locator('main')).toContainText('27 questions');
+  await page.click('a[href^="#/feuille/"]');
+  await expect(page.locator('main svg circle').first()).toBeVisible();
+  expect(await page.locator('main svg circle').count()).toBeGreaterThan(27 * 3);
+});
