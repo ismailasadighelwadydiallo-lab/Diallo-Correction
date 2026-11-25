@@ -7,7 +7,13 @@ export default defineConfig({
   base: './',
   build: {
     target: 'es2020',
-    rollupOptions: { input: { main: resolve(__dirname, 'index.html'), labo: resolve(__dirname, 'labo.html') } },
+    rollupOptions: {
+      input: { main: resolve(__dirname, 'index.html'), labo: resolve(__dirname, 'labo.html') },
+      output: {
+        // moteurs d'IA dans des fichiers à part : ils ne sont chargés que par la page labo
+        manualChunks: (id) => (id.includes('@mlc-ai/web-llm') ? 'ia-webllm' : id.includes('@wllama/wllama') ? 'ia-wllama' : undefined),
+      },
+    },
   },
   plugins: [
     VitePWA({
@@ -34,12 +40,21 @@ export default defineConfig({
       workbox: {
         // Précache de toute l'application (y compris le moteur de calcul et la page labo).
         globPatterns: ['**/*.{js,css,html,svg,png,wasm,json}'],
+        // Les moteurs d'IA (≈ 6 Mo + 11 Mo) ne sont pas préchargés pour tout le monde :
+        // ils sont mis en cache à la première ouverture du labo (même origine, jamais Internet).
+        globIgnores: ['**/ia-*.js', '**/*.wasm'],
         maximumFileSizeToCacheInBytes: 30 * 1024 * 1024,
         navigateFallback: 'index.html',
         navigateFallbackDenylist: [/^\/api\//, /^\/packs\//, /labo\.html/],
         cleanupOutdatedCaches: true,
-        // Aucune règle de cache « runtime » vers Internet : rien n'est récupéré en douce.
-        runtimeCaching: [],
+        // Aucune règle de cache vers Internet : seuls des fichiers de l'application elle-même.
+        runtimeCaching: [
+          {
+            urlPattern: ({ url, sameOrigin }) => sameOrigin && /\/assets\/(ia-.*\.js|.*\.wasm)$/.test(url.pathname),
+            handler: 'CacheFirst',
+            options: { cacheName: 'oc-moteurs-ia' },
+          },
+        ],
       },
     }),
   ],
