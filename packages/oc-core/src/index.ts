@@ -1,0 +1,26 @@
+// oc-core : moteur local d'Offline Correction, sans interface. Navigateur et Node.
+export * from './pack/types.ts';
+export { packSchema } from './pack/schema.ts';
+export { validerPack, lirePack, arrondiPas, estMultipleDuPas, exerciceDe, etapeId, PAS } from './pack/validate.ts';
+export type { ResultatValidation } from './pack/validate.ts';
+export * from './grading/types.ts';
+export { noterCopie, noterQuestion, modifierNote, lireNombreEtUnite, SEUIL_CONFIANCE } from './grading/grade.ts';
+export { normaliserTexte, texteCorrespond } from './grading/texte.ts';
+export { verifier, equivalentes, evaluerNombre, normaliser, developper, parse } from './math/engine.ts';
+export type { ResultatVerification } from './math/engine.ts';
+export { verifierPackMath } from './math/verify-pack.ts';
+export type { RapportVerification } from './math/verify-pack.ts';
+export { W, H, MK, homography, solve } from './sheet/geometry.ts';
+export type { Point, Transform } from './sheet/geometry.ts';
+export { findMarkers, rgbaToGray } from './sheet/markers.ts';
+export { layout, specFeuille, casesPoints, MAX_QUESTIONS, MAX_CASES } from './sheet/layout.ts';
+export type { ItemFeuille, LigneFeuille, Bulle } from './sheet/layout.ts';
+export { readSheet, copieDepuisLecture, SEUIL } from './sheet/read.ts';
+export type { LectureLigne, ResultatLecture } from './sheet/read.ts';
+export { feuilleSVG } from './sheet/svg.ts';
+export type { TextesFeuille } from './sheet/svg.ts';
+export { simulerFeuille, coinsDroits } from './sheet/simulate.ts';
+export type { OptionsSimulation, MarqueSimulee } from './sheet/simulate.ts';
+export { encoderPngGris } from './sheet/png.ts';
+export { statistiques, exporterCsv } from './stats.ts';
+export type { Statistiques } from './stats.ts';
