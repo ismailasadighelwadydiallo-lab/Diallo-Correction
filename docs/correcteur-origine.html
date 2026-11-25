@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Correcteur Hors Ligne</title>
+<style>
+:root{--bg:#f4f6f8;--card:#fff;--ink:#14202b;--mut:#5d6b78;--line:#dfe4e9;--pri:#0b5cad;--ok:#1a8a4a;--bad:#c4372c;--warn:#d98a00}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);font-size:16px}
+header{background:var(--pri);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:5}
+header h1{font-size:18px;margin:0;flex:1}
+header button{background:rgba(255,255,255,.18);color:#fff;border:0}
+main{max-width:760px;margin:0 auto;padding:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+h2{font-size:17px;margin:0 0 10px}
+h3{font-size:15px;margin:14px 0 8px}
+button,.btn{font:inherit;padding:11px 14px;border-radius:9px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none}
+button.pri,.btn.pri{background:var(--pri);color:#fff;border-color:var(--pri)}
+button.danger{color:var(--bad);border-color:#efc9c5}
+button:disabled{opacity:.5}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.grow{flex:1}
+input,select{font:inherit;padding:10px;border:1px solid var(--line);border-radius:8px;background:#fff;width:100%}
+label{font-size:13px;color:var(--mut);display:block;margin:8px 0 4px}
+.mut{color:var(--mut);font-size:14px}
+.big{font-size:30px;font-weight:700}
+.list-item{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
+.list-item:last-child{border-bottom:0}
+.q{display:flex;align-items:center;gap:6px;padding:7px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.qn{width:40px;font-weight:700}
+.ch{width:42px;height:42px;padding:0;border-radius:50%;font-weight:700}
+.ch.sel{background:var(--pri);color:#fff;border-color:var(--pri)}
+.ch.good{background:var(--ok);color:#fff;border-color:var(--ok)}
+.ch.wrong{background:var(--bad);color:#fff;border-color:var(--bad)}
+.ch.key{box-shadow:0 0 0 3px var(--ok) inset}
+.tag{font-size:12px;padding:2px 8px;border-radius:20px;background:#eef2f6;color:var(--mut)}
+.tag.ok{background:#e3f4ea;color:var(--ok)}.tag.bad{background:#fbe8e6;color:var(--bad)}.tag.warn{background:#fdf1dc;color:var(--warn)}
+canvas{max-width:100%;border-radius:8px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+td,th{padding:8px 6px;border-bottom:1px solid var(--line);text-align:left}
+.bar{height:8px;background:#eef2f6;border-radius:4px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ok)}
+.sticky-score{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--line);padding:12px;margin:0 -14px -14px;border-radius:0 0 12px 12px;display:flex;align-items:center;gap:10px}
+.hint{background:#eef5fd;border:1px solid #cfe1f5;border-radius:10px;padding:10px 12px;font-size:14px}
+#print{display:none}
+@media print{body>*:not(#print){display:none!important}#print{display:block}#print svg{width:100%;height:auto;page-break-after:always}@page{size:A4;margin:0}}
+</style>
+</head>
+<body>
+<header><button id="back" style="display:none">←</button><h1 id="ttl">Correcteur Hors Ligne</h1></header>
+<main id="app"></main>
+<div id="print"></div>
+<input type="file" id="cam" accept="image/*" capture="environment" style="display:none">
+<input type="file" id="imp" accept=".json,application/json" style="display:none">
+<script>
+/*CORE*/
+const W=1000,H=1414,LET='ABCDE';
+const MK=[[50,50],[950,50],[50,1364],[950,1364]]; // centres des repères (carrés noirs 60)
+function labelsOf(q){return q.type==='qcm'?LET.slice(0,q.n).split(''):Array.from({length:q.max+1},(_,k)=>String(k))}
+function layout(ex){
+  return ex.questions.map((q,i)=>{const col=i<20?0:1,row=i%20,x0=col?545:95,y=345+row*50;
+    const labels=labelsOf(q);return {x0,y,labels,bubbles:labels.map((l,k)=>({x:x0+75+k*58,y,l}))}});
+}
+function solve(A){const n=A.length;for(let c=0;c<n;c++){let p=c;for(let r=c+1;r<n;r++)if(Math.abs(A[r][c])>Math.abs(A[p][c]))p=r;[A[c],A[p]]=[A[p],A[c]];
+  for(let r=0;r<n;r++){if(r===c)continue;const f=A[r][c]/A[c][c];for(let k=c;k<=n;k++)A[r][k]-=f*A[c][k]}}return A.map((r,i)=>r[n]/r[i])}
+function homography(src,dst){const A=[];for(let i=0;i<4;i++){const[x,y]=src[i],[u,v]=dst[i];
+  A.push([x,y,1,0,0,0,-x*u,-y*u,u]);A.push([0,0,0,x,y,1,-x*v,-y*v,v])}const h=solve(A);
+  return(x,y)=>{const d=h[6]*x+h[7]*y+1;return[(h[0]*x+h[1]*y+h[2])/d,(h[3]*x+h[4]*y+h[5])/d]}}
+// gray: Uint8Array w*h
+function findMarkers(g,w,h){
+  const N=w*h,I=new Float64Array((w+1)*(h+1));
+  for(let y=0;y<h;y++){let s=0;for(let x=0;x<w;x++){s+=g[y*w+x];I[(y+1)*(w+1)+x+1]=I[y*(w+1)+x+1]+s}}
+  const r=Math.round(Math.max(w,h)/10),bin=new Uint8Array(N);
+  for(let y=0;y<h;y++){const y0=Math.max(0,y-r),y1=Math.min(h,y+r);for(let x=0;x<w;x++){const x0=Math.max(0,x-r),x1=Math.min(w,x+r);
+    const m=(I[y1*(w+1)+x1]-I[y0*(w+1)+x1]-I[y1*(w+1)+x0]+I[y0*(w+1)+x0])/((x1-x0)*(y1-y0));bin[y*w+x]=g[y*w+x]<m*0.72&&g[y*w+x]<150?1:0}}
+  const lab=new Uint8Array(N),st=new Int32Array(N),md=Math.min(w,h),mn=md*0.018,mx=md*0.14,cands=[];
+  for(let i=0;i<N;i++){if(!bin[i]||lab[i])continue;let sp=0;st[sp++]=i;lab[i]=1;let n=0,x0=1e9,x1=-1,y0=1e9,y1=-1,sx=0,sy=0;
+    while(sp){const p=st[--sp],x=p%w,y=(p/w)|0;n++;sx+=x;sy+=y;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;
+      if(x>0&&bin[p-1]&&!lab[p-1]){lab[p-1]=1;st[sp++]=p-1}if(x<w-1&&bin[p+1]&&!lab[p+1]){lab[p+1]=1;st[sp++]=p+1}
+      if(y>0&&bin[p-w]&&!lab[p-w]){lab[p-w]=1;st[sp++]=p-w}if(y<h-1&&bin[p+w]&&!lab[p+w]){lab[p+w]=1;st[sp++]=p+w}}
+    const bw=x1-x0+1,bh=y1-y0+1,fill=n/(bw*bh),asp=bw/bh;
+    if(bw>mn&&bh>mn&&bw<mx&&bh<mx&&fill>0.62&&asp>0.6&&asp<1.65)cands.push({x:sx/n,y:sy/n,s:Math.sqrt(n),fill})}
+  // on garde les candidats bien remplis (carrés) en priorité
+  const sq=cands.filter(c=>c.fill>0.85);const pool=sq.length>=4?sq:cands;
+  if(pool.length<4)return null;
+  const pick=f=>pool.reduce((b,c)=>f(c)>f(b)?c:b);
+  const m=[pick(c=>-c.x-c.y),pick(c=>c.x-c.y),pick(c=>c.y-c.x),pick(c=>c.x+c.y)];
+  if(new Set(m).size<4)return null;
+  return m.map(c=>[c.x,c.y]);
+}
+function readSheet(g,w,h,ex){
+  const mk=findMarkers(g,w,h);if(!mk)return{error:"Les 4 carrés noirs des coins n'ont pas été trouvés."};
+  const T=homography(MK,mk),L=layout(ex),at=(u,v)=>{const x=Math.round(u),y=Math.round(v);return x<0||y<0||x>=w||y>=h?255:g[y*w+x]};
+  const pts=[];for(let dx=-10;dx<=10;dx+=2.5)for(let dy=-10;dy<=10;dy+=2.5)if(dx*dx+dy*dy<=105)pts.push([dx,dy]);
+  const all=[];L.forEach(q=>q.bubbles.forEach(b=>{let s=0;pts.forEach(([dx,dy])=>{const[u,v]=T(b.x+dx,b.y+dy);s+=at(u,v)});b.g=s/pts.length;[b.u,b.v]=T(b.x,b.y);all.push(b.g)}));
+  const sorted=all.slice().sort((a,b)=>a-b),med=sorted[Math.floor(sorted.length*0.6)]||255;
+  const answers=L.map(q=>{q.bubbles.forEach(b=>b.sc=(med-b.g)/med);const o=q.bubbles.map((b,i)=>[b.sc,i]).sort((a,b)=>b[0]-a[0]);
+    const[s1,i1]=o[0],s2=o[1]?o[1][0]:0;if(s1<0.2)return{v:null,st:'vide'};if(s2>0.2&&s2>s1*0.7)return{v:null,st:'multiple'};return{v:q.labels[i1],st:'ok'}});
+  const[ru]=T(80,0),[ru2]=T(98,0);return{answers,L,mk,T,rad:Math.abs(ru2-ru)};
+}
+function grade(ex,ans){let s=0,t=0;const det=ex.questions.map((q,i)=>{const a=ans[i];
+  if(q.type==='qcm'){t+=q.pts;const ok=a!=null&&a===q.correct;if(ok)s+=q.pts;return ok?q.pts:0}
+  t+=q.max;const p=a!=null?Number(a):0;s+=p;return p});return{score:s,total:t,det}}
+/*ENDCORE*/
+
+// ---------- État ----------
+let S;try{S=JSON.parse(localStorage.getItem('correcteur_v1'))||{exams:[]}}catch(e){S={exams:[]}}
+const save=()=>{try{localStorage.setItem('correcteur_v1',JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s),app=$('#app');
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,9);
+const fmt=n=>Math.round(n*100)/100;
+let stack=[];
+function go(fn,...a){stack.push([fn,a]);fn(...a);scrollTo(0,0)}
+function back(){stack.pop();const[f,a]=stack[stack.length-1]||[home,[]];f(...a);scrollTo(0,0)}
+$('#back').onclick=back;
+function head(t,showBack=true){$('#ttl').textContent=t;$('#back').style.display=showBack?'':'none'}
+const exById=id=>S.exams.find(e=>e.id===id);
+
+// ---------- Accueil ----------
+function home(){stack=[[home,[]]];head('Correcteur Hors Ligne',false);
+  app.innerHTML=`<div class="card"><h2>Mes épreuves</h2>${S.exams.length?S.exams.map(e=>`<div class="list-item"><div class="grow"><b>${esc(e.title)}</b><div class="mut">${esc(e.classe||'')} · ${e.questions.length} questions · ${e.results.length} copies corrigées</div></div><button class="pri" data-o="${e.id}">Ouvrir</button></div>`).join(''):'<p class="mut">Aucune épreuve pour l\'instant.</p>'}
+  <div class="row" style="margin-top:10px"><button class="pri grow" id="new">+ Nouvelle épreuve</button></div></div>
+  <div class="card"><h2>Comment ça marche</h2><ol class="mut" style="padding-left:18px;margin:0;line-height:1.6">
+  <li>Créez l'épreuve et entrez le corrigé (bonnes réponses + points).</li>
+  <li>Imprimez la feuille-réponse et photocopiez-la pour les élèves.</li>
+  <li>Photographiez chaque copie : la note est calculée tout de suite.</li>
+  <li>Pour les questions ouvertes, cochez vous-même les points sur la feuille avant la photo.</li></ol>
+  <p class="mut">Tout fonctionne sans internet. Les données restent sur ce téléphone.</p></div>
+  <div class="card"><h2>Sauvegarde</h2><div class="row"><button id="exp" class="grow">Exporter (fichier)</button><button id="imb" class="grow">Importer</button></div></div>`;
+  app.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>go(examView,b.dataset.o));
+  $('#new').onclick=()=>{const e={id:uid(),title:'Nouvelle épreuve',classe:'',questions:Array.from({length:10},()=>({type:'qcm',n:4,correct:null,pts:1})),results:[]};S.exams.unshift(e);save();stack.push([examView,[e.id]]);go(editor,e.id)};
+  $('#exp').onclick=()=>download('sauvegarde-correcteur.json',JSON.stringify(S),'application/json');
+  $('#imb').onclick=()=>$('#imp').click();
+}
+$('#imp').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const d=JSON.parse(await f.text());if(!d.exams)throw 0;
+  const ids=new Set(S.exams.map(x=>x.id));d.exams.forEach(x=>{if(!ids.has(x.id))S.exams.push(x)});save();alert('Import terminé.');home()}catch(_){alert('Fichier invalide.')}e.target.value=''};
+function download(name,data,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>a.remove(),500)}
+
+// ---------- Épreuve ----------
+function examView(id){const e=exById(id);head(e.title);const missing=e.questions.filter(q=>q.type==='qcm'&&!q.correct).length;
+  app.innerHTML=`<div class="card"><h2>${esc(e.title)}</h2><div class="mut">${e.classe?esc(e.classe)+' · ':''}${e.questions.length} questions · total ${grade(e,[]).total} pts</div>
+  ${missing?`<p class="tag warn">${missing} question(s) sans bonne réponse dans le corrigé</p>`:''}
+  <div class="row" style="margin-top:12px"><button class="pri grow" id="scan">📷 Scanner une copie</button></div>
+  <div class="row" style="margin-top:8px"><button class="grow" id="man">✍️ Saisie manuelle</button><button class="grow" id="res">📊 Résultats (${e.results.length})</button></div>
+  <div class="row" style="margin-top:8px"><button class="grow" id="sheet">🖨️ Feuille-réponse</button><button class="grow" id="edit">⚙️ Corrigé</button></div></div>`;
+  $('#scan').onclick=()=>startScan(id);$('#man').onclick=()=>go(review,id,null,null);$('#res').onclick=()=>go(results,id);$('#sheet').onclick=()=>go(sheetView,id);$('#edit').onclick=()=>go(editor,id);
+}
+
+// ---------- Éditeur du corrigé ----------
+function editor(id){const e=exById(id);head('Corrigé');
+  const render=()=>{app.innerHTML=`<div class="card"><label>Titre de l'épreuve</label><input id="t" value="${esc(e.title)}"><label>Classe / établissement</label><input id="c" value="${esc(e.classe)}">
+  <div class="row" style="margin-top:10px"><div class="grow"><label>Nombre de questions (max 40)</label><input id="nq" type="number" min="1" max="40" value="${e.questions.length}"></div>
+  <div class="grow"><label>Choix par défaut</label><select id="dn">${[2,3,4,5].map(n=>`<option ${n===4?'selected':''}>${n}</option>`).join('')}</select></div></div>
+  ${e.results.length?'<p class="tag warn">Attention : modifier le corrigé recalcule les notes déjà enregistrées.</p>':''}</div>
+  <div class="card"><h2>Bonnes réponses</h2><p class="mut">Touchez la bonne lettre. « Ouverte » = vous notez vous-même (0 à N points).</p>
+  ${e.questions.map((q,i)=>`<div class="q"><span class="qn">Q${i+1}</span>
+   <select data-ty="${i}" style="width:auto;padding:6px"><option value="qcm" ${q.type==='qcm'?'selected':''}>QCM</option><option value="ouv" ${q.type!=='qcm'?'selected':''}>Ouverte</option></select>
+   ${q.type==='qcm'?`<select data-n="${i}" style="width:auto;padding:6px">${[2,3,4,5].map(n=>`<option value="${n}" ${q.n===n?'selected':''}>${n} choix</option>`).join('')}</select>
+   ${labelsOf(q).map(l=>`<button class="ch ${q.correct===l?'good':''}" data-k="${i}" data-l="${l}">${l}</button>`).join('')}
+   <span class="mut">pts</span><input data-p="${i}" type="number" step="0.25" min="0" value="${q.pts}" style="width:64px;padding:6px">`
+   :`<span class="mut">sur</span><select data-m="${i}" style="width:auto;padding:6px">${[1,2,3,4,5].map(n=>`<option ${q.max===n?'selected':''}>${n}</option>`).join('')}</select><span class="mut">pts</span>`}</div>`).join('')}
+  <div class="row" style="margin-top:12px"><button class="pri grow" id="ok">Enregistrer</button></div>
+  <div class="row" style="margin-top:8px"><button class="danger grow" id="del">Supprimer l'épreuve</button></div></div>`;
+  $('#t').oninput=ev=>e.title=ev.target.value;$('#c').oninput=ev=>e.classe=ev.target.value;
+  $('#nq').onchange=ev=>{let n=Math.max(1,Math.min(40,parseInt(ev.target.value)||1));const dn=+$('#dn').value;while(e.questions.length<n)e.questions.push({type:'qcm',n:dn,correct:null,pts:1});e.questions.length=n;render()};
+  app.querySelectorAll('[data-ty]').forEach(s=>s.onchange=()=>{const i=+s.dataset.ty;e.questions[i]=s.value==='qcm'?{type:'qcm',n:4,correct:null,pts:1}:{type:'ouv',max:2};render()});
+  app.querySelectorAll('[data-n]').forEach(s=>s.onchange=()=>{const q=e.questions[+s.dataset.n];q.n=+s.value;if(q.correct&&!labelsOf(q).includes(q.correct))q.correct=null;render()});
+  app.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{const q=e.questions[+b.dataset.k];q.correct=q.correct===b.dataset.l?null:b.dataset.l;render()});
+  app.querySelectorAll('[data-p]').forEach(s=>s.onchange=()=>e.questions[+s.dataset.p].pts=Math.max(0,parseFloat(s.value)||0));
+  app.querySelectorAll('[data-m]').forEach(s=>s.onchange=()=>e.questions[+s.dataset.m].max=+s.value);
+  $('#ok').onclick=()=>{e.results.forEach(r=>{r.answers.length=e.questions.length;const g=grade(e,r.answers);r.score=g.score;r.total=g.total});save();back()};
+  $('#del').onclick=()=>{if(confirm('Supprimer cette épreuve et toutes ses notes ?')){S.exams=S.exams.filter(x=>x.id!==id);save();home()}};};
+  render();
+}
+
+// ---------- Feuille-réponse ----------
+function sheetSVG(e){const L=layout(e);let s=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" font-family="Arial,Helvetica,sans-serif"><rect width="${W}" height="${H}" fill="#fff"/>`;
+  MK.forEach(([x,y])=>s+=`<rect x="${x-30}" y="${y-30}" width="60" height="60" fill="#000"/>`);
+  s+=`<text x="500" y="125" text-anchor="middle" font-size="34" font-weight="700">${esc(e.title)}</text><text x="500" y="165" text-anchor="middle" font-size="20" fill="#444">${esc(e.classe||'')}</text>
+  <text x="95" y="225" font-size="22">Nom et prénom : ..............................................................................</text>
+  <text x="95" y="275" font-size="17" fill="#333">Noircissez complètement UNE seule case par question. Questions ouvertes : réservé au correcteur.</text>
+  <line x1="95" y1="300" x2="905" y2="300" stroke="#000" stroke-width="2"/>`;
+  L.forEach((q,i)=>{const ouv=e.questions[i].type!=='qcm';s+=`<text x="${q.x0}" y="${q.y+7}" font-size="21" font-weight="700">${i+1}${ouv?'*':''}</text>`;
+    q.bubbles.forEach(b=>s+=`<circle cx="${b.x}" cy="${b.y}" r="18" fill="none" stroke="#000" stroke-width="2.5"/><text x="${b.x}" y="${b.y+6}" text-anchor="middle" font-size="16" fill="#aaa">${b.l}</text>`)});
+  s+=`<text x="500" y="1395" text-anchor="middle" font-size="14" fill="#888">* question ouverte : le correcteur noircit le nombre de points obtenus</text></svg>`;return s}
+function sheetView(id){const e=exById(id);head('Feuille-réponse');const svg=sheetSVG(e);
+  app.innerHTML=`<div class="card"><p class="mut">Imprimez une fois, puis photocopiez pour tous les élèves. Ne pas réduire ni couper les carrés noirs des coins.</p>
+  <div class="row"><button class="pri grow" id="pr">🖨️ Imprimer</button><button class="grow" id="png">⬇️ Télécharger (image)</button></div></div>
+  <div class="card" style="padding:6px">${svg.replace('<svg ','<svg style="width:100%;height:auto" ')}</div>`;
+  $('#pr').onclick=()=>{$('#print').innerHTML=svg;window.print()};
+  $('#png').onclick=()=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=W*2;c.height=H*2;const x=c.getContext('2d');x.drawImage(img,0,0,c.width,c.height);
+    c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='feuille-'+e.title.replace(/\W+/g,'-')+'.png';document.body.appendChild(a);a.click();a.remove()})};
+    img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)};
+}
+
+// ---------- Scan ----------
+let scanFor=null;
+function startScan(id){scanFor=id;$('#cam').click()}
+$('#cam').onchange=async ev=>{const f=ev.target.files[0];ev.target.value='';if(!f||!scanFor)return;const e=exById(scanFor);
+  app.innerHTML='<div class="card"><p>Lecture de la copie…</p></div>';
+  const img=new Image();img.onload=()=>{const sc=Math.min(1,1400/Math.max(img.width,img.height)),w=Math.round(img.width*sc),h=Math.round(img.height*sc);
+    const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.drawImage(img,0,0,w,h);const d=x.getImageData(0,0,w,h).data,g=new Uint8Array(w*h);
+    for(let i=0;i<w*h;i++)g[i]=(d[i*4]*0.3+d[i*4+1]*0.59+d[i*4+2]*0.11)|0;
+    const r=readSheet(g,w,h,e);URL.revokeObjectURL(img.src);
+    if(r.error){go(scanFail,scanFor,r.error);return}
+    go(review,scanFor,{answers:r.answers.map(a=>a.v),status:r.answers.map(a=>a.st)},{canvas:c,r})};
+  img.onerror=()=>alert('Image illisible.');img.src=URL.createObjectURL(f)};
+function scanFail(id,msg){head('Scan');app.innerHTML=`<div class="card"><h2>Copie non reconnue</h2><p>${esc(msg)}</p>
+  <div class="hint"><b>Conseils :</b><br>• Posez la feuille à plat sur une surface claire et unie.<br>• Les 4 carrés noirs doivent être visibles dans la photo.<br>• Bonne lumière, pas d'ombre de la main ou du téléphone.<br>• Tenez le téléphone bien au-dessus, sans trop incliner.</div>
+  <div class="row" style="margin-top:12px"><button class="pri grow" id="re">Reprendre la photo</button><button class="grow" id="mn">Saisie manuelle</button></div></div>`;
+  $('#re').onclick=()=>{stack.pop();startScan(id)};$('#mn').onclick=()=>{stack.pop();go(review,id,null,null)}}
+
+// ---------- Vérification / note ----------
+function review(id,scan,vis,existing){const e=exById(id);head(existing?'Modifier la copie':'Vérifier la copie');
+  const ans=existing?existing.answers.slice():scan?scan.answers.slice():e.questions.map(()=>null);const status=scan?scan.status:[];
+  let name=existing?existing.name:'';
+  const draw=()=>{if(!vis)return;const{canvas:c,r}=vis,v=$('#vis');v.width=c.width;v.height=c.height;const x=v.getContext('2d');x.drawImage(c,0,0);
+    x.lineWidth=Math.max(2,r.rad/5);r.mk.forEach(([u,w])=>{x.strokeStyle='#0b5cad';x.strokeRect(u-r.rad*1.6,w-r.rad*1.6,r.rad*3.2,r.rad*3.2)});
+    r.L.forEach((q,i)=>{const qq=e.questions[i];q.bubbles.forEach(b=>{const chosen=ans[i]===b.l;let col=null;
+      if(qq.type==='qcm'){if(chosen)col=b.l===qq.correct?'#1a8a4a':'#c4372c';else if(b.l===qq.correct)col='rgba(26,138,74,.45)'}else if(chosen)col='#0b5cad';
+      if(col){x.strokeStyle=col;x.beginPath();x.arc(b.u,b.v,r.rad*1.25,0,7);x.stroke()}})})};
+  const render=()=>{const g=grade(e,ans);
+  app.innerHTML=`${vis?`<div class="card" style="padding:8px"><canvas id="vis"></canvas><div class="mut" style="padding:6px 4px">Vert = juste · Rouge = faux · Vert pâle = bonne réponse attendue. Vérifiez puis corrigez si besoin ci-dessous.</div></div>`:''}
+  <div class="card"><label>Nom de l'élève</label><input id="nm" value="${esc(name)}" placeholder="Ex : Aminata Sow">
+  <h3>Réponses ${scan?'lues':''}</h3>
+  ${e.questions.map((q,i)=>{const st=status[i];return `<div class="q"><span class="qn">Q${i+1}</span>${labelsOf(q).map(l=>{let cl='';
+    if(q.type==='qcm'){if(ans[i]===l)cl=l===q.correct?'good':'wrong';else if(l===q.correct)cl='key'}else if(ans[i]===l)cl='sel';
+    return `<button class="ch ${cl}" data-q="${i}" data-l="${l}">${l}</button>`}).join('')}
+    ${st==='multiple'?'<span class="tag warn">plusieurs cases</span>':st==='vide'&&scan?'<span class="tag">vide</span>':''}
+    <span class="grow"></span><span class="tag ${g.det[i]>0?'ok':'bad'}">${fmt(g.det[i])} pt</span></div>`}).join('')}
+  <div class="sticky-score"><div class="grow"><div class="big">${fmt(g.score)} / ${fmt(g.total)}</div><div class="mut">soit ${g.total?fmt(g.score/g.total*20):0} / 20</div></div>
+  <button class="pri" id="sv">Enregistrer${existing?'':' et suivante'}</button></div></div>`;
+  draw();
+  $('#nm').oninput=ev=>name=ev.target.value;
+  app.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{const i=+b.dataset.q;ans[i]=ans[i]===b.dataset.l?null:b.dataset.l;status[i]='';const y=scrollY;render();scrollTo(0,y)});
+  $('#sv').onclick=()=>{const gg=grade(e,ans);const rec={id:existing?existing.id:uid(),name:name.trim()||('Élève '+(e.results.length+1)),answers:ans,score:gg.score,total:gg.total,date:new Date().toISOString()};
+    if(existing){Object.assign(existing,rec)}else e.results.push(rec);save();
+    if(existing)back();else{stack.pop();if(scan)startScan(id);else{go(review,id,null,null)}}};};
+  render();
+}
+
+// ---------- Résultats ----------
+function results(id){const e=exById(id);head('Résultats');const R=e.results,n=R.length,tot=grade(e,[]).total;
+  const notes=R.map(r=>r.total?r.score/r.total*20:0),moy=n?notes.reduce((a,b)=>a+b,0)/n:0;
+  const perQ=e.questions.map((q,i)=>{if(!n)return 0;const g=R.map(r=>grade(e,r.answers).det[i]);const mx=q.type==='qcm'?q.pts:q.max;return mx?g.reduce((a,b)=>a+b,0)/(n*mx):0});
+  app.innerHTML=`<div class="card"><div class="row"><div class="grow"><div class="mut">Moyenne</div><div class="big">${fmt(moy)}/20</div></div>
+   <div class="grow"><div class="mut">Max / Min</div><div style="font-size:20px;font-weight:700">${n?fmt(Math.max(...notes))+' / '+fmt(Math.min(...notes)):'–'}</div></div>
+   <div class="grow"><div class="mut">Copies</div><div style="font-size:20px;font-weight:700">${n}</div></div></div>
+   <div class="row" style="margin-top:10px"><button class="grow" id="csv">⬇️ Exporter (Excel/CSV)</button></div></div>
+  <div class="card"><h2>Notes</h2>${n?`<table><tr><th>Élève</th><th>Points</th><th>/20</th><th></th></tr>${R.map((r,k)=>`<tr><td>${esc(r.name)}</td><td>${fmt(r.score)}/${fmt(tot)}</td><td><b>${fmt(notes[k])}</b></td><td style="white-space:nowrap"><button data-e="${r.id}" style="padding:6px 10px">✎</button> <button class="danger" data-d="${r.id}" style="padding:6px 10px">✕</button></td></tr>`).join('')}</table>`:'<p class="mut">Aucune copie corrigée.</p>'}</div>
+  ${n?`<div class="card"><h2>Réussite par question</h2><p class="mut">Repérez les notions mal comprises par la classe.</p>${perQ.map((p,i)=>`<div class="row" style="margin:6px 0"><span class="qn">Q${i+1}</span><div class="bar grow"><i style="width:${p*100}%;background:${p<.4?'#c4372c':p<.7?'#d98a00':'#1a8a4a'}"></i></div><span style="width:44px;text-align:right">${Math.round(p*100)}%</span></div>`).join('')}</div>`:''}`;
+  app.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>go(review,id,null,null,R.find(r=>r.id===b.dataset.e)));
+  app.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{if(confirm('Supprimer cette copie ?')){e.results=R.filter(r=>r.id!==b.dataset.d);save();stack.pop();go(results,id)}});
+  $('#csv').onclick=()=>{const rows=[['Élève',...e.questions.map((_,i)=>'Q'+(i+1)),'Points','Total','Note /20']];
+    R.forEach((r,k)=>rows.push([r.name,...r.answers.map(a=>a??''),fmt(r.score),fmt(r.total),fmt(notes[k])]));
+    download(e.title.replace(/\W+/g,'-')+'-notes.csv','﻿'+rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(';')).join('\n'),'text/csv')};
+}
+home();
+</script>
+</body>
+</html>

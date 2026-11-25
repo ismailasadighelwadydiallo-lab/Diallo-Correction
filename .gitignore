@@ -1,0 +1,6 @@
+node_modules/
+dist/
+packages/oc-server/certs/
+test-results/
+playwright-report/
+*.log

@@ -1,0 +1,13 @@
+{
+  "name": "oc-core",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Moteur local d'Offline Correction : lecture des feuilles, packs, notation, vérification mathématique. Navigateur et Node.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "mathjs": "^15.3.0"
+  }
+}

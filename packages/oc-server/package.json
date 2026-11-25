@@ -1,0 +1,9 @@
+{
+  "name": "oc-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Serveur local de l'école : sert la PWA et les packs sur le Wi-Fi, sans Internet.",
+  "scripts": { "start": "node src/main.ts" },
+  "dependencies": { "oc-core": "0.1.0" }
+}

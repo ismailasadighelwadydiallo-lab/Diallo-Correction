@@ -1,0 +1,31 @@
+{
+  "name": "offline-correction",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Offline Correction — correction automatique de copies, hors ligne d'abord.",
+  "type": "module",
+  "workspaces": [
+    "packages/oc-core",
+    "packages/oc-web",
+    "packages/oc-server"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "npm run build -w oc-web",
+    "test:avion": "npm run build && npx playwright test -c packages/oc-web/playwright.config.ts",
+    "serveur": "npm run build && node packages/oc-server/src/main.ts",
+    "fixtures": "node scripts/gen-fixtures.ts",
+    "verifier-packs": "node scripts/verifier-packs.ts"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/node": "^22.20.7",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.8",
+    "vitest": "3.2"
+  }
+}
