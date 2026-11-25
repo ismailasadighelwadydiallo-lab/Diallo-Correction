@@ -1,0 +1,312 @@
+{
+  "format": "oc-pack/1",
+  "id": "demo-devoir-qcm",
+  "titre": "Devoir de démonstration (QCM)",
+  "serie": "Démo",
+  "total": 20,
+  "langue": "fr",
+  "regles": {
+    "qcm_multi": "partiel"
+  },
+  "meta": {
+    "source": "Pack de démonstration généré par scripts/gen-fixtures.ts",
+    "auteur": "Offline Correction"
+  },
+  "questions": [
+    {
+      "id": "Ex1-Q1",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 1",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "A"
+      ]
+    },
+    {
+      "id": "Ex1-Q2",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 2",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "D"
+      ]
+    },
+    {
+      "id": "Ex1-Q3",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 3",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "C"
+      ]
+    },
+    {
+      "id": "Ex1-Q4",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 4",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "B"
+      ]
+    },
+    {
+      "id": "Ex1-Q5",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 5",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "A"
+      ]
+    },
+    {
+      "id": "Ex1-Q6",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 6",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "D"
+      ]
+    },
+    {
+      "id": "Ex1-Q7",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 7",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "C"
+      ]
+    },
+    {
+      "id": "Ex1-Q8",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 8",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "B"
+      ]
+    },
+    {
+      "id": "Ex1-Q9",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 9",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "A"
+      ]
+    },
+    {
+      "id": "Ex1-Q10",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 10",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "D"
+      ]
+    },
+    {
+      "id": "Ex1-Q11",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 11",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "C"
+      ]
+    },
+    {
+      "id": "Ex1-Q12",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 12",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "B"
+      ]
+    },
+    {
+      "id": "Ex1-Q13",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 13",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "A"
+      ]
+    },
+    {
+      "id": "Ex1-Q14",
+      "exercice": "Ex1",
+      "type": "qcm",
+      "enonce": "Question 14",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "bonnes": [
+        "D"
+      ]
+    },
+    {
+      "id": "Ex2-Q1",
+      "exercice": "Ex2",
+      "type": "qcm",
+      "enonce": "Plusieurs réponses",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "bonnes": [
+        "B",
+        "E"
+      ]
+    },
+    {
+      "id": "Ex2-Q2",
+      "exercice": "Ex2",
+      "type": "qcm",
+      "enonce": "Plusieurs réponses",
+      "points": 1,
+      "choix": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E"
+      ],
+      "bonnes": [
+        "A",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "id": "Ex3-Q1",
+      "exercice": "Ex3",
+      "type": "redaction",
+      "enonce": "Question ouverte notée par le professeur",
+      "points": 2,
+      "etapes": [
+        {
+          "critere": "Raisonnement",
+          "points": 1.5
+        },
+        {
+          "critere": "Conclusion",
+          "points": 0.5
+        }
+      ]
+    },
+    {
+      "id": "Ex3-Q2",
+      "exercice": "Ex3",
+      "type": "calcul",
+      "enonce": "Calcul noté par le professeur",
+      "points": 2,
+      "etapes": [
+        {
+          "critere": "Méthode",
+          "points": 1
+        },
+        {
+          "critere": "Résultat",
+          "points": 1
+        }
+      ]
+    }
+  ]
+}
