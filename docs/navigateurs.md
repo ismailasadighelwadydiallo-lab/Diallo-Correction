@@ -20,14 +20,20 @@ Safari 14 (iOS 14). C'est la cible de compilation de l'application (`es2020`).
 | Chrome Android (Pixel 7 émulé) | ici, Playwright 1.63, Chromium | **tous les tests passent** : mode avion, correction, export, arabe, serveur de l'école, labo, aide à l'installation |
 | Chrome ordinateur | ici, Playwright 1.63, Chromium | **tous les tests passent** (sauf le test serveur, lancé une seule fois) |
 | Moteur de Safari (WebKit) | ici, **WebKitGTK 2.52.6** piloté par WebDriver, **serveur réellement arrêté** | **12 étapes sur 12** : voir ci-dessous. Un vrai bogue Safari a été trouvé et corrigé. |
-| Firefox ordinateur et écran de téléphone | **pas ici** (téléchargement bloqué par le réseau de mon environnement) | prévu dans la vérification automatique GitHub |
-| Safari iPhone, iPad, Mac (Playwright) | **pas ici** (même raison) | prévu dans la vérification automatique GitHub |
-| Edge | **pas ici** | même moteur que Chrome ; prévu dans la vérification automatique GitHub |
+| Firefox ordinateur et écran de téléphone | GitHub, Playwright 1.63 (26/11/2026) | **tous les tests passent** |
+| Safari iPhone, iPad, Mac (WebKit de Playwright) | GitHub, Playwright 1.63 (26/11/2026) | **tous les tests passent** |
+| Edge ordinateur | GitHub, Playwright 1.63 (26/11/2026) | **tous les tests passent** |
+| Moteur de Safari (WebKitGTK 2.52.6) | GitHub aussi | **12 étapes sur 12** |
 | Vrais téléphones (Android, iPhone) | **pas encore** | à faire sur le terrain |
 
 La **vérification automatique GitHub** (`.github/workflows/navigateurs.yml`) installe Chromium,
-Firefox, WebKit et Edge et lance tous les tests à chaque envoi de code. Elle tournera dès que le
-dépôt GitHub existera ; je n'ai donc **pas encore de résultat Firefox**.
+Firefox, WebKit et Edge et lance tous les tests à chaque envoi de code. Premier passage complet
+le 26/11/2026 : **41 tests Playwright passent sur 8 profils de navigateur** (7 ignorés : le test du
+serveur de l'école ne tourne qu'une fois), 78 tests Vitest, 12 étapes WebKitGTK.
+
+Pour WebKit, le mode avion des tests arrête vraiment le serveur au lieu d'utiliser la coupure
+réseau de Playwright : celle-ci empêche aussi le service worker de répondre (« WebKit encountered
+an internal error »), ce que Safari ne fait pas.
 
 ### Test WebKit (moteur de Safari) en mode avion réel
 
@@ -64,7 +70,7 @@ données), mais pas les mêmes règles de stockage ni la même interface caméra
 
 | | Chrome / Edge (Android, PC) | Safari iPhone / iPad | Safari Mac | Firefox Android | Firefox PC |
 |---|---|---|---|---|---|
-| Mode avion (service worker) | ✅ | ✅ | ✅ | ✅ (non testé ici) | ✅ (non testé ici) |
+| Mode avion (service worker) | ✅ | ✅ | ✅ | ✅ (testé en écran de téléphone sur Firefox PC) | ✅ |
 | Installer l'application | ✅ bouton « Installer » dans l'application | geste à faire : Partager ⬆️ → « Sur l'écran d'accueil » (expliqué dans l'application) | Fichier → « Ajouter au Dock » (Safari 17+) | menu ⋮ → « Installer » | ❌ pas d'installation : favori. **Le mode avion marche quand même.** |
 | Données gardées | oui ; stockage persistant demandé | **effacées après 7 jours sans ouvrir l'application si elle n'est pas sur l'écran d'accueil** (règle de Safari) → l'application le dit | comme iPhone si non ajoutée au Dock | oui | oui |
 | Photo avec l'appareil photo | ✅ | ✅ | choix d'un fichier | ✅ | choix d'un fichier |
@@ -87,9 +93,9 @@ données), mais pas les mêmes règles de stockage ni la même interface caméra
 
 ## Limites restantes (honnêtement)
 
-- **Firefox n'a pas été testé** dans mon environnement : le téléchargement du Firefox de test est
-  bloqué. Le résultat viendra de la vérification automatique GitHub, ou d'un essai à la main.
-- **Safari lui-même** (iPhone, Mac) n'a pas été testé : seulement son moteur, WebKitGTK.
+- **Les tests tournent sur des navigateurs émulés** : le WebKit de Playwright et WebKitGTK sont le
+  moteur de Safari, pas Safari sur un vrai iPhone ; Firefox Android n'est pas émulable (écran de
+  téléphone sur Firefox PC seulement).
 - **Aucun vrai téléphone** testé à ce jour, ni Android ni iPhone.
 - **Installation depuis le serveur de l'école sur iPhone** : il faut installer le certificat de
   l'école (Réglages → Général → VPN et gestion de l'appareil, puis Réglages → Général → Informations
