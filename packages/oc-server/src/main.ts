@@ -29,4 +29,4 @@ await http.listen({ host: '0.0.0.0', port: portHttp });
 lignes.push(`Mode d'emploi pour les téléphones :`, ...ips.map((ip) => `   http://${ip}:${portHttp}/installer`), `HTTP :`, ...ips.map((ip) => `   http://${ip}:${portHttp}/`), `   http://localhost:${portHttp}/`);
 if (ca) lignes.push(`Certificat à installer une fois sur chaque téléphone :`, ...ips.map((ip) => `   http://${ip}:${portHttp}/ca.crt`));
 
-console.log(`\nOffline Correction — ${nom}\nAucune connexion Internet n'est utilisée.\n\n${lignes.join('\n')}\n\nPacks : ${packs}\nModèles IA : ${modeles}\nCtrl+C pour arrêter.\n`);
+console.log(`\nDiallo Correction — ${nom}\nAucune connexion Internet n'est utilisée.\n\n${lignes.join('\n')}\n\nPacks : ${packs}\nModèles IA : ${modeles}\nCtrl+C pour arrêter.\n`);

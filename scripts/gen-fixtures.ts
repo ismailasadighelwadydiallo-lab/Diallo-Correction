@@ -12,7 +12,7 @@ const pack: Pack = {
   total: 20,
   langue: 'fr',
   regles: { qcm_multi: 'partiel' },
-  meta: { source: 'Pack de démonstration généré par scripts/gen-fixtures.ts', auteur: 'Offline Correction' },
+  meta: { source: 'Pack de démonstration généré par scripts/gen-fixtures.ts', auteur: 'Diallo Correction' },
   questions: [
     ...Array.from({ length: 14 }, (_, i) => ({
       id: `Ex1-Q${i + 1}`, exercice: 'Ex1', type: 'qcm' as const, enonce: `Question ${i + 1}`, points: 1, choix: ['A', 'B', 'C', 'D'], bonnes: ['ABCD'[(i * 7) % 4]],

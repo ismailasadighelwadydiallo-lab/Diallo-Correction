@@ -4,3 +4,4 @@ packages/oc-server/certs/
 test-results/
 playwright-report/
 *.log
+packages/oc-web/public/ocr/

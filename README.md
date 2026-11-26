@@ -1,4 +1,4 @@
-# Offline Correction
+# Diallo Correction
 
 **OFFLINE FIRST. AI LOCAL FIRST. CLOUD OPTIONAL.**
 Si Internet disparaît, l'application reste utile. Si Internet revient, elle devient plus puissante.
@@ -24,6 +24,11 @@ copies douteuses signalées sans rien bloquer. Interface en français et en arab
     données, méthode, calcul, résultat, vérification, barème, confiance en 4 catégories), bilan
     « résolues / à vérifier » (rien n'est caché), export en fichier lisible, impression, et
     « Utiliser pour corriger les copies » avec le même pack ;
+  - **Importer le sujet** : photo, scan ou PDF. Le texte est lu sur le téléphone (texte du
+    PDF, ou OCR français / arabe pour les photos et les PDF scannés), découpé en exercices et
+    questions, corrigé par l'enseignant, puis résolu. La lecture des photos se télécharge une
+    fois (≈ 5 à 6 Mo) avec le bouton « Préparer la lecture hors ligne ». Word : pas encore
+    (enregistrer en PDF) ;
   - **🧠 Je bloque** : solution complète, méthode seule, étape par étape, autre méthode, ou
     vérifier son raisonnement ; plus une question de maths libre (équations, dérivées, limites,
     développer, factoriser, calculs) ;
@@ -128,7 +133,7 @@ Variables du serveur : `OC_PORT_HTTPS` (8443), `OC_PORT_HTTP` (8080), `OC_NOM` (
 
 ## Utiliser l'application
 
-0. **Résoudre une épreuve** → choisir l'épreuve : corrigé complet, questions à vérifier,
+0. **Résoudre une épreuve** → **Importer le sujet** (photo, scan, PDF) ou choisir une épreuve : corrigé complet, questions à vérifier,
    export ; **Je bloque** et **Vérifier mon raisonnement** sont aussi sur l'accueil.
 1. **Mes épreuves** → importer un pack (`.json`) ou **créer un QCM**.
 2. **Feuille-réponse** → imprimer, photocopier pour les élèves.

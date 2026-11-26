@@ -176,5 +176,9 @@ export interface Pack {
     cree_le?: string;
     /** Points que le corrigé n'a pas pu vérifier et qu'un professeur doit relire. */
     a_relire?: string[];
+    /** Sujet importé : d'où vient le texte, et confiance moyenne de l'OCR (0-100). */
+    lecture?: { source: 'pdf_texte' | 'pdf_image' | 'photo'; confiance?: number; pages?: number };
+    /** Questions dont les points ne sont pas écrits dans le sujet (« Ex1-2 : … »). */
+    points_proposes?: string[];
   };
 }

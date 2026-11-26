@@ -136,7 +136,15 @@ export function ficheQuestion(pack: Pack, q: Question): FicheQuestion {
   const notation: NiveauConfiance = !q.etapes?.length && !['qcm', 'numerique', 'texte_court'].includes(q.type) ? 'faible' : baremeSource === 'officiel' ? 'elevee' : 'moyenne';
   if (baremeSource !== 'officiel') raisons.push(baremeSource === 'propose' ? 'barème proposé (non officiel)' : 'origine du barème inconnue');
 
-  const confiance: Confiances = { lecture: 'sans_objet', comprehension: 'elevee', resolution, notation };
+  // Sujet importé (PDF ou photo) : la lecture et le découpage automatiques ont leur propre confiance.
+  const lu = pack.meta?.lecture;
+  const lecture: NiveauOuSansObjet = !lu ? 'sans_objet' : lu.source === 'pdf_texte' ? 'elevee' : (lu.confiance ?? 0) >= 80 ? 'moyenne' : 'faible';
+  if (lu && lecture !== 'elevee') raisons.push(`texte lu sur ${lu.source === 'photo' ? 'une photo' : 'un PDF scanné'} (OCR${lu.confiance !== undefined ? `, confiance moyenne ${Math.round(lu.confiance)}/100` : ''})`);
+  const comprehension: NiveauConfiance = lu ? 'moyenne' : 'elevee';
+  const ptsProposes = pack.meta?.points_proposes?.find((t) => t.startsWith(q.id + ' '));
+  let notationFinale: NiveauConfiance = notation;
+  if (ptsProposes) { notationFinale = pire(notation, 'faible'); raisons.push(ptsProposes); }
+  const confiance: Confiances = { lecture, comprehension, resolution, notation: notationFinale };
   const statut: FicheQuestion['statut'] = origine === 'aucune' ? 'insuffisant' : resolution === 'elevee' || resolution === 'moyenne' ? 'resolu' : 'a_verifier';
   return {
     id: q.id, exercice: exerciceDe(q), enonce: q.enonce, points: q.points, type: q.type, origine,

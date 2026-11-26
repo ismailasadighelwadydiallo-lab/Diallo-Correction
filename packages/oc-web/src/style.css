@@ -59,5 +59,6 @@ details.fiche summary{cursor:pointer;list-style:none}.enonce{margin-top:4px}
 ol.raisonnement{padding-inline-start:20px}ol.raisonnement li{margin:6px 0}ol.raisonnement code{direction:ltr;unicode-bidi:isolate}
 .l-juste b{color:#1d7a3a}.l-erreur b{color:#b3261e}.l-entrainee b{color:#a15c00}.l-non_lue b{color:#666}
 textarea,input.c-eq,input.c-f,input.c-att{width:100%;box-sizing:border-box;font:inherit;padding:8px;border:1px solid #ccd5df;border-radius:8px}
+progress{width:100%;height:10px}.exo-dec{border-top:1px solid #dde3ea;padding-top:8px;margin-top:10px}.q-dec{margin:8px 0}.pts-in{width:84px!important;flex:none}.q-sup{flex:none;padding:6px 10px}
 #print.texte{padding:12mm;font-size:12pt}
 @media print{body>*:not(#print){display:none!important}#print{display:block}#print svg{width:100%;height:auto}@page{size:A4;margin:0}}

@@ -2,7 +2,7 @@
   "name": "offline-correction",
   "private": true,
   "version": "0.1.0",
-  "description": "Offline Correction — correction automatique de copies, hors ligne d'abord.",
+  "description": "Diallo Correction — correction automatique de copies, hors ligne d'abord.",
   "type": "module",
   "workspaces": [
     "packages/oc-core",

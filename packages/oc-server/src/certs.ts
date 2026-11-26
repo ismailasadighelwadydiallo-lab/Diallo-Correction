@@ -43,7 +43,7 @@ export async function certificats(dossier: string, ips: string[], noms: string[]
     const kp = (await webcrypto.subtle.generateKey(ALG, true, ['sign', 'verify'])) as unknown as CryptoKeyPair;
     caCert = await x509.X509CertificateGenerator.createSelfSigned({
       serialNumber: serie(),
-      name: 'CN=Offline Correction - CA de l\'ecole, O=Offline Correction',
+      name: 'CN=Diallo Correction - CA de l\'ecole, O=Diallo Correction',
       notBefore: new Date(Date.now() - 86400e3),
       notAfter: new Date(Date.now() + 10 * 365 * 86400e3),
       keys: kp,
@@ -65,7 +65,7 @@ export async function certificats(dossier: string, ips: string[], noms: string[]
     const kp = (await webcrypto.subtle.generateKey(ALG, true, ['sign', 'verify'])) as unknown as CryptoKeyPair;
     const cert = await x509.X509CertificateGenerator.create({
       serialNumber: serie(),
-      subject: 'CN=Offline Correction - serveur local',
+      subject: 'CN=Diallo Correction - serveur local',
       issuer: caCert.subject,
       notBefore: new Date(Date.now() - 86400e3),
       // Chrome refuse les certificats serveur valables plus de 398 jours

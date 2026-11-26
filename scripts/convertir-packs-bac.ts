@@ -100,7 +100,7 @@ export function convertir(src: Src, avertissement?: string): Pack {
     questions,
     meta: {
       source: `${src.source}. Converti depuis le « Pack Bac Mauritanie » (corrigé et barème proposés, non officiels). Coefficient : ${src.coefficient}.`,
-      auteur: 'Pack Bac Mauritanie (proposé) + vérifications Offline Correction',
+      auteur: 'Pack Bac Mauritanie (proposé) + vérifications Diallo Correction',
       cree_le: new Date().toISOString().slice(0, 10),
       ...(avertissement ? { avertissement } : {}),
       ...(somme !== src.total ? { partiel: { total_epreuve: src.total, manque: [...(src.pages_manquantes ?? []), ...(src.remarque_bareme ? [src.remarque_bareme] : [])] } } : {}),

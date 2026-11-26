@@ -1,4 +1,4 @@
-// oc-core : moteur local d'Offline Correction, sans interface. Navigateur et Node.
+// oc-core : moteur local d'Diallo Correction, sans interface. Navigateur et Node.
 export * from './pack/types.ts';
 export { packSchema } from './pack/schema.ts';
 export { validerPack, lirePack, arrondiPas, estMultipleDuPas, exerciceDe, etapeId, PAS } from './pack/validate.ts';
@@ -32,3 +32,6 @@ export { ficheQuestion, corrigeComplet } from './solution/corrige.ts';
 export type { FicheQuestion, CorrigeComplet, BilanExercice, Confiances } from './solution/corrige.ts';
 export { MOTEURS, moteurMatiere, detecterMatiere, construireCatalogue } from './catalogue.ts';
 export type { MoteurMatiere, Detection, EntreeCatalogue } from './catalogue.ts';
+
+export { decouperSujet, sujetVersPack, nettoyerTexte, pointsDans, corrigerFormulesOcr } from './import/sujet.ts';
+export type { SujetDecoupe, ExerciceDecoupe, QuestionDecoupee, OptionsPack } from './import/sujet.ts';

@@ -102,7 +102,8 @@ export async function resoudreAccueil() {
   titreEcran(ta('resoudre'));
   const packs = await db.packs.orderBy('ajoute_le').reverse().toArray();
   app().innerHTML = `<div class="card"><h3>${ta('nouvelle_epreuve')}</h3>
-      <p class="hint">${ta('import_bientot')}</p>
+      <p class="mut">${ta('import_bientot')}</p>
+      <div class="row"><a class="btn pri grow" href="#/importer" id="go-importer">${ta('imp_photo')} · ${ta('imp_pdf')}</a></div>
       <div class="row"><a class="btn grow" href="#/epreuves">${ta('ouvrir_pack')}</a></div></div>
     <div class="card"><h3>${ta('corrige_complet')}</h3>
       ${packs.length ? packs.map((p) => `<a class="list-item" href="#/corrige/${encodeURIComponent(p.id)}" data-pack="${esc(p.id)}"><div class="grow"><b>${esc(p.pack.titre)}</b><div class="mut">${p.pack.questions.length} ${ta('questions_n').toLowerCase()} · ${pt(p.pack.total)}</div></div><span class="btn pri">${ta('resoudre_btn')}</span></a>`).join('') : `<p class="mut">${ta('aucun_pack')}</p>`}</div>

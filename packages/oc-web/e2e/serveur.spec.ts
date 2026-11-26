@@ -41,7 +41,7 @@ test('installation depuis le serveur local, puis fonctionnement sans serveur', a
   expect(await page.evaluate(() => window.isSecureContext)).toBe(true);
   await page.evaluate(async () => { await navigator.serviceWorker.ready; });
   const manifeste = await page.evaluate(async () => (await fetch(document.querySelector<HTMLLinkElement>('link[rel=manifest]')!.href)).json());
-  expect(manifeste.name).toBe('Offline Correction');
+  expect(manifeste.name).toBe('Diallo Correction');
 
   // importer un pack proposé par le serveur
   await page.click('#go-epreuves');

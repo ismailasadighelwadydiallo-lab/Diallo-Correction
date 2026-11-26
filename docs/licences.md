@@ -15,6 +15,9 @@ Dépendances indirectes : MIT, Apache-2.0, BSD, ISC, 0BSD, BlueOak (permissives)
 | wllama | 4.0.0 | IA locale sur processeur (page labo) | MIT | Oui | 105 Ko + 10,8 Mo de wasm, page labo seulement | Lent sur téléphone | — |
 | Fastify + @fastify/static | 5.12.8 / 9.3.0 | Serveur local de l'école | MIT | Oui | — (ordinateur) | — | Express (MIT) |
 | @peculiar/x509 | 1.14.3 | Certificats HTTPS de l'école | MIT | Oui | — (ordinateur) | — | OpenSSL |
+| Tesseract.js (+ tesseract.js-core) | 7.0.0 / 7.0.0 | Lecture du texte des photos et des PDF scannés (OCR) | Apache-2.0 | Oui | 111 Ko + un moteur de 3,9 Mo (téléchargés une fois, à la demande) | Formules mal lues (exposants, fractions) ; écriture manuscrite non gérée | — |
+| Données de langue Tesseract `fra`, `ara` (best_int, via @tesseract.js-data) | 4.0.0 | Modèles de lecture français et arabe | Apache-2.0 (tessdata) ; paquet npm MIT | Oui | 0,7 Mo + 1,7 Mo (à la demande) | — | modèles « fast » (plus petits, moins précis) |
+| pdf.js (pdfjs-dist) | 5.4.394 | Lecture des PDF (texte intégré, ou images des pages scannées) | Apache-2.0 | Oui | ≈ 1,4 Mo (dans l'application, hors ligne) | Polices CJK non incluses (inutile ici) | — |
 | TypeScript | 5.9.3 | Langage | Apache-2.0 | Oui | 0 (outil) | — | — |
 | Vitest | 3.2.7 | Tests unitaires | MIT | Oui | 0 (outil) | — | — |
 | Playwright | 1.63.0 | Tests navigateurs | Apache-2.0 | Oui | 0 (outil) | — | — |
@@ -29,12 +32,12 @@ Dépendances indirectes : MIT, Apache-2.0, BSD, ISC, 0BSD, BlueOak (permissives)
 | Llama 3.2 1B | Llama Community | Sous conditions | — | Écarté |
 | Gemma 2 2B | Conditions Gemma | Sous conditions | — | Écarté |
 
-## Prévus, pas encore intégrés
+## Pas encore intégrés
 
-| Nom | Licence | Usage prévu |
+| Besoin | Piste | Licence |
 |---|---|---|
-| Tesseract.js 7 + `fra`/`ara` traineddata | Apache-2.0 | Lecture des sujets imprimés (phase OCR), données servies par l'application, sans CDN |
-| pdf.js | Apache-2.0 | Import des sujets PDF |
+| Sujets Word (.docx) | lecture du XML du fichier (fflate) | MIT |
+| Écriture manuscrite des copies | à évaluer (TrOCR, modèles légers) | à vérifier |
 
 Le solveur, le corrigé de référence et « Vérifier mon raisonnement » n'ajoutent **aucune
 dépendance** : ils utilisent math.js, déjà présent.

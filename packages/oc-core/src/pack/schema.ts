@@ -77,7 +77,7 @@ export const TYPES_ETAPES = ['calcul', 'demonstration', 'figure', 'graphique', '
 export const packSchema = {
   $schema: 'http://json-schema.org/draft-07/schema#',
   $id: 'https://offline-correction.local/oc-pack-1.schema.json',
-  title: "Pack d'épreuve Offline Correction",
+  title: "Pack d'épreuve Diallo Correction",
   type: 'object',
   required: ['format', 'id', 'titre', 'total', 'langue', 'questions'],
   additionalProperties: false,
@@ -117,6 +117,12 @@ export const packSchema = {
           properties: { total_epreuve: { type: 'number' }, manque: { type: 'array', items: { type: 'string' } } },
         },
         a_relire: { type: 'array', items: { type: 'string' } },
+        lecture: {
+          type: 'object',
+          required: ['source'],
+          properties: { source: { enum: ['pdf_texte', 'pdf_image', 'photo'] }, confiance: { type: 'number', minimum: 0, maximum: 100 }, pages: { type: 'integer', minimum: 1 } },
+        },
+        points_proposes: { type: 'array', items: { type: 'string' } },
       },
     },
     questions: {

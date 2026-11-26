@@ -107,7 +107,8 @@ export function comprendreDemande(texte: string): Demande {
   if (/developp|développ/.test(bas)) return { tache: 'developper', expression: sansNom(corps()) };
   if (/simplifi/.test(bas)) return { tache: 'simplifier', expression: sansNom(corps()) };
 
-  const c = /resou|resoudre|solve|حل|equation/.test(bas) ? corps() : t;
+  let c = /resou|resoudre|solve|حل|equation/.test(bas) ? corps() : t;
+  if (/=/.test(c)) c = partieMath(c);
   if (/=/.test(c) && !/[<>]=?/.test(c)) {
     const [g, d] = c.split('=');
     return { tache: 'equation', expression: g.trim(), membreDroit: d.replace(/[.;]\s*$/, '').trim(), variable: devinerVariable(g + '+' + d) };
@@ -115,6 +116,27 @@ export function comprendreDemande(texte: string): Demande {
   if (/calcul/.test(bas)) return { tache: 'calcul', expression: sansNom(corps()) };
   if (/^[\d\s+\-*/^().,×÷√π²³e]+$/.test(c)) return { tache: 'calcul', expression: sansNom(c) };
   return { tache: null, expression: t };
+}
+
+const FONCTIONS = new Set(['exp', 'ln', 'log', 'sin', 'cos', 'tan', 'sqrt']);
+const motMath = (m: string) => {
+  const nu = m.replace(/[.;:,]$/, '');
+  if (!nu || !/^[\w^+\-*/().,²³√π=']+$/.test(nu)) return false;
+  const lettres = nu.match(/[a-zA-Zàâçéèêëîïôûùüÿ]{2,}/g) ?? [];
+  return lettres.every((l) => FONCTIONS.has(l.toLowerCase()) || /^[a-z]$/.test(l));
+};
+
+/** Garde seulement l'écriture mathématique autour du « = » (« Résoudre dans R l'équation x^2 = 4. » → « x^2 = 4 »). */
+export function partieMath(t: string): string {
+  const mots = t.split(/\s+/).filter(Boolean);
+  const i = mots.findIndex((m) => m.includes('='));
+  if (i < 0) return t;
+  let a = i, b = i;
+  while (a > 0 && motMath(mots[a - 1].replace(/^l'|^d'/i, ''))) a--;
+  while (b < mots.length - 1 && motMath(mots[b + 1])) b++;
+  if (a === i && /^l'|^d'/i.test(mots[i])) mots[i] = mots[i].replace(/^l'|^d'/i, '');
+  else if (a < i && /^l'|^d'/i.test(mots[a])) mots[a] = mots[a].replace(/^l'|^d'/i, '');
+  return mots.slice(a, b + 1).join(' ').replace(/[.;:,]\s*$/, '');
 }
 
 function devinerVariable(e: string): string | undefined {

@@ -134,7 +134,7 @@ async function tester() {
 
 function texteRapport(): string {
   const r = rapport;
-  const l: string[] = ['=== Offline Correction — rapport labo IA locale ===', `Date : ${r.date}`];
+  const l: string[] = ['=== Diallo Correction — rapport labo IA locale ===', `Date : ${r.date}`];
   if (r.appareil) {
     const a = r.appareil;
     l.push(`Appareil : ${a.userAgent}`, `WebGPU : ${a.webgpu ? 'oui (' + (a.gpu ?? '') + ')' : 'non'} · mémoire ≈ ${a.memoireGo ?? '?'} Go · cœurs ${a.coeurs ?? '?'} · stockage dispo ${mo(a.stockageQuota)} · isolé ${a.crossOriginIsolated}`);

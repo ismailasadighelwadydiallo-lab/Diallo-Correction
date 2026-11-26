@@ -36,7 +36,7 @@ test('assistant hors ligne : corrigé complet, Je bloque, vérifier mon raisonne
   // Résoudre toute l'épreuve.
   await p.goto(baseURL! + '/#/');
   await p.click('#go-resoudre');
-  await expect(p.locator('main')).toContainText("n'existe pas encore"); // pas de faux import photo/PDF
+  await expect(p.locator('#go-importer')).toBeVisible(); // import photo / PDF
   await p.locator('[data-pack]').first().click();
   await expect(p.locator('#bilan')).toBeVisible();
   const resolues = Number(await p.locator('#nb-resolues').textContent());

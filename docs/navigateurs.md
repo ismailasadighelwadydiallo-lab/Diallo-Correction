@@ -1,6 +1,6 @@
 # Navigateurs pris en charge
 
-Offline Correction est une application web : elle marche dans **tout navigateur récent**, sur
+Diallo Correction est une application web : elle marche dans **tout navigateur récent**, sur
 téléphone, tablette ou ordinateur, sans rien installer de spécial. Les navigateurs utilisent en
 réalité **trois moteurs** ; c'est le moteur qui compte pour savoir si l'application marche :
 

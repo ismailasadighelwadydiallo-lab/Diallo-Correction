@@ -66,7 +66,7 @@ export async function creerServeur(o: OptionsServeur): Promise<FastifyInstance> 
   app.get('/ca.crt', async (_req, rep) => {
     if (!o.ca) return rep.code(404).send('Pas de certificat (serveur lancé en HTTP seulement).');
     // type reconnu par Android pour proposer l'installation du certificat
-    return rep.type('application/x-x509-ca-cert').header('Content-Disposition', 'attachment; filename="offline-correction-ca.crt"').send(o.ca);
+    return rep.type('application/x-x509-ca-cert').header('Content-Disposition', 'attachment; filename="diallo-correction-ca.crt"').send(o.ca);
   });
 
   app.get('/installer', async (req, rep) => {
@@ -88,15 +88,15 @@ export function pageInstallation(hote: string, http: number, https: number, avec
   const urlHttps = `https://${hote}:${https}/`;
   const ca = `<a class="b" href="http://${hote}:${http}/ca.crt">⬇️ Télécharger le certificat de l'école</a>`;
   const app = `<a class="b" href="${urlHttps}">${urlHttps}</a>`;
-  return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Installer Offline Correction</title>
+  return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Installer Diallo Correction</title>
 <style>body{font-family:system-ui,sans-serif;max-width:640px;margin:0 auto;padding:16px;line-height:1.5;color:#14202b}h1{font-size:22px}h2{font-size:18px;margin-top:28px;border-top:1px solid #dde3ea;padding-top:16px}li{margin:10px 0}a.b{display:inline-block;background:#0b5cad;color:#fff;padding:12px 16px;border-radius:9px;text-decoration:none;word-break:break-all}code{background:#eef2f6;padding:2px 6px;border-radius:4px}.mut{color:#5b6b7a}</style></head><body>
-<h1>Installer Offline Correction</h1>
+<h1>Installer Diallo Correction</h1>
 ${avecCa ? `<p>Deux étapes, <b>une seule fois par appareil</b> : faire confiance au certificat de l'école, puis ouvrir l'application. Ensuite, elle marche sans Wi-Fi et sans Internet.</p>
 <p>${ca}</p>
 <h2>📱 Android (Chrome, Samsung Internet, Edge)</h2>
 <ol>
 <li>Téléchargez le certificat (bouton ci-dessus).</li>
-<li><b>Paramètres → Sécurité (ou Sécurité et confidentialité) → Plus de paramètres → Chiffrement et identifiants → Installer un certificat → Certificat CA</b>, puis choisissez <code>offline-correction-ca.crt</code>. (Les noms des menus changent un peu selon les marques.)</li>
+<li><b>Paramètres → Sécurité (ou Sécurité et confidentialité) → Plus de paramètres → Chiffrement et identifiants → Installer un certificat → Certificat CA</b>, puis choisissez <code>diallo-correction-ca.crt</code>. (Les noms des menus changent un peu selon les marques.)</li>
 <li>Ouvrez l'application : ${app}</li>
 <li>Menu <b>⋮ → Installer l'application</b> (ou « Ajouter à l'écran d'accueil »).</li>
 </ol>
@@ -104,8 +104,8 @@ ${avecCa ? `<p>Deux étapes, <b>une seule fois par appareil</b> : faire confianc
 <h2>🍎 iPhone / iPad (Safari)</h2>
 <ol>
 <li>Dans <b>Safari</b>, téléchargez le certificat (bouton ci-dessus) et acceptez le profil.</li>
-<li><b>Réglages → Général → VPN et gestion de l'appareil</b> → profil « Offline Correction » → Installer.</li>
-<li><b>Réglages → Général → Informations → Réglages des certificats</b> → activez la confiance pour « Offline Correction ».</li>
+<li><b>Réglages → Général → VPN et gestion de l'appareil</b> → profil « Diallo Correction » → Installer.</li>
+<li><b>Réglages → Général → Informations → Réglages des certificats</b> → activez la confiance pour « Diallo Correction ».</li>
 <li>Ouvrez l'application dans Safari : ${app}</li>
 <li>Bouton <b>Partager ⬆️ → « Sur l'écran d'accueil »</b>. Important : sans cela, Safari peut effacer les copies après 7 jours sans ouvrir l'application.</li>
 </ol>

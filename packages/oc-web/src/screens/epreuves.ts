@@ -129,7 +129,7 @@ export function creerQcm() {
       const id = 'qcm-' + uid().slice(0, 8);
       const pack: Pack = {
         format: 'oc-pack/1', id, titre: titreE.trim() || 'QCM', total: n * ptsQ, langue: document.documentElement.lang === 'ar' ? 'ar' : 'fr',
-        meta: { cree_le: new Date().toISOString(), source: 'créé dans Offline Correction' },
+        meta: { cree_le: new Date().toISOString(), source: 'créé dans Diallo Correction' },
         questions: bonnes.map((b, i): QuestionQcm => ({ id: `Q${i + 1}`, exercice: 'QCM', type: 'qcm', enonce: '', points: ptsQ, choix: lettres.slice(0, nc).split(''), bonnes: b })),
       };
       await db.packs.put({ id, pack, ajoute_le: new Date().toISOString(), origine: 'cree' });

@@ -6,10 +6,10 @@ L'application n'affiche **jamais de pourcentage inventé**. Chaque question du c
 
 | Catégorie | 🟢 élevée | 🟡 moyenne | 🟠 faible | 🔴 aucune |
 |---|---|---|---|---|
-| **Lecture** (du sujet ou de la copie) | — | — | — | « sans objet » quand le sujet vient d'un pack (rien n'a été lu sur une photo) |
-| **Compréhension** | Question structurée dans un pack (énoncé, type, points) | Question libre reconnue par le solveur | — | Demande non reconnue |
+| **Lecture** (du sujet ou de la copie) | Texte lu directement dans un PDF | OCR (photo, scan) avec confiance moyenne ≥ 80/100 | OCR sous 80/100 | « sans objet » quand le sujet vient d'un pack (rien n'a été lu) |
+| **Compréhension** | Question structurée dans un pack (énoncé, type, points) | Sujet importé (découpage automatique relu par l'enseignant), ou question libre reconnue par le solveur | — | Demande non reconnue |
 | **Résolution** | Résultat exact **et** confirmé par un contrôle indépendant (substitution des racines, différence finie pour une dérivée, calcul vérifié du pack) | Corrigé du pack sans calcul vérifiable, ou résultat approché (limite estimée numériquement) | Un contrôle a échoué, ou la question est marquée « à relire par un professeur » | Aucun corrigé et le solveur ne sait pas traiter : « ⚠️ Information insuffisante » |
-| **Notation** | Barème **officiel** fourni | Barème proposé (non officiel) ou d'origine inconnue | Pas de barème détaillé par étape pour une question ouverte | — |
+| **Notation** | Barème **officiel** fourni | Barème proposé (non officiel) ou d'origine inconnue | Pas de barème détaillé par étape pour une question ouverte, ou points non écrits dans le sujet importé | — |
 
 ## Statut affiché
 

@@ -6,7 +6,7 @@ export interface PackEnregistre {
   id: string;
   pack: Pack;
   ajoute_le: string;
-  origine: 'import' | 'cree' | 'serveur';
+  origine: 'import' | 'cree' | 'serveur' | 'sujet';
 }
 
 export interface CopieEnregistree {

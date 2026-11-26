@@ -2,7 +2,7 @@
   "name": "oc-core",
   "version": "0.1.0",
   "type": "module",
-  "description": "Moteur local d'Offline Correction : lecture des feuilles, packs, notation, vérification mathématique. Navigateur et Node.",
+  "description": "Moteur local d'Diallo Correction : lecture des feuilles, packs, notation, vérification mathématique. Navigateur et Node.",
   "exports": {
     ".": "./src/index.ts"
   },

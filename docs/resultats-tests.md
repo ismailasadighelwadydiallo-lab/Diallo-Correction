@@ -9,9 +9,9 @@ processeur du navigateur (émulation Chrome DevTools), à remplacer par des mesu
 
 | Suite | Commande | Résultat |
 |---|---|---|
-| oc-core, oc-server, oc-web (Vitest) | `npm test` | **96 tests, tous passent** |
-| PWA en mode avion, labo, serveur, installation (Playwright, Chrome Android + Chrome PC) | `npm run test:avion` | **13 passent**, 1 ignoré (le test serveur ne tourne qu'une fois) |
-| Moteur de Safari (WebKitGTK 2.52.6, WebDriver, serveur arrêté) | `npm run test:webkit` | **13 étapes, toutes réussies** |
+| oc-core, oc-server, oc-web (Vitest) | `npm test` | **102 tests, tous passent** |
+| PWA en mode avion, labo, serveur, installation (Playwright, Chrome Android + Chrome PC) | `npm run test:avion` | **15 passent**, 1 ignoré (le test serveur ne tourne qu'une fois) |
+| Moteur de Safari (WebKitGTK 2.52.6, WebDriver, serveur arrêté) | `npm run test:webkit` | **15 étapes, toutes réussies** |
 | Tous les navigateurs : Chrome Android/PC, Edge, Firefox PC/mobile, Safari iPhone/iPad/Mac (Playwright, sur GitHub) | `npm run test:navigateurs` | **49 passent**, 7 ignorés (test serveur une seule fois) |
 | Calculs des packs du Bac | `npm run verifier-packs` | **142 vérifications, toutes justes** |
 
@@ -20,6 +20,19 @@ barème (une ou plusieurs par règle de la section 7), 15 tests lecture des feui
 11 tests packs du Bac (validation, calculs, sensibilité des vérifications, copie simulée),
 4 tests du conseil d'installation par navigateur, 18 tests de l'assistant (solveur, vérifier
 mon raisonnement, corrigé de référence, catalogue, nouveaux champs du schéma).
+
+**Import du sujet en mode avion** (`e2e/import-sujet.spec.ts`, sujets **générés** dans
+`fixtures/sujets/`, pas encore de vrai sujet photographié) :
+
+| Sujet | Lecture | Exactitude des caractères | Découpage |
+|---|---|---|---|
+| PDF tapé à l'ordinateur | texte du PDF | 100 % (référence) | 2 exercices, 6 questions ; 4 résolues, 2 à vérifier (probabilités) |
+| Photo au téléphone simulée (inclinée 2,5°, ombre, flou, bruit, JPEG) | OCR français, confiance 88/100 | **98,1 %** | 6 questions |
+| PDF scanné (image seulement) | OCR français, confiance 92/100 | **99,6 %** | — |
+| Page en arabe | OCR arabe, confiance 91/100 | **100 %** | 2 exercices, 3 questions |
+
+Erreurs restantes : surtout les formules (« (x + 1)^2 » lu « (x + 12 (nt », « e^ » lu « 8° »).
+L'écran le dit et demande de relire les formules avant de résoudre.
 
 **Parcours hors ligne de l'assistant** (`e2e/assistant.spec.ts`, aussi dans le test WebKit) :
 installer → mode avion → fermer/rouvrir → importer le sujet Maths M & TMGM 2026 → résoudre toute

@@ -23,7 +23,7 @@ Toutes les bibliothèques ci-dessous autorisent un **usage commercial**. Les tai
 Dépendances indirectes livrées : 85 MIT, 7 Apache-2.0, 6 BSD-3-Clause, 5 ISC, 2 0BSD,
 5 BlueOak-1.0.0 (glob/minimatch, côté serveur, licence permissive). Aucune licence copyleft.
 
-**Taille de l'application installée sur le téléphone** (précache du service worker) : **1 037 Ko** (mesuré le 26/11/2026, avec le solveur et l'assistant ; 972 Ko avant).
+**Taille de l'application installée sur le téléphone** (précache du service worker) : **2 524 Ko** (mesuré le 26/11/2026 : + pdf.js pour lire les PDF hors ligne ; 1 037 Ko avant). La lecture des photos (OCR) ajoute 4,7 Mo (français) ou 6,3 Mo (français + arabe), téléchargés **une seule fois, à la demande**.
 La page labo ajoute 6,2 Mo (WebLLM) ou 10,9 Mo (wllama) **seulement si on l'ouvre**, plus le modèle.
 
 ## Écarts par rapport au cahier des charges
@@ -32,9 +32,9 @@ La page labo ajoute 6,2 Mo (WebLLM) ou 10,9 Mo (wllama) **seulement si on l'ouvr
   Aucune différence pour nos tests. À réessayer avec un npm plus récent.
 - **Pas de framework d'interface** (React, Vue…) : interface en TypeScript simple, comme
   `correcteur.html`. Moins de code à télécharger, rien à apprendre pour relire le code.
-- **OCR (Tesseract.js) pas encore intégré** : il n'était pas dans les étapes 1 à 7. Prévu :
-  Tesseract.js 7 (Apache-2.0) avec `fra.traineddata` et `ara.traineddata` servis par
-  l'application (pas de CDN : il faudra régler `workerPath`, `corePath` et `langPath`).
+- **OCR des sujets** : Tesseract.js 7 (Apache-2.0) avec `fra` et `ara` (best_int) servis par
+  l'application dans `ocr/` (`workerPath`, `corePath`, `langPath` réglés : aucun CDN), gardés par
+  le service worker (cache `oc-ocr`). Pas d'OCR de l'écriture manuscrite.
 
 ## Modèles d'IA candidats (phase 0)
 

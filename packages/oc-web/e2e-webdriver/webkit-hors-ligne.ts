@@ -24,6 +24,8 @@ const MINIBROWSER = process.env.OC_MINIBROWSER
 
 const PACK = resolve(racine, 'packs/demo-devoir-qcm.json');
 const PACK_BAC = resolve(racine, 'packs/bac-2026-normale-maths-M-TMGM.json');
+const SUJET_PDF = resolve(racine, 'fixtures/sujets/sujet-maths.pdf');
+const SUJET_PHOTO = resolve(racine, 'fixtures/sujets/sujet-maths-photo.jpg');
 const FEUILLE1 = resolve(racine, 'fixtures/feuilles/eleve1-inclinee.png');
 const FEUILLE2 = resolve(racine, 'fixtures/feuilles/eleve2-crayon-ombre.png');
 
@@ -113,6 +115,13 @@ async function principal() {
       await attendreQue('navigator.serviceWorker.controller', 'page contrôlée par le service worker');
     });
 
+    await etape('avec Internet : préparer la lecture des photos (OCR)', async () => {
+      await wd('POST', '/url', { url: URL_APP + '/#/importer' });
+      await cliquer('#prep-ocr');
+      await attendreQue(`document.querySelector('#ocr-etat')?.textContent.includes('prête hors ligne')`, 'OCR téléchargé et gardé', 240_000);
+      await wd('POST', '/url', { url: URL_APP + '/' });
+    });
+
     await etape('mode avion réel : serveur arrêté, l\'application se rouvre', async () => {
       arreter(app);
       await attendreUrl(URL_APP, false);
@@ -188,6 +197,22 @@ async function principal() {
       await attendreQue(`document.querySelectorAll('.l-erreur').length === 1 && document.querySelectorAll('.l-entrainee').length === 1`, 'erreur et erreur entraînée trouvées');
     });
 
+    await etape('importer le sujet : PDF à texte, puis photo (OCR), hors ligne', async () => {
+      await wd('POST', '/url', { url: URL_APP + '/#/' });
+      await wd('POST', '/url', { url: URL_APP + '/#/importer' });
+      await choisirFichiers('#imp-pdf', [SUJET_PDF]);
+      await attendreQue(`document.querySelector('#texte-lu')?.value.includes('Exercice 2')`, 'texte du PDF lu', 60_000);
+      await js(`document.querySelector('#decouper').click();`);
+      await attendreQue(`document.querySelectorAll('.q-dec').length === 6`, '6 questions découpées');
+      await js(`document.querySelector('#enregistrer').click();`);
+      await attendreQue(`document.querySelector('#nb-resolues')?.textContent === '4'`, 'corrigé : 4 questions résolues');
+      await wd('POST', '/url', { url: URL_APP + '/#/' });
+      await wd('POST', '/url', { url: URL_APP + '/#/importer' });
+      await choisirFichiers('#imp-images', [SUJET_PHOTO]);
+      await attendreQue(`document.querySelector('#texte-lu')?.value.includes('urne')`, 'photo lue par OCR', 240_000);
+      console.log(`      confiance OCR : ${await texte('#lu-confiance')}`);
+    });
+
     await etape('interface en arabe (droite à gauche)', async () => {
       await wd('POST', '/url', { url: URL_APP + '/#/' });
       await cliquer('#lang');
@@ -243,6 +268,7 @@ async function principal() {
 
     await etape('photo d\'une copie restaurée affichée', async () => {
       await wd('POST', '/url', { url: URL_APP + '/#/corriger' });
+      await attendreQue(`document.querySelectorAll('[data-pack]').length >= 2`, 'liste des épreuves affichée');
       await wd('POST', '/url', { url: URL_APP + '/#/serie/demo-devoir-qcm' });
       await attendreQue(`document.querySelectorAll('#liste .list-item').length === 2`, '2 copies restaurées');
       await js(`document.querySelector('#liste .list-item').click();`);

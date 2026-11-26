@@ -4,7 +4,7 @@
 export type Lang = 'fr' | 'ar';
 
 const fr = {
-  app: 'Offline Correction',
+  app: 'Diallo Correction',
   accueil_titre: 'Que voulez-vous faire ?',
   corriger: 'Corriger des copies',
   corriger_d: 'Photographiez les feuilles-réponses : la note est calculée tout de suite.',
@@ -101,7 +101,7 @@ const fr = {
 export type Cle = keyof typeof fr;
 
 const ar: Record<Cle, string> = {
-  app: 'Offline Correction',
+  app: 'Diallo Correction',
   accueil_titre: 'ماذا تريد أن تفعل؟',
   corriger: 'تصحيح الأوراق',
   corriger_d: 'صوّر أوراق الإجابة: تُحسب العلامة فورًا.',
