@@ -1,6 +1,6 @@
 // Test « mode avion » : après une première visite, le réseau est coupé.
 // L'application doit s'ouvrir, importer un pack, corriger une feuille simulée et afficher la note.
-import { test, expect } from '@playwright/test';
+import { test, expect } from './outils.ts';
 import { resolve } from 'node:path';
 import { readFileSync } from 'node:fs';
 
@@ -9,7 +9,7 @@ const PACK = resolve(racine, 'packs/demo-devoir-qcm.json');
 const FEUILLE1 = resolve(racine, 'fixtures/feuilles/eleve1-inclinee.png');
 const FEUILLE2 = resolve(racine, 'fixtures/feuilles/eleve2-crayon-ombre.png');
 
-test('mode avion : ouvrir, importer un pack, corriger, voir la note, exporter', async ({ page, context, baseURL }) => {
+test('mode avion : ouvrir, importer un pack, corriger, voir la note, exporter', async ({ page, baseURL, couperReseau }) => {
   const externes: string[] = [];
   page.on('request', (r) => { if (!r.url().startsWith(baseURL!) && !r.url().startsWith('data:') && !r.url().startsWith('blob:')) externes.push(r.url()); });
 
@@ -20,7 +20,7 @@ test('mode avion : ouvrir, importer un pack, corriger, voir la note, exporter', 
   await expect.poll(() => page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
 
   // 2. Mode avion.
-  await context.setOffline(true);
+  await couperReseau();
   await page.reload();
   await expect(page.locator('h2.accueil')).toHaveText('Que voulez-vous faire ?');
   await expect(page.locator('#statut')).toContainText('🟢 IA locale · Hors ligne');
@@ -86,11 +86,11 @@ test('feuille illisible : message clair, rien de bloqué', async ({ page }) => {
   await expect(page.locator('#echec')).toContainText('Copie non reconnue');
 });
 
-test('mode avion : le pack réel Maths M & TMGM 2026 s\'importe et sa feuille-réponse s\'affiche', async ({ page, context }) => {
+test('mode avion : le pack réel Maths M & TMGM 2026 s\'importe et sa feuille-réponse s\'affiche', async ({ page, couperReseau }) => {
   await page.goto('/');
   await page.evaluate(async () => { await navigator.serviceWorker.ready; });
   await page.reload();
-  await context.setOffline(true);
+  await couperReseau();
   await page.reload();
   await page.click('#go-epreuves');
   const fc = page.waitForEvent('filechooser');
