@@ -44,10 +44,25 @@ export function nettoyerTexte(t: string): string[] {
     .filter((l) => l.length > 0);
 }
 
-const RE_POINTS = /[([]\s*(\d+(?:[.,]\d+)?)\s*(?:pts?|points?|pt\.|ن|نقطة|نقاط|نقط)\s*[)\]]|(\d+(?:[.,]\d+)?)\s*(?:pts|points|نقاط|نقط)\b/i;
-const RE_EXERCICE = /^(?:exercice|exo|probl[eè]me|partie|situation|التمرين|تمرين|المسألة|مسألة|الجزء)\s*(?:n[°o]\s*)?([0-9]+|[ivx]+|[a-z]|الأول|الثاني|الثالث|الرابع|الخامس)?(?![\p{L}\p{N}])/iu;
-const RE_QUESTION = /^(?:question\s*)?(\d{1,2})\s*(?:[).°\-–/]|\s*:)\s*(.*)$/i;
-const RE_SOUS = /^([a-h])\s*[)\-–.]\s*(.+)$/i;
+// Points : « (2 pts) », « (1.5pt) », « 0,75 pt » en fin de ligne (colonne du barème), en arabe « (2 ن) ».
+// L'OCR lit souvent « 05pt » (0,5), « o5pt », « 075pt », « 125 pt » (1,25), « S » pour 5 : corrigé
+// seulement si le résultat est un multiple de 0,25 plausible.
+const NB = String.raw`(?:[0-9oOSsI©]+(?:\s?[.,]\s?[0-9oOSs]+)?|[.,][0-9oOSs]+)`;
+const RE_POINTS = new RegExp(String.raw`[([]\s*(${NB})\s*(?:pts?|points?|pt\.|ن|نقطة|نقاط|نقط)\s*[)\]]|(?:^|\s|\|)(${NB})\s*(?:p[tr]s?|points?|نقاط|نقط)\.?\s*\|?\s*$`, 'u');
+const RE_EXERCICE = /^(?:exer\p{L}{2}[ie]?ce|exo|probl[eè]me|partie|situation|التمرين|تمرين|المسألة|مسألة|الجزء)\s*(?:n[°o]\s*)?([0-9]+|[ivxlI]+|[a-z]|الأول|الثاني|الثالث|الرابع|الخامس)?(?![\p{L}\p{N}])/iu;
+const RE_QUESTION = /^(?:question\s*)?(\d{1,2})\s*(?:[).°\-–/,]|\s*:)\s*(.*)$/i;
+// Numéro sans ponctuation (« 5 On considère ») : accepté seulement s'il suit le numéro précédent.
+const RE_QUESTION_NU = /^(\d{1,2})\s+(\p{Lu}.*)$/u;
+// Titre de partie numérotée avec ses points : « 1- QCM (2pts) », « 2-QROC(5pts) ».
+const RE_PARTIE = /^(\d{1,2})\s*[-–.)]\s*(\p{Lu}{3,}[\p{L} ]{0,20})\s*[([]/u;
+// Grande partie sans points : « I-Maîtrise des connaissances », « II- Compétences… ».
+const RE_SECTION = /^[IVX]{1,4}\s*[-–.]\s*\p{Lu}/u;
+const RE_QUESTION_EX = /^ex\s*\d+\s*[-–.]\s*(\d{1,2})\s*([a-h])?(?![\p{L}\p{N}])\s*(.*)$/iu; // « Ex1-1a (0,5 pt) — … »
+// Sous-question en minuscule (« D. Déterminer » est une phrase, pas une sous-question).
+const RE_SOUS = /^([a-h])\s*[)\-–.]\s*(.+)$/;
+const RE_FIN_SUJET = /^(?:\d+\s*[.)-]\s*)?(?:corrig[ée]s?|correction|bar[èe]me|éléments de (?:correction|réponse))(?![\p{L}])/iu;
+const debutLigneOcr = (l: string) => l.replace(/^©\s*\)/, 'c)');
+const RE_DECHET = /^[|'"`.,;:«»\-–—_~*•·¦!#\s]+/;
 
 /**
  * Corrections sûres des formules lues par OCR : le « ^ » est souvent lu comme un guillemet
@@ -57,60 +72,128 @@ export function corrigerFormulesOcr(t: string): string {
   return t.replace(/((?<![A-Za-zÀ-ÿ])[a-zA-Z]|[0-9)])\s?["“”″'’`]\s?(?=[0-9(\-])/g, '$1^');
 }
 
+function valeurPoints(brut: string): number | null {
+  let t = brut.replace(/\s/g, '').replace(/[oO©]/g, '0').replace(/[Ss]/g, '5').replace(/[lI]/g, '1').replace(',', '.');
+  if (t.startsWith('.')) t = `0${t}`;
+  if (!t.includes('.')) {
+    if (/^0\d+$/.test(t)) t = `0.${t.slice(1)}`; // 05 → 0.5, 075 → 0.75
+    else if (/^\d{3}$/.test(t)) t = `${t[0]}.${t.slice(1)}`; // 125 → 1.25
+  }
+  const v = Number(t);
+  return Number.isFinite(v) && v > 0 && v <= 40 && Math.abs(v * 4 - Math.round(v * 4)) < 1e-9 ? v : null;
+}
+
 /** Points écrits dans une ligne (« (2 pts) », « 1,5 pt »), ou null. */
 export function pointsDans(ligne: string): number | null {
   const m = RE_POINTS.exec(ligne);
-  if (!m) return null;
-  const v = Number((m[1] ?? m[2]).replace(',', '.'));
-  return Number.isFinite(v) && v > 0 && v <= 40 ? v : null;
+  return m ? valeurPoints(m[1] ?? m[2]) : null;
 }
-const sansPoints = (l: string) => l.replace(RE_POINTS, '').replace(/\s{2,}/g, ' ').trim();
+const sansPoints = (l: string) => l.replace(RE_POINTS, '').replace(/\s*\|\s*$/, '').replace(/\s{2,}/g, ' ').trim();
+const titreExercice = (l: string, m: RegExpExecArray) => {
+  let n = m[1] ? (/^[lI]$/.test(m[1]) ? '1' : m[1]) : '';
+  if (/^\d{3}$/.test(n) && /point/i.test(l)) n = n[0]; // « Exercice 153 points) » : « ( » lu « 5 »
+  return /^exer/i.test(l) ? `Exercice ${n}`.trim() : sansPoints(l).replace(/[:.\-–]+$/, '').trim();
+};
 
 /** Découpe le texte d'un sujet en exercices et questions. */
 export function decouperSujet(texte: string): SujetDecoupe {
-  const lignes = nettoyerTexte(texte);
+  const lignes = nettoyerTexte(texte).map((l) => debutLigneOcr(l.replace(RE_DECHET, ''))).filter(Boolean);
   const entete: string[] = [];
   const exercices: ExerciceDecoupe[] = [];
   const avertissements: string[] = [];
+  const avecTitres = lignes.some((l) => RE_EXERCICE.test(l) && l.length < 90);
   let ex: ExerciceDecoupe | null = null;
   let q: QuestionDecoupee | null = null;
-  let parent: { num: string; texte: string; points: number | null } | null = null; // question avec a), b)…
+  let parent: { num: string; texte: string } | null = null; // question avec a), b)…
   let preambule: string[] = [];
+  let sousDuParent = 0; // sous-questions lues depuis la dernière question numérotée
+  let dernierGlobal = 0; // dernier numéro, tous exercices confondus (numérotation continue)
 
   const nouvelExercice = (titre: string, points: number | null) => {
     ex = { titre, points, introduction: '', questions: [] };
     exercices.push(ex);
     q = null; parent = null; preambule = [];
   };
-  const contexteCourant = () => [preambule.join(' '), parent?.texte].filter(Boolean).join(' ').trim() || undefined;
+  const ajouter = (id: string, texteBrut: string, ligne: string, contexte?: string) => {
+    q = { id, enonce: sansPoints(texteBrut), points: pointsDans(ligne), contexte };
+    (ex as ExerciceDecoupe).questions.push(q);
+  };
+  const sousQuestion = (lettre: string, texteQ: string, ligne: string) => {
+    const e = ex as ExerciceDecoupe;
+    let p = parent as { num: string; texte: string };
+    // L'OCR lit souvent « a) » comme « 2) » ou « 4) » : si « b) » arrive sans « a) », la dernière
+    // question numérotée était en fait le « a) » de la question précédente.
+    const l1 = lettre.toLowerCase();
+    if (l1 === 'b' && sousDuParent === 0) {
+      const n = e.questions.length;
+      const der = e.questions[n - 1], avant = e.questions[n - 2];
+      if (der && avant && der.id === p.num && !der.id.includes('.') && !avant.id.includes('.')) {
+        e.questions.splice(n - 2, 2);
+        p = { num: avant.id, texte: avant.enonce };
+        parent = p;
+        e.questions.push({ ...der, id: `${avant.id}.a`, contexte: [preambule.join(' '), avant.enonce].filter(Boolean).join(' ').trim() || undefined });
+        sousDuParent = 1;
+      }
+    }
+    sousDuParent++;
+    // La question « 1) » devient l'introduction de ses sous-questions « 1.a », « 1.b ».
+    const idx = e.questions.findIndex((x) => x.id === p.num);
+    if (idx >= 0) e.questions.splice(idx, 1);
+    const contexte = [preambule.join(' '), p.texte].filter(Boolean).join(' ').trim() || undefined;
+    ajouter(`${p.num}.${lettre.toLowerCase()}`, texteQ, ligne, contexte);
+  };
 
+  // Numéro plausible : suit le précédent (au plus +2) ; au début d'un exercice : 1, 2, ou la suite
+  // d'une numérotation continue. Écarte les nombres lus dans une matrice ou un tableau (« 13-10 »).
+  const numeroPlausible = (n: number) => {
+    const qs = (ex as ExerciceDecoupe | null)?.questions ?? [];
+    if (!qs.length && !parent) return n >= 1 && (n <= 2 || n === dernierGlobal + 1);
+    return n >= 1 && n <= dernierNumero() + 2;
+  };
+  const dernierNumero = () => {
+    const qs = (ex as ExerciceDecoupe | null)?.questions ?? [];
+    const n = Number((parent as { num: string } | null)?.num ?? qs[qs.length - 1]?.id.split('.')[0]);
+    return Number.isFinite(n) ? n : 0;
+  };
   for (const l of lignes) {
+    if (exercices.length && RE_FIN_SUJET.test(l)) break; // la suite est un corrigé, pas le sujet
+    if (RE_SECTION.test(l) && l.length < 70) continue;
     const mEx = RE_EXERCICE.exec(l);
-    if (mEx && l.length < 90) { nouvelExercice(sansPoints(l).replace(/[:.\-–]+$/, '').trim(), pointsDans(l)); continue; }
-    const mQ = RE_QUESTION.exec(l);
-    const mS = RE_SOUS.exec(l);
-    if (mQ && (ex || exercices.length === 0)) {
+    if (mEx && l.length < 90) {
+      const p3 = /^\d{3}$/.test(mEx[1] ?? '') && /point/i.test(l) ? valeurPoints(mEx[1].slice(2)) : null;
+      nouvelExercice(titreExercice(l, mEx), pointsDans(l) ?? p3);
+      continue;
+    }
+    const mP = RE_PARTIE.exec(l);
+    if (mP && pointsDans(l) !== null) { nouvelExercice(`${mP[1]}-${mP[2].trim()}`, pointsDans(l)); continue; }
+    const mX = RE_QUESTION_EX.exec(l);
+    let mQ = mX ? null : RE_QUESTION.exec(l);
+    if (mQ && ex && !numeroPlausible(Number(mQ[1]))) mQ = null;
+    if (!mX && !mQ && ex) {
+      const mN = RE_QUESTION_NU.exec(l);
+      if (mN && [1, 2].includes(Number(mN[1]) - dernierNumero())) mQ = mN;
+    }
+    if ((mQ || mX) && (ex || !avecTitres)) {
       if (!ex) nouvelExercice('Exercice 1', null);
-      const e = ex!;
-      const texteQ = sansPoints(mQ[2]);
-      parent = { num: mQ[1], texte: texteQ, points: pointsDans(l) };
-      q = { id: mQ[1], enonce: texteQ, points: pointsDans(l), contexte: preambule.join(' ') || undefined };
-      e.questions.push(q);
+      const num = (mX ?? mQ)![1];
+      let reste = mX ? mX[3].replace(/^\s*(\([^)]*\))?\s*[—–:-]?\s*/, (t) => (pointsDans(t) !== null ? t.replace(/[—–:-]\s*$/, '') : '')) : mQ![2];
+      if (mX && mX[2]) { parent = { num, texte: '' }; sousQuestion(mX[2], mX[3].replace(/^\s*\([^)]*\)\s*[—–:-]?\s*/, ''), l); continue; }
+      reste = reste.replace(/^[—–:-]\s*/, '');
+      dernierGlobal = Math.max(dernierGlobal, Number(num));
+      sousDuParent = 0;
+      // « 1. a) Calculer… » ; « 2,3) Soit… » (« 2.a) » mal lu) : première sous-question sur la même ligne.
+      const inline = RE_SOUS.exec(reste) ?? (/^[^\s\p{L}]\s*\)\s*(.+)$/u.test(reste) ? (['', 'a', reste.replace(/^[^\s\p{L}]\s*\)\s*/u, '')] as unknown as RegExpExecArray) : null);
+      parent = { num, texte: inline ? '' : sansPoints(reste) };
+      if (inline) { ajouter(num, '', l); sousQuestion(inline[1], inline[2], l); continue; }
+      ajouter(num, reste, l, preambule.join(' ') || undefined);
       continue;
     }
-    if (mS && ex && parent) {
-      const e = ex as ExerciceDecoupe;
-      const p = parent as { num: string; texte: string; points: number | null };
-      // La question « 1) » devient l'introduction de ses sous-questions « 1.a », « 1.b ».
-      const idx = e.questions.findIndex((x) => x.id === p.num);
-      if (idx >= 0) e.questions.splice(idx, 1);
-      q = { id: `${p.num}.${mS[1].toLowerCase()}`, enonce: sansPoints(mS[2]), points: pointsDans(l), contexte: contexteCourant() };
-      e.questions.push(q);
-      continue;
-    }
+    const mS = RE_SOUS.exec(l);
+    if (mS && ex && parent) { sousQuestion(mS[1], mS[2], l); continue; }
     if (q) {
       const qq = q as QuestionDecoupee;
-      qq.enonce = `${qq.enonce} ${sansPoints(l)}`.trim();
+      const t = sansPoints(l);
+      if (t) qq.enonce = `${qq.enonce} ${t}`.trim();
       if (qq.points === null) qq.points = pointsDans(l);
       if (parent && (parent as { num: string }).num === qq.id) (parent as { texte: string }).texte = qq.enonce;
     } else if (ex) { preambule.push(l); (ex as ExerciceDecoupe).introduction = preambule.join(' '); }
@@ -119,15 +202,16 @@ export function decouperSujet(texte: string): SujetDecoupe {
 
   // Une question « 1) » sans texte propre et sans sous-question n'apporte rien : on la retire.
   for (const e of exercices) e.questions = e.questions.filter((x) => x.enonce.length > 0);
-  // Exercice sans question numérotée : tout l'exercice devient une seule question.
   for (const e of exercices as ExerciceDecoupe[]) {
-    if (!e.questions.length) {
-      avertissements.push(`« ${e.titre} » : aucune question numérotée trouvée, l'exercice est gardé en une seule question.`);
+    if (!e.questions.length) avertissements.push(`« ${e.titre} » : aucune question numérotée trouvée, l'exercice est gardé en une seule question.`);
+    const somme = e.questions.reduce((t, x) => t + (x.points ?? 0), 0);
+    if (e.points !== null && e.questions.every((x) => x.points !== null) && Math.abs(somme - e.points) > 1e-9) {
+      avertissements.push(`« ${e.titre} » : les points des questions (${somme}) ne font pas le total annoncé (${e.points}) : une question ou des points ont pu être mal lus.`);
     }
   }
   if (!exercices.length) avertissements.push('Aucun exercice ni question numérotée reconnu : vérifiez le texte lu, ou découpez à la main.');
   const sansPts = exercices.flatMap((e) => e.questions).filter((x) => x.points === null).length;
-  if (sansPts) avertissements.push(`${sansPts} question(s) sans points écrits dans le sujet : à compléter.`);
+  if (sansPts) avertissements.push(`${sansPts} question(s) sans points lus dans le sujet : à compléter.`);
   const titre = entete.find((l) => /bac|bepc|examen|devoir|composition|session|math|physi|sciences|fran|arab|الباكالوريا|شهادة|امتحان/i.test(l)) ?? entete[0] ?? 'Sujet importé';
   return { titre: titre.slice(0, 120), entete, exercices, avertissements };
 }

@@ -1,0 +1,61 @@
+Ë
+Sér
+Nom Compies SEEN
+gp——"Plet
+5
+Ÿ Cent
+À 2
+aus
+R. que taméque aura ICALAUREAT 202 Sri Sciences Naturelles
+orme -r era Réforme | BACCALA Normale < ESC
+be Syvièmee d'Enseignement Epreuve: MATHEMATIQUES CoeMmcient: 684
+Direction den Eussmeas et des C —acurs Durée: 4h
+Exercice 153 points)
+Le paludixme cst une maladie parasitaire transmise par les moustiques Anophèles Infectés.
+La test de disgnostic rapide (TDR) permet de détecter la présence du parasite dans le sang. =
+Scion le laboratoire fabricant : a)
+- a probabilité qu'une personne malade ait un test Positif est de 0,96 :
+__ 7, 12 probabilité qu'une personne non malade ait un test positif est de 0,02. =
+Un dépistage systématique est réalisé Sur une population cible de 1 600 individus.
+Les résultats montrent que 21% de cette Population est atteinte de la maladie. R
+On choisit au hasard un individu de ctte population ct on considère les évènements:
+w … M: « l'indévides &<t malade » SLT : « le test de l’individu cst positif » +
+Soit 1 : « l'intervalle de Confiance à 95 % de la proportion d'individus malades dans cette
+Population ».
+Pour chacune des Questions suivantes. une seule réponse est correcte
+FN 1 Questions | Réponse A RéponseB |RéponseC |
+! | La probabilité Par) et | 0,96 | 0,21 | 0,02 | ©,5pt
+2 | Es probabitë rc et aus —— 021 om
+2 | La probabilité P,(T) est 0,03 | 0,94 | 0,96 | O,spt
+[5 | Ta probabiié rayet | 09 [686 =]
+3 | La probabilité PT) ex | 0,02 | 0,08 | 0,09 | 0,Spt
++4__| La probabilité POINT) est | 0,2016 | 0,2025 | 0,2026 | O,Spt
+Fobabilté PaÏet  Jo08 —Leee— 102026]
+S | La probabilité P(T) est | 0,0288 | 0,1974 | 0,2174 | ,Spt
+6_| L'intervalle I est égal à | [0,125 :0,175] | [0,185 10,235) | [0,125 19,175) | o,Spr
+Recopier sur la feuille de réponse € compléter le tableau ci-contre en | Question n° [1l21314]5s16
+Choisisen: la bonne réponse. La Justification n'est demandée. Réponse Gide |
+Exercice 2 - (5,5 points)
+Le plan complexe est rapporté à un repère orthonormé(O;ä, 5).
+1) Pour tout nombre complexe z, on pose P(z)=z"—(2+ 22 —(U-4Dz-6-3;
+2) Calculer P(3)et déterminer les nombres a et b tels quevzec,
+= 9,75,
+P(2)= (2-3) +az+b). a
+b) Ecrire le nombre complexe (1—3i)* sous forme algébrique. o,Spt
+c) Résoudre, dans C, l’équation P(z)=0. 0,5pt
+2) Soient A, Bet C les points d’affixes respectives : z,=—+2i, 1 etz m3!
+2) Placer les points A, B et C dans le repère (O;ü,v). 0,7Spt
+b) Déterminer l’affixe du point D tel que ABCD soit un Pparallélogramme. O,Spt
+c) Déterminer et construire l’ensemble F des points M du plan, d’affixe z, tels que
+z=3 A Le 0,Spt
+le nombre rie soit imaginaire pur.
+z+1-
+3) Soit I le centre du parallélogramme ABCD. On pose z,=1 et pour tout entier
+naturel n, on pose Z, =(Z,)"et soit M, le point d’affixe 7.
+#) Vérifier que 7, =1+i puis écrire le nombre z, sous forme exponentielle, O,Spt
+b) Déterminer l’ensemble des entiers naturels n pour lesquels on a OM, 22026, O5pt
+4) Pour tout entier naturel M, On pose u, =|z,.,—z,|.
+2) Montrer que (u, ) est une suite géométrique. Déterminer sa raison et son premier spi
+terme.
+b) Exprimer la somme des longueurs M,M, + M,M,+…+ M,M,,, en fonction de n. 0,5pt
+iccalauréat 2026 Session Normale Epreuve de Mathématiques Séries :SN&TSGE PIR

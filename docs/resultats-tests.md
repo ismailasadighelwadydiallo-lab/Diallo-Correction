@@ -9,7 +9,7 @@ processeur du navigateur (émulation Chrome DevTools), à remplacer par des mesu
 
 | Suite | Commande | Résultat |
 |---|---|---|
-| oc-core, oc-server, oc-web (Vitest) | `npm test` | **102 tests, tous passent** |
+| oc-core, oc-server, oc-web (Vitest) | `npm test` | **106 tests, tous passent** |
 | PWA en mode avion, labo, serveur, installation (Playwright, Chrome Android + Chrome PC) | `npm run test:avion` | **15 passent**, 1 ignoré (le test serveur ne tourne qu'une fois) |
 | Moteur de Safari (WebKitGTK 2.52.6, WebDriver, serveur arrêté) | `npm run test:webkit` | **15 étapes, toutes réussies** |
 | Tous les navigateurs : Chrome Android/PC, Edge, Firefox PC/mobile, Safari iPhone/iPad/Mac (Playwright, sur GitHub) | `npm run test:navigateurs` | **57 passent**, 7 ignorés (test serveur une seule fois) |
@@ -31,7 +31,23 @@ mon raisonnement, corrigé de référence, catalogue, nouveaux champs du schéma
 | PDF scanné (image seulement) | OCR français, confiance 92/100 | **99,6 %** | — |
 | Page en arabe | OCR arabe, confiance 91/100 | **100 %** | 2 exercices, 3 questions |
 
-Erreurs restantes : surtout les formules (« (x + 1)^2 » lu « (x + 12 (nt », « e^ » lu « 8° »).
+**Vrais sujets du Bac 2026** (photos et PDF envoyés par l'enseignant le 26/11/2026 ; questions et
+points réels relevés à la main ; test `import-sujets-reels.test.ts`) :
+
+| Sujet | Lecture | Confiance OCR | Questions trouvées | Points justes |
+|---|---|---|---|---|
+| Maths M & TMGM, 2 pages (photos) | OCR | 75/100 | 25/27 | 21/27 |
+| Maths SN & TSGE, page 1 (photo sur une table, de biais) | OCR | 72/100 | 9/10 | 6/10 |
+| Sciences naturelles SN, page 2 | OCR | 79/100 | 12/12 | 12/12 |
+| **Total photos** | | | **46/49 (94 %)** | **39/49 (80 %)** |
+| Maths M & TMGM, PDF avec texte | texte du PDF | — | **27/27** | **27/27** |
+
+Ce qui manque : un « a) » illisible, des points coupés en deux lignes ou mal lus (« - pt »), les
+tableaux de QCM (lignes mélangées par l'OCR). Les formules restent très mal lues sur les vraies
+photos (matrices, limites, intégrales) : l'enseignant doit les retaper avant de résoudre.
+Temps de lecture mesuré sur un serveur : environ 3 s pour 2 pages ; sur un téléphone, à mesurer.
+
+Erreurs restantes (sujets générés) : surtout les formules (« (x + 1)^2 » lu « (x + 12 (nt », « e^ » lu « 8° »).
 L'écran le dit et demande de relire les formules avant de résoudre.
 
 **Parcours hors ligne de l'assistant** (`e2e/assistant.spec.ts`, aussi dans le test WebKit) :

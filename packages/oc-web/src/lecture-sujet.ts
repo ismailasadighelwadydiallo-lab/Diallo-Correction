@@ -98,7 +98,8 @@ function lignesDePage(items: Morceau[]): string[] {
       const ecart = prec ? (rtl ? prec.x - (m.x + m.w) : m.x - (prec.x + prec.w)) : 0;
       txt += (prec && ecart > 0.12 * Math.max(m.h, prec.h) ? ' ' : '') + m.str;
     });
-    return txt.normalize('NFKC').replace(/\s+/g, ' ').trim();
+    // Ligatures (ﬁ, ﬂ…) seulement : garder les exposants ² ⁿ, utiles en maths.
+    return txt.replace(/[\uFB00-\uFB06]/g, (c) => c.normalize('NFKC')).normalize('NFC').replace(/\s+/g, ' ').trim();
   });
 }
 

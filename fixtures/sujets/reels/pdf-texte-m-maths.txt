@@ -1,0 +1,207 @@
+Bac 2026 session normale — Mathématiques —
+Séries M & TMGM
+République Islamique de Mauritanie · Série M & TMGM · Coefficient 9 & 6 · Durée 4h · Total
+20 pts
+Source : Photos du sujet officiel (Direction des Examens et des Concours), pages 1/2 et 2/2
+1. Sujet
+Photos du sujet officiel :
+Offline Correction — corrigé et barème proposés (non officiels) Page 1
+Offline Correction — corrigé et barème proposés (non officiels) Page 2
+Énoncés retranscrits
+Exercice 1 (3 pts)
+Ex1-1a (0,5 pt) — Calculer A2 et montrer par récurrence que pour n ≥ 1, An = [[1, 3n−1,
+0],[0, 3n, 0],[0, 0, 5n]], avec A = [[1,2,0],[0,3,0],[0,0,5]].
+Ex1-1b (0,5 pt) — En déduire que xn = yn = 3n et zn = 3×5n, avec M0(1,1,3) et Xn+1 = A·Xn.
+Ex1-2a (0,5 pt) — Représentation paramétrique de la droite (D) passant par B(0,1,2), de
+vecteur directeur u(3,5,4).
+Ex1-2b (0,5 pt) — Montrer que M(x,y,z) à coordonnées entières de (D) vérifie z ≡ 0 [15] si
+et seulement s'il existe des entiers t et k tels que z = 2 + 4t et 15k − 4t = 2.
+Ex1-3 (1 pt) — Vérifier que (−2 ; −8) est solution de 15x − 4y = 2, résoudre dans Z2 et en
+déduire l'ensemble (E).
+Exercice 2 (4 pts)
+Ex2-1 (1,25 pt) — f(x) = x·e^(2−x). Calculer lim f en +∞, lim f en −∞ et lim f(x)/x en −∞.
+Interpréter.
+Ex2-2 (0,75 pt) — Déterminer f'(x) et dresser le tableau de variation de f.
+Ex2-3 (1 pt) — Montrer que (C) admet un point d'inflexion A à préciser. Construire (C).
+Ex2-4a (0,5 pt) — un = ∫01 xn−1 f(x) dx. Montrer que (un) est décroissante et minorée.
+Ex2-4b (0,5 pt) — Montrer que e/(n+1) ≤ un ≤ e2/(n+1), puis calculer lim un.
+Exercice 3 (5 pts)
+Ex3-1 (0,75 pt) — ABCD carré direct de centre O ; AEB, BFC, CGD, DHA rectangles isocèles
+directs en E, F, G, H. Faire une figure soignée.
+Ex3-2 (0,75 pt) — Montrer qu'il existe une unique symétrie glissante f transformant B en D
+et E en O. Caractériser f.
+Ex3-3 (0,75 pt) — Montrer qu'il existe une unique rotation R transformant B en C et E en G.
+Caractériser R.
+Ex3-4 (0,75 pt) — Montrer qu'il existe une unique homothétie h transformant C en B et G
+en D. Déterminer son rapport et placer son centre I.
+Ex3-5 (1,25 pt) — S = h∘R. Déterminer S(B), caractériser S, puis déterminer S(A).
+Ex3-6 (0,75 pt) — g = R∘S. Montrer que g est une homothétie, préciser son rapport et
+écrire son centre J comme barycentre de B et C.
+Exercice 4 (4 pts)
+Ex4-1a (1 pt) — Em : z2 − 2(m + i)z + (m + i)2 + 4e^(2iθ) = 0. Montrer que Δ = (4ie^(iθ))2
+puis résoudre.
+Ex4-1b (0,75 pt) — Montrer que PQ = 4 et que le milieu I de [PQ] appartient à une droite
+fixe.
+Ex4-2a (0,75 pt) — z_A = 3 + i, z_B = −1 + i, z_C = 1 − (3/2)i, z_D = 1 + (5/2)i ; E ellipse
+de sommets A et C et de foyer D. Reconnaître l'axe focal et montrer que B est un sommet.
+Ex4-2b (0,75 pt) — Déterminer les affixes du centre, du 2e foyer et du 4e sommet de E.
+Ex4-2c (0,75 pt) — Écrire une équation de E dans le repère (O ; u, v), puis construire E.
+Exercice 5 (4 pts)
+Ex5-1 (1 pt) — g(x) = ln(1 + x)/x sur ]0 ; +∞[. Calculer et interpréter lim g en 0+ et en +∞.
+Offline Correction — corrigé et barème proposés (non officiels) Page 3
+Ex5-2a (0,5 pt) — Pour t ∈ ]0, x], montrer que 1/(1 + x) ≤ 1/(1 + t) ≤ 1, puis que x/(1 + x)
+≤ ln(1 + x) ≤ x.
+Ex5-2b (1 pt) — Calculer g'(x) et déduire de 2.a que g'(x) est négative.
+Ex5-3a (0,5 pt) — Pn = ∏k=1n (1 + 1/k)^(1/k), un = ln Pn. Montrer que un = Σ (1/k2)g(1/k) et
+que (un) est croissante.
+Ex5-3b (0,5 pt) — Déduire que Σ 1/(k(k+1)) ≤ un ≤ Σ 1/k2.
+Ex5-3c (0,5 pt) — Vérifier que pour k > 1, 1/k2 ≤ 1/(k−1) − 1/k, et montrer que e ≤ lim Pn
+≤ e2.
+Offline Correction — corrigé et barème proposés (non officiels) Page 4
+2. Corrigé et barème détaillé
+Barème par étapes de 0,25 pt. Règles : erreur pénalisée une seule fois ; « montrer que » sans
+démonstration = 0 ; pas de points négatifs ; méthode différente acceptée si elle est juste.
+Exercice 1 (3 pts)
+Ex1-1a A2 = [[1,8,0],[0,9,0],[0,0,25]]. Initialisation n=1 : 31−1 = 2 ✓. Hérédité : 0,5 pt
+An+1 = An·A donne en ligne 1 : 2 + 3(3n−1) = 3n+1−1, et 3n+1, 5n+1 sur la
+diagonale.
+• A2 juste 0,25 pt
+• Récurrence complète (initialisation + hérédité) 0,25 pt
+Ex1-1b Xn = An·X0 : xn = 1 + (3n−1) = 3n, yn = 3n, zn = 3×5n. 0,5 pt
+• Utiliser Xn = An X0 0,25 pt
+• Résultats justes 0,25 pt
+Ex1-2a x = 3t ; y = 1 + 5t ; z = 2 + 4t, t ∈ R. 0,5 pt
+Ex1-2b x = 3t et y = 1 + 5t entiers ⇒ 5t et 3t entiers ⇒ t = 2(3t) − 5t entier, et z = 0,5 pt
+2 + 4t. z ≡ 0 [15] ⇔ ∃k ∈ Z, 2 + 4t = 15k ⇔ 15k − 4t = 2.
+• t est entier (justifié) 0,25 pt
+• Équivalence avec 15k − 4t = 2 0,25 pt
+Ex1-3 15(−2) − 4(−8) = 2 ✓. 15(x+2) = 4(y+8), PGCD(15,4)=1 (Gauss) ⇒ x = −2 1 pt
++ 4m, y = −8 + 15m, m ∈ Z. Donc t = −8 + 15m et (E) = {(45m − 24 ;
+75m − 39 ; 60m − 30), m ∈ Z}.
+• Vérification du couple 0,25 pt
+• Solutions générales (Gauss justifié) 0,5 pt
+• Ensemble (E) 0,25 pt
+Exercice 2 (4 pts)
+Ex2-1 lim(+∞) f = 0 ⇒ asymptote horizontale y = 0 en +∞. lim(−∞) f = −∞. 1,25 pt
+lim(−∞) f(x)/x = lim e^(2−x) = +∞ ⇒ branche parabolique de direction
+(Oy) en −∞.
+• lim en +∞ = 0 0,25 pt
+• Asymptote y = 0 0,25 pt
+• lim en −∞ = −∞ 0,25 pt
+• lim f(x)/x = +∞ 0,25 pt
+• Branche parabolique (Oy) 0,25 pt
+Ex2-2 f'(x) = (1 − x)e^(2−x). f croissante sur ]−∞ ; 1], décroissante sur [1 ; +∞[, 0,75 pt
+maximum f(1) = e.
+• Dérivée juste 0,5 pt
+• Tableau de variation juste 0,25 pt
+Offline Correction — corrigé et barème proposés (non officiels) Page 5
+Ex2-3 f''(x) = (x − 2)e^(2−x), s'annule en changeant de signe en x = 2 ⇒ point 1 pt
+d'inflexion A(2 ; 2). Courbe : max (1 ; e), passe par O, asymptote y = 0 en
++∞.
+• f'' et changement de signe 0,25 pt
+• A(2 ; 2) 0,25 pt
+• Courbe : allure, asymptote, points remarquables 0,5 pt
+Ex2-4a un = ∫01 xn e^(2−x) dx. un+1 − un = ∫01 xn(x − 1)e^(2−x) dx ≤ 0 car x − 1 ≤ 0,5 pt
+0 sur [0 ; 1] ⇒ décroissante. Intégrande ≥ 0 ⇒ un ≥ 0 : minorée par 0.
+• Décroissance justifiée 0,25 pt
+• Minoration justifiée 0,25 pt
+Ex2-4b Sur [0 ; 1] : e ≤ e^(2−x) ≤ e2, donc e·xn ≤ xne^(2−x) ≤ e2·xn ; on intègre : 0,5 pt
+∫01 xn dx = 1/(n+1). Par encadrement, lim un = 0.
+• Encadrement justifié 0,25 pt
+• Limite 0 0,25 pt
+Exercice 3 (5 pts)
+Ex3-1 Les triangles sont construits à l'extérieur du carré ; EFGH est un carré de 0,75 pt
+centre O. Repère conseillé : A(1), B(i), C(−1), D(−i), E(1+i), F(−1+i),
+G(−1−i), H(1−i).
+• Carré ABCD direct 0,25 pt
+• Triangles extérieurs, rectangles isocèles 0,25 pt
+• Points E, F, G, H bien placés 0,25 pt
+Confiance moyenne — Figure dessinée : notation par grille de critères.
+Ex3-2 BE = DO = AB/√2 et B ≠ E ⇒ il existe un unique antidéplacement f avec f(B) 0,75 pt
+= D, f(E) = O. Forme complexe : f(z) = i·z̄ − 1 − i ; f∘f est la translation de
+vecteur −2−2i (non nulle) ⇒ symétrie glissante d'axe (EG) (droite y = x) et
+de vecteur EO⃗.
+• Existence et unicité (BE = DO) 0,25 pt
+• Axe (EG) 0,25 pt
+• Vecteur EO⃗ 0,25 pt
+Ex3-3 BE = CG et (BE⃗, CG⃗) = −π/2 ≠ 0 ⇒ unique rotation, d'angle −π/2. R(z) = −iz 0,75 pt
+− 2, centre F (−1+i). R = rotation de centre F et d'angle −π/2.
+• Existence et unicité 0,25 pt
+• Angle −π/2 0,25 pt
+• Centre F 0,25 pt
+Ex3-4 (CG) ∥ (BD) et BD⃗ = 2·CG⃗ ⇒ unique homothétie de rapport 2. Centre I(−2 − 0,75 pt
+i) : C est le milieu de [IB] et G le milieu de [ID].
+• Existence et unicité 0,25 pt
+• Rapport 2 0,25 pt
+• Centre I justifié 0,25 pt
+Offline Correction — corrigé et barème proposés (non officiels) Page 6
+Ex3-5 S(B) = h(R(B)) = h(C) = B. S est une similitude directe de rapport 2 et 1,25 pt
+d'angle −π/2 ; elle fixe B ⇒ centre B. S(z) = −2iz − 2 + i ; S(A) = −2 − i = I.
+• S(B) = B 0,25 pt
+• Rapport 2 0,25 pt
+• Angle −π/2 0,25 pt
+• Centre B 0,25 pt
+• S(A) = I 0,25 pt
+Ex3-6 g est une similitude directe de rapport 2 et d'angle −π/2 − π/2 = −π ⇒ 0,75 pt
+homothétie de rapport −2. g(z) = −2z − 1 + 2i, centre J = (−1 + 2i)/3 =
+bar{(B, 2), (C, 1)}.
+• Homothétie de rapport −2 0,25 pt
+• Calcul du centre 0,25 pt
+• J = bar{(B,2),(C,1)} 0,25 pt
+Exercice 4 (4 pts)
+Ex4-1a Δ = 4(m+i)2 − 4[(m+i)2 + 4e^(2iθ)] = −16e^(2iθ) = (4ie^(iθ))2. z1 = m + i 1 pt
++ 2ie^(iθ), z2 = m + i − 2ie^(iθ).
+• Discriminant 0,5 pt
+• Les deux solutions 0,5 pt
+Ex4-1b PQ = |z1 − z2| = |4ie^(iθ)| = 4. z_I = (z1 + z2)/2 = m + i ⇒ I appartient à la 0,75 pt
+droite d'équation y = 1.
+• PQ = 4 0,25 pt
+• Affixe du milieu 0,25 pt
+• Droite y = 1 0,25 pt
+Ex4-2a Le foyer D et le sommet C sont sur la droite x = 1 : c'est l'axe focal. A n'y 0,75 pt
+est pas ⇒ A est un sommet de l'axe non focal, perpendiculaire passant par
+A : y = 1. Centre Ω(1 + i). B est le symétrique de A par rapport à Ω ⇒ B est
+un sommet.
+• Axe focal x = 1 0,25 pt
+• Centre Ω(1+i) 0,25 pt
+• B sommet (symétrie) 0,25 pt
+Ex4-2b Centre Ω : 1 + i. Second foyer : symétrique de D, 1 − (1/2)i. Quatrième 0,75 pt
+sommet : symétrique de C, 1 + (7/2)i.
+• Centre 0,25 pt
+• Second foyer 0,25 pt
+• Quatrième sommet 0,25 pt
+Ex4-2c a = ΩC = 5/2 (axe focal vertical), b = ΩA = 2, c = ΩD = 3/2 (a2 = b2 + c2 ✓). 0,75 pt
+E : (x − 1)2/4 + (y − 1)2/(25/4) = 1.
+• Équation juste 0,5 pt
+• Construction 0,25 pt
+Exercice 5 (4 pts)
+Offline Correction — corrigé et barème proposés (non officiels) Page 7
+Ex5-1 lim(0+) g = 1 (nombre dérivé de ln en 1) : Γ s'arrête au point (0 ; 1) (g 1 pt
+prolongeable par continuité). lim(+∞) g = 0 : asymptote y = 0.
+• lim en 0+ = 1 0,25 pt
+• Interprétation 0,25 pt
+• lim en +∞ = 0 0,25 pt
+• Asymptote y = 0 0,25 pt
+Ex5-2a 1 ≤ 1 + t ≤ 1 + x ⇒ l'encadrement. On intègre sur [0, x] : x/(1 + x) ≤ ∫0x 0,5 pt
+dt/(1 + t) = ln(1 + x) ≤ x.
+• Encadrement de 1/(1+t) 0,25 pt
+• Intégration 0,25 pt
+Ex5-2b g'(x) = [x/(1 + x) − ln(1 + x)]/x2. D'après 2.a, x/(1 + x) − ln(1 + x) ≤ 0 ⇒ 1 pt
+g'(x) ≤ 0.
+• Calcul de g'(x) 0,5 pt
+• Signe justifié par 2.a 0,5 pt
+Ex5-3a un = Σ (1/k)ln(1 + 1/k) et (1/k2)g(1/k) = (1/k2)·k·ln(1 + 1/k) = (1/k)ln(1 + 0,5 pt
+1/k). un+1 − un = (1/(n+1))ln(1 + 1/(n+1)) > 0.
+• Égalité 0,25 pt
+• Croissance 0,25 pt
+Ex5-3b 2.a avec x = 1/k : 1/(k+1) ≤ ln(1 + 1/k) ≤ 1/k ; on multiplie par 1/k et on 0,5 pt
+somme.
+• Utilisation de 2.a avec x = 1/k 0,25 pt
+• Somme 0,25 pt
+Ex5-3c 1/k2 ≤ 1/(k(k−1)) = 1/(k−1) − 1/k ⇒ Σ 1/k2 ≤ 2 − 1/n ≤ 2 (somme 0,5 pt
+télescopique). Σ 1/(k(k+1)) = 1 − 1/(n+1). (un) croissante et majorée par 2
+⇒ converge vers L avec 1 ≤ L ≤ 2 ⇒ e ≤ lim Pn = e^L ≤ e2.
+• Inégalité et télescopage 0,25 pt
+• Convergence et encadrement de la limite 0,25 pt
+Total des points couverts : 20 / 20
+Offline Correction — corrigé et barème proposés (non officiels) Page 8

@@ -1,0 +1,101 @@
+République Islamique de Maurltoni
+épique aigue deMariene | BACCALAUREAT2026 | Sets ein
+Réforme da Système d'Enslguement Session Normale office : 9 & 6
+Dire desEmamensetdeséomenurs || Epreuve: MATHEMATIQUES eu
+Exereice I (3 points)
+Dans l'espace munt d'un repère orthonormé (0:T,,&) on considère les points
+M, de cordonnées (x,sy,12,) définis par M, (1,1,3) et Vne N>
+Xeon » 120
+You [= Ax|y, | Avec A=[0 3 OJ-
+on A 005
+13-10
+1. a) Caleuler A* et montrer par récurrence que Vnz1, A"= oo 0 0,5pt
+005
+b) En déduire que x, =y, =3" et que z, =3x5" pour tout entier n- 0,5pt
+2. On considère la droite (D) passant par le point B(0,1,2) et de vecteur
+directeur ä(3,5,4). Dans cette question on se propose de déterminer Pensemble
+() de points M(x,3,z) de coordonnées entières de la droite (P) vérifiant la
+condition (*): z=0[15]
+4) Donner une représentation paramétrique de la droite (D). 0,spt
+b) Soit M(x,y,z) un point de coordonnées entières de la droite (D).
+Montrer que M vérifie la condition (*) si et seulement s'ils existent deux entiers | 05pt
+tetk tels que z=2+4t et 15k-4t=2
+3. Vérifier que le couple (-2;-8) est solution de l’équation 15x-4y=2 puis la né
+résoudre dans Z*, et en déduire l’ensemble (E).
+
+Exercice 2 (4 points) |
+Soit fIa fonction définie sur R par f(s)=xe"" et (C) sa courbe représentative |
+dans un repère orthonormé (05Ï, D-
+
+1. Calculer Jim f(s), Jim f(e) et Jim, 1e, Interpréter graphiquement. 125pt
+2. Déterminer l'expression de fs), où f” est la dérivée def, puis dresser le sut
+tableau de variation de f. és
+
+3 Montrer que (C) admet un point d'inflexion À à préciser. Construire (C)- 1pt
+
+4. On considère la suite (u,) définie , pour tout nEN", par u, = f'x"rçoax
+
+a) Montrer que la suite (u,) est décroissante et minorée. o5pt
+
+b) Montrer que pour tout entier n21, —E su, s puis calculer lim u,- o5pt
+
+n+l n+l PS
+Exercice 3 (S points) ÿ
+
+"ABCD un carré direct de centre O. On construit les triangles AEB, BFC, CGD
+
+et DHA rectangles isocèles directs respectivement en E, F, G et H.
+
+1. Faire une figure soignée correspondant aux données ci-dessus. 075pt
+
+2. Montrer qu’il existe une unique symétrie glissante f transformant B en D et E
+
+en O. Caractériser f. 0,75 pt
+Le
+Baccalauréat2026 Session Normale | Epreuve de Mathématiques Séries M & TMGM 172
+k
+
+3, Montrer qu’il existe une unique rotation R transformant B en C etEenG,
+Caractériser R: 07Spt
+& Montrer quilesbteune vi e homothête h qui transforme C en B et Gen
+D. Déterminer le rapport de = _n fs c Justification son centre I, 075pt
+5 On considère In similitude directe S=h>R . Déterminer S(B) et caractériser S
+puis déterminer S(A)- ; 125pt
+6. On note g=Re$ + Montrer que g est une homothétie. Préciser son rapport et
+écrire son centre J comme barycentre des potnts 1B et C, 0,75pt
+Exercice 4 (4 points)
+Le plan complexe est muni d’un repère orthonormé(O;ü,ÿ),
+1. Soit me R et0e[0,21[; ON considère, dans l’ensemble de nombres complexes,
+Véquation d'inconnuez : By: 7*=2(m-+i)z+(m-+i}"+4e"®=0 etsolent P et Q
+les points d’affixes z, etz; solutions de cette équation.
+a) Montrer que le discriminant de l’équation E, est A = (diee)* puis la résoudre. | 1pt
+b) Montrer que la distance PQ est égale à 4 et que le milieu I du segment [PQ]
+appartient à une droite fixe, à préciser, 0,75 pt
+2. On considère les points À, B, C et D d’affixes respectives .
+à, 0088
+2,=3+i,2,=+i »76=1-51 et z, si et soit E l’ellipse dont À et C sont
+deux sommets et D un foyer.
+a) Reconnaître l’axe focale de E et en déduire que B est un sommet de E. 0,75 pt
+b) Déterminer les affixes du centre, du 2* foyer et du 4° sommet de E. 0,75pt
+©) Ecrire une équation de E dans le repère (0;ä,ÿ), puis construire E. 0,75pt
+Exercice 5 (4 points)
+Soit g la fonction définie sur ]0;+=[ par pt) HE
+x
+On note 1 sa courbe représentative dans un repère orthonormé (0;,) -
+1. Calculer et interpréter les limites suivantes lim g(x) et lim g(s) - pt
+2,3) Soit x un réel strictement positive, et te ]o,x], montrer que :
+; 05
+—s74t puis déduire que *—<I<+)5%. pt
+b) Calculer g^(x) et déduire de la question 2.a) que g^(x) est négative, Ipt
+3. On définit les deux suites (P,) et (u,) pour tout n21 par :
+E 1 : 1
+P, -É(+E} -(1+1} (1-1} xx[1e}} et u, =In(P,).
+a) Montrer que Vn>1, u, -b[}) et que (u,) est croissante. 0,5pt
+é
+e_1 1
+ÿ — su sH 5 0,
+b) Déduire que pa kr" > =) )Spt
+) Vérifier que Vk>1, = si et montrer que es lim P, se. 0,5pt
+Fin.
+Le
+Baccalauréat 2026 Session Normale | Epreuve de Mathématiques Séries M&TMGM 22
