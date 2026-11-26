@@ -19,19 +19,19 @@ Safari 14 (iOS 14). C'est la cible de compilation de l'application (`es2020`).
 |---|---|---|
 | Chrome Android (Pixel 7 émulé) | ici, Playwright 1.63, Chromium | **tous les tests passent** : mode avion, correction, export, arabe, serveur de l'école, labo, aide à l'installation |
 | Chrome ordinateur | ici, Playwright 1.63, Chromium | **tous les tests passent** (sauf le test serveur, lancé une seule fois) |
-| Moteur de Safari (WebKit) | ici, **WebKitGTK 2.52.6** piloté par WebDriver, **serveur réellement arrêté** | **13 étapes sur 13 (assistant compris)** : voir ci-dessous. Un vrai bogue Safari a été trouvé et corrigé. |
+| Moteur de Safari (WebKit) | ici, **WebKitGTK 2.52.6** piloté par WebDriver, **serveur réellement arrêté** | **15 étapes sur 15 (assistant et import du sujet compris)** : voir ci-dessous. Un vrai bogue Safari a été trouvé et corrigé. |
 | Firefox ordinateur et écran de téléphone | GitHub, Playwright 1.63 (26/11/2026) | **tous les tests passent** |
 | Safari iPhone, iPad, Mac (WebKit de Playwright) | GitHub, Playwright 1.63 (26/11/2026) | **tous les tests passent** |
 | Edge ordinateur | GitHub, Playwright 1.63 (26/11/2026) | **tous les tests passent** |
-| Moteur de Safari (WebKitGTK 2.52.6) | GitHub aussi | **13 étapes sur 13** |
+| Moteur de Safari (WebKitGTK 2.52.6) | GitHub aussi | **15 étapes sur 15** |
 | Vrais téléphones (Android, iPhone) | **pas encore** | à faire sur le terrain |
 
 La **vérification automatique GitHub** (`.github/workflows/navigateurs.yml`) installe Chromium,
 Firefox, WebKit et Edge et lance tous les tests à chaque envoi de code. Premier passage complet
 le 26/11/2026 : **41 tests Playwright passent sur 8 profils de navigateur** (7 ignorés : le test du
 serveur de l'école ne tourne qu'une fois), 78 tests Vitest, 12 étapes WebKitGTK.
-Dernier passage (26/11/2026, avec l'assistant du correcteur) : **49 tests Playwright passent** sur 8 profils
-(7 ignorés), 96 tests Vitest, 13 étapes WebKitGTK.
+Dernier passage (26/11/2026, avec l'assistant du correcteur) : **57 tests Playwright passent** sur 8 profils (avec l'import du sujet)
+(7 ignorés), 102 tests Vitest, 15 étapes WebKitGTK.
 
 Pour WebKit, le mode avion des tests arrête vraiment le serveur au lieu d'utiliser la coupure
 réseau de Playwright : celle-ci empêche aussi le service worker de répondre (« WebKit encountered

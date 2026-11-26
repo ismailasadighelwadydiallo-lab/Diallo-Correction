@@ -12,7 +12,7 @@ processeur du navigateur (émulation Chrome DevTools), à remplacer par des mesu
 | oc-core, oc-server, oc-web (Vitest) | `npm test` | **102 tests, tous passent** |
 | PWA en mode avion, labo, serveur, installation (Playwright, Chrome Android + Chrome PC) | `npm run test:avion` | **15 passent**, 1 ignoré (le test serveur ne tourne qu'une fois) |
 | Moteur de Safari (WebKitGTK 2.52.6, WebDriver, serveur arrêté) | `npm run test:webkit` | **15 étapes, toutes réussies** |
-| Tous les navigateurs : Chrome Android/PC, Edge, Firefox PC/mobile, Safari iPhone/iPad/Mac (Playwright, sur GitHub) | `npm run test:navigateurs` | **49 passent**, 7 ignorés (test serveur une seule fois) |
+| Tous les navigateurs : Chrome Android/PC, Edge, Firefox PC/mobile, Safari iPhone/iPad/Mac (Playwright, sur GitHub) | `npm run test:navigateurs` | **57 passent**, 7 ignorés (test serveur une seule fois) |
 | Calculs des packs du Bac | `npm run verifier-packs` | **142 vérifications, toutes justes** |
 
 Détail Vitest : 8 tests moteur mathématique, 6 tests format des packs, 29 tests règles de
