@@ -48,4 +48,16 @@ td,th{padding:8px 6px;border-bottom:1px solid var(--line);text-align:start}
 .hint.warn{background:#fdf6e8;border-color:#f1dcb0}
 #toast{position:fixed;bottom:16px;left:16px;right:16px;max-width:560px;margin:0 auto;background:#14202b;color:#fff;padding:12px 14px;border-radius:10px;z-index:20;font-size:14px}
 #print{display:none}
+.sol{margin-top:10px}.soltit{font-weight:700;font-size:14px;margin-bottom:2px}
+.calc{font-family:ui-monospace,monospace;background:#f3f5f7;border-radius:6px;padding:3px 6px;margin-top:3px;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere}
+.res{font-weight:700}.verifs{padding-inline-start:4px;list-style:none;font-size:14px}
+table.bareme{border-collapse:collapse;font-size:14px}table.bareme td,table.bareme th{border:1px solid #dde3ea;padding:3px 8px}
+.conf{margin-top:10px;font-size:14px}.conf .row span{margin-inline-end:10px}
+.bloque button{font-size:13px;padding:8px 10px}.bloque button.pri{outline:2px solid currentColor}
+.bilan .moyen{font-size:24px;font-weight:700}.exo{display:flex;gap:6px;align-items:center}
+details.fiche summary{cursor:pointer;list-style:none}.enonce{margin-top:4px}
+ol.raisonnement{padding-inline-start:20px}ol.raisonnement li{margin:6px 0}ol.raisonnement code{direction:ltr;unicode-bidi:isolate}
+.l-juste b{color:#1d7a3a}.l-erreur b{color:#b3261e}.l-entrainee b{color:#a15c00}.l-non_lue b{color:#666}
+textarea,input.c-eq,input.c-f,input.c-att{width:100%;box-sizing:border-box;font:inherit;padding:8px;border:1px solid #ccd5df;border-radius:8px}
+#print.texte{padding:12mm;font-size:12pt}
 @media print{body>*:not(#print){display:none!important}#print{display:block}#print svg{width:100%;height:auto}@page{size:A4;margin:0}}

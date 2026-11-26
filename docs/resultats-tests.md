@@ -9,16 +9,23 @@ processeur du navigateur (émulation Chrome DevTools), à remplacer par des mesu
 
 | Suite | Commande | Résultat |
 |---|---|---|
-| oc-core, oc-server, oc-web (Vitest) | `npm test` | **78 tests, tous passent** |
-| PWA en mode avion, labo, serveur, installation (Playwright, Chrome Android + Chrome PC) | `npm run test:avion` | **11 passent**, 1 ignoré (le test serveur ne tourne qu'une fois) |
-| Moteur de Safari (WebKitGTK 2.52.6, WebDriver, serveur arrêté) | `npm run test:webkit` | **12 étapes, toutes réussies** |
+| oc-core, oc-server, oc-web (Vitest) | `npm test` | **96 tests, tous passent** |
+| PWA en mode avion, labo, serveur, installation (Playwright, Chrome Android + Chrome PC) | `npm run test:avion` | **13 passent**, 1 ignoré (le test serveur ne tourne qu'une fois) |
+| Moteur de Safari (WebKitGTK 2.52.6, WebDriver, serveur arrêté) | `npm run test:webkit` | **13 étapes, toutes réussies** |
 | Tous les navigateurs : Chrome Android/PC, Edge, Firefox PC/mobile, Safari iPhone/iPad/Mac (Playwright, sur GitHub) | `npm run test:navigateurs` | **41 passent**, 7 ignorés (test serveur une seule fois) |
 | Calculs des packs du Bac | `npm run verifier-packs` | **142 vérifications, toutes justes** |
 
 Détail Vitest : 8 tests moteur mathématique, 6 tests format des packs, 29 tests règles de
 barème (une ou plusieurs par règle de la section 7), 15 tests lecture des feuilles, 5 tests serveur,
 11 tests packs du Bac (validation, calculs, sensibilité des vérifications, copie simulée),
-4 tests du conseil d'installation par navigateur. Détail par navigateur : `docs/navigateurs.md`.
+4 tests du conseil d'installation par navigateur, 18 tests de l'assistant (solveur, vérifier
+mon raisonnement, corrigé de référence, catalogue, nouveaux champs du schéma).
+
+**Parcours hors ligne de l'assistant** (`e2e/assistant.spec.ts`, aussi dans le test WebKit) :
+installer → mode avion → fermer/rouvrir → importer le sujet Maths M & TMGM 2026 → résoudre toute
+l'épreuve (27 questions : 26 résolues, 1 à vérifier, l'Ex3-1 avec figure) → filtre « à vérifier »
+→ Je bloque → export du corrigé → « Utiliser pour corriger » → question libre → vérifier un
+raisonnement faux (erreur à l'étape 2, erreur entraînée à l'étape 3). Aucune requête externe. Détail par navigateur : `docs/navigateurs.md`.
 
 ### Lecture des feuilles simulées (30 questions : QCM simples, QCM multiples, cases de points)
 

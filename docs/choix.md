@@ -23,7 +23,7 @@ Toutes les bibliothèques ci-dessous autorisent un **usage commercial**. Les tai
 Dépendances indirectes livrées : 85 MIT, 7 Apache-2.0, 6 BSD-3-Clause, 5 ISC, 2 0BSD,
 5 BlueOak-1.0.0 (glob/minimatch, côté serveur, licence permissive). Aucune licence copyleft.
 
-**Taille de l'application installée sur le téléphone** (précache du service worker) : **972 Ko**.
+**Taille de l'application installée sur le téléphone** (précache du service worker) : **1 037 Ko** (mesuré le 26/11/2026, avec le solveur et l'assistant ; 972 Ko avant).
 La page labo ajoute 6,2 Mo (WebLLM) ou 10,9 Mo (wllama) **seulement si on l'ouvre**, plus le modèle.
 
 ## Écarts par rapport au cahier des charges

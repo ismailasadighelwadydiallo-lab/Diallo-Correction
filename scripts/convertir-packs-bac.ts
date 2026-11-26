@@ -80,12 +80,18 @@ export function convertir(src: Src, avertissement?: string): Pack {
     const existantes = [q.verification ?? []].flat().filter((v) => v.egal_a || v.type);
     q.verification = [...existantes, ...add];
   }
+  const matiereDe = (id: string) => /math/i.test(id) ? 'mathematiques' : /physi/i.test(id) ? 'physique-chimie' : /naturel/i.test(id) ? 'sciences-naturelles' : undefined;
   const somme = Math.round(questions.reduce((a: number, q: Question) => a + q.points, 0) * 100) / 100;
   const pack: Pack = {
     format: 'oc-pack/1',
     id: src.id,
     titre: src.titre + (somme !== src.total ? ` (partiel : ${String(somme).replace('.', ',')} pts)` : ''),
     serie: src.serie,
+    examen: 'Baccalauréat',
+    matiere: matiereDe(src.id),
+    annee: Number(src.annee) || undefined,
+    // le « Pack Bac Mauritanie » donne des barèmes PROPOSÉS, pas le barème officiel
+    bareme_source: 'propose',
     duree: src.duree,
     session: `${src.annee} ${src.session}`,
     total: somme,

@@ -33,6 +33,29 @@ const verification = {
   },
 } as const;
 
+const etapeSolution = {
+  type: 'object', required: ['texte'], additionalProperties: false,
+  properties: { texte: { type: 'string', minLength: 1 }, calcul: { type: 'string' } },
+} as const;
+
+/** Corrigé détaillé (mode « Résoudre une épreuve » et « Je bloque »). */
+const solution = {
+  type: 'object', additionalProperties: false,
+  properties: {
+    comprendre: { type: 'string' },
+    donnees: { type: 'array', items: { type: 'string' } },
+    methode: { type: 'string' },
+    etapes: { type: 'array', items: etapeSolution },
+    resultat: { type: 'string' },
+    reponse: { type: 'string' },
+  },
+} as const;
+
+const methodeAlternative = {
+  type: 'object', required: ['nom'], additionalProperties: false,
+  properties: { nom: { type: 'string', minLength: 1 }, methode: { type: 'string' }, etapes: { type: 'array', items: etapeSolution }, resultat: { type: 'string' } },
+} as const;
+
 const base = {
   id: { type: 'string', minLength: 1 },
   exercice: { type: 'string' },
@@ -44,7 +67,12 @@ const base = {
   consigne: { type: 'string' },
   etapes: { type: 'array', items: etape },
   a_relire: { type: 'string' },
+  solution,
+  methodes_alternatives: { type: 'array', items: methodeAlternative },
+  bareme_source: { enum: ['officiel', 'propose'] },
 } as const;
+
+export const TYPES_ETAPES = ['calcul', 'demonstration', 'figure', 'graphique', 'tableau', 'redaction', 'analyse_document', 'question_ouverte', 'raisonnement', 'traduction', 'grammaire'] as const;
 
 export const packSchema = {
   $schema: 'http://json-schema.org/draft-07/schema#',
@@ -58,10 +86,15 @@ export const packSchema = {
     id: { type: 'string', pattern: '^[a-zA-Z0-9][a-zA-Z0-9._-]*$' },
     titre: { type: 'string', minLength: 1 },
     serie: { type: 'string' },
+    examen: { type: 'string' },
+    matiere: { type: 'string' },
+    niveau: { type: 'string' },
+    annee: { type: 'integer', minimum: 1960, maximum: 2100 },
+    bareme_source: { enum: ['officiel', 'propose'] },
     duree: { type: 'string' },
     session: { type: 'string' },
     total: { type: 'number', exclusiveMinimum: 0 },
-    langue: { enum: ['fr', 'ar'] },
+    langue: { enum: ['fr', 'ar', 'en'] },
     regles: {
       type: 'object',
       additionalProperties: false,
@@ -92,7 +125,7 @@ export const packSchema = {
       items: {
         type: 'object',
         required: ['id', 'enonce', 'points', 'type'],
-        properties: { type: { enum: ['qcm', 'numerique', 'texte_court', 'calcul', 'demonstration', 'figure', 'redaction'] } },
+        properties: { type: { enum: ['qcm', 'numerique', 'texte_court', ...TYPES_ETAPES] } },
         allOf: [
           {
             if: { properties: { type: { const: 'qcm' } } },
@@ -142,13 +175,13 @@ export const packSchema = {
             },
           },
           {
-            if: { properties: { type: { enum: ['calcul', 'demonstration', 'figure', 'redaction'] } } },
+            if: { properties: { type: { enum: TYPES_ETAPES } } },
             then: {
               required: ['etapes'],
               additionalProperties: false,
               properties: {
                 ...base,
-                type: { enum: ['calcul', 'demonstration', 'figure', 'redaction'] },
+                type: { enum: TYPES_ETAPES },
                 etapes: { type: 'array', minItems: 1, items: etape },
                 montrer_que: { type: 'boolean' },
               },

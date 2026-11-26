@@ -7,6 +7,7 @@ import { initInstallation } from './installer.ts';
 import { accueil, creerQcm, epreuve, feuille, listeEpreuves } from './screens/epreuves.ts';
 import { copie, serie } from './screens/correction.ts';
 import { resultats, sauvegarde } from './screens/resultats.ts';
+import { bloqueAccueil, corrige, resoudreAccueil, verifierAccueil } from './screens/assistant.ts';
 
 appliquerLangue();
 
@@ -22,6 +23,10 @@ const routes: [RegExp, (...a: string[]) => unknown][] = [
   [/^\/copie\/(.+)$/, copie],
   [/^\/resultats\/(.+)$/, resultats],
   [/^\/sauvegarde$/, sauvegarde],
+  [/^\/resoudre$/, resoudreAccueil],
+  [/^\/corrige\/([^/]+)(?:\/(a-verifier))?$/, corrige],
+  [/^\/bloque(?:\/([^/]+))?(?:\/([^/]+))?$/, bloqueAccueil],
+  [/^\/verifier$/, verifierAccueil],
 ];
 
 function router() {

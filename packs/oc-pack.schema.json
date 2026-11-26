@@ -27,6 +27,26 @@
     "serie": {
       "type": "string"
     },
+    "examen": {
+      "type": "string"
+    },
+    "matiere": {
+      "type": "string"
+    },
+    "niveau": {
+      "type": "string"
+    },
+    "annee": {
+      "type": "integer",
+      "minimum": 1960,
+      "maximum": 2100
+    },
+    "bareme_source": {
+      "enum": [
+        "officiel",
+        "propose"
+      ]
+    },
     "duree": {
       "type": "string"
     },
@@ -40,7 +60,8 @@
     "langue": {
       "enum": [
         "fr",
-        "ar"
+        "ar",
+        "en"
       ]
     },
     "regles": {
@@ -124,7 +145,14 @@
               "calcul",
               "demonstration",
               "figure",
-              "redaction"
+              "graphique",
+              "tableau",
+              "redaction",
+              "analyse_document",
+              "question_ouverte",
+              "raisonnement",
+              "traduction",
+              "grammaire"
             ]
           }
         },
@@ -333,6 +361,96 @@
                 },
                 "a_relire": {
                   "type": "string"
+                },
+                "solution": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "comprendre": {
+                      "type": "string"
+                    },
+                    "donnees": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "methode": {
+                      "type": "string"
+                    },
+                    "etapes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "texte"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "texte": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "calcul": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "resultat": {
+                      "type": "string"
+                    },
+                    "reponse": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "methodes_alternatives": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "nom"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "nom": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "methode": {
+                        "type": "string"
+                      },
+                      "etapes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "texte"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "texte": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "calcul": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "resultat": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "bareme_source": {
+                  "enum": [
+                    "officiel",
+                    "propose"
+                  ]
                 },
                 "type": {
                   "const": "qcm"
@@ -580,6 +698,96 @@
                 },
                 "a_relire": {
                   "type": "string"
+                },
+                "solution": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "comprendre": {
+                      "type": "string"
+                    },
+                    "donnees": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "methode": {
+                      "type": "string"
+                    },
+                    "etapes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "texte"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "texte": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "calcul": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "resultat": {
+                      "type": "string"
+                    },
+                    "reponse": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "methodes_alternatives": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "nom"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "nom": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "methode": {
+                        "type": "string"
+                      },
+                      "etapes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "texte"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "texte": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "calcul": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "resultat": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "bareme_source": {
+                  "enum": [
+                    "officiel",
+                    "propose"
+                  ]
                 },
                 "type": {
                   "const": "numerique"
@@ -831,6 +1039,96 @@
                 "a_relire": {
                   "type": "string"
                 },
+                "solution": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "comprendre": {
+                      "type": "string"
+                    },
+                    "donnees": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "methode": {
+                      "type": "string"
+                    },
+                    "etapes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "texte"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "texte": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "calcul": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "resultat": {
+                      "type": "string"
+                    },
+                    "reponse": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "methodes_alternatives": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "nom"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "nom": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "methode": {
+                        "type": "string"
+                      },
+                      "etapes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "texte"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "texte": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "calcul": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "resultat": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "bareme_source": {
+                  "enum": [
+                    "officiel",
+                    "propose"
+                  ]
+                },
                 "type": {
                   "const": "texte_court"
                 },
@@ -853,7 +1151,14 @@
                     "calcul",
                     "demonstration",
                     "figure",
-                    "redaction"
+                    "graphique",
+                    "tableau",
+                    "redaction",
+                    "analyse_document",
+                    "question_ouverte",
+                    "raisonnement",
+                    "traduction",
+                    "grammaire"
                   ]
                 }
               }
@@ -1055,12 +1360,109 @@
                 "a_relire": {
                   "type": "string"
                 },
+                "solution": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "comprendre": {
+                      "type": "string"
+                    },
+                    "donnees": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "methode": {
+                      "type": "string"
+                    },
+                    "etapes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": [
+                          "texte"
+                        ],
+                        "additionalProperties": false,
+                        "properties": {
+                          "texte": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "calcul": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "resultat": {
+                      "type": "string"
+                    },
+                    "reponse": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "methodes_alternatives": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "nom"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "nom": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "methode": {
+                        "type": "string"
+                      },
+                      "etapes": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "required": [
+                            "texte"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "texte": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "calcul": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "resultat": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "bareme_source": {
+                  "enum": [
+                    "officiel",
+                    "propose"
+                  ]
+                },
                 "type": {
                   "enum": [
                     "calcul",
                     "demonstration",
                     "figure",
-                    "redaction"
+                    "graphique",
+                    "tableau",
+                    "redaction",
+                    "analyse_document",
+                    "question_ouverte",
+                    "raisonnement",
+                    "traduction",
+                    "grammaire"
                   ]
                 },
                 "montrer_que": {

@@ -4,17 +4,22 @@ import { t } from '../i18n.ts';
 import { brancherCarteInstallation, carteInstallation } from '../installer.ts';
 import { $, $$, app, choisirFichiers, esc, nomFichier, telecharger, titre, toast, pts } from '../ui.ts';
 import { modeActuel } from '../statut.ts';
+import { ta } from '../i18n-assistant.ts';
 
 export function accueil() {
   titre('app', false);
   const carte = (href: string, icone: string, cle: 'corriger' | 'epreuves' | 'resultats' | 'sauvegarde' | 'labo', id: string) =>
     `<a class="card choix" href="${href}" id="${id}"><span class="ico">${icone}</span><span><b>${t(cle)}</b><br><span class="mut">${t((cle + '_d') as 'corriger_d')}</span></span></a>`;
+  const carteA = (href: string, icone: string, k: 'resoudre' | 'bloque' | 'verifier', id: string) =>
+    `<a class="card choix" href="${href}" id="${id}"><span class="ico">${icone}</span><span><b>${ta(k)}</b><br><span class="mut">${ta((k + '_d') as 'resoudre_d')}</span></span></a>`;
   app().innerHTML = `<h2 class="accueil">${t('accueil_titre')}</h2>
-    ${carte('#/corriger', '📷', 'corriger', 'go-corriger')}
+    ${carteA('#/resoudre', '📘', 'resoudre', 'go-resoudre')}
+    ${carte('#/corriger', '📝', 'corriger', 'go-corriger')}
+    ${carteA('#/bloque', '🧠', 'bloque', 'go-bloque')}
+    ${carteA('#/verifier', '🔍', 'verifier', 'go-verifier')}
     ${carte('#/epreuves', '📚', 'epreuves', 'go-epreuves')}
     ${carte('#/resultats', '📊', 'resultats', 'go-resultats')}
-    ${carte('#/sauvegarde', '💾', 'sauvegarde', 'go-sauvegarde')}
-    ${carte('./labo.html', '🧪', 'labo', 'go-labo')}
+    <div class="row centre autres"><a class="btn grow" href="#/sauvegarde" id="go-sauvegarde">💾 ${t('sauvegarde')}</a><a class="btn grow" href="./labo.html" id="go-labo">🧪 ${t('labo')}</a></div>
     ${carteInstallation()}
     <p class="mut centre">${t('donnees_locales')}</p>`;
   brancherCarteInstallation(accueil);

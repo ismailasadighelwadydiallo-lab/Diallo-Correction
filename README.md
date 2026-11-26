@@ -19,6 +19,18 @@ copies douteuses signalées sans rien bloquer. Interface en français et en arab
 - **PWA hors ligne** : épreuves, correction en série (caméra ou galerie), copie corrigée,
   modification d'une note avec journal, résultats de classe (moyenne, médiane, réussite par
   exercice), export CSV, sauvegarde dans un fichier.
+- **Assistant du correcteur, hors ligne** (calculs sur l'appareil, aucun appel réseau) :
+  - **📘 Résoudre une épreuve** : corrigé complet question par question (ce qui est demandé,
+    données, méthode, calcul, résultat, vérification, barème, confiance en 4 catégories), bilan
+    « résolues / à vérifier » (rien n'est caché), export en fichier lisible, impression, et
+    « Utiliser pour corriger les copies » avec le même pack ;
+  - **🧠 Je bloque** : solution complète, méthode seule, étape par étape, autre méthode, ou
+    vérifier son raisonnement ; plus une question de maths libre (équations, dérivées, limites,
+    développer, factoriser, calculs) ;
+  - **🔍 Vérifier mon raisonnement** : chaque ligne est marquée juste, erreur, erreur entraînée
+    ou non lue.
+  Barème toujours étiqueté **officiel** ou **proposé — non officiel**. Critères de confiance :
+  `docs/confiance.md`.
 - **Page labo** pour mesurer l'IA locale sur votre téléphone.
 - **Serveur local de l'école** : sert l'application et les packs sur le Wi-Fi, sans Internet.
 - **7 packs du Bac mauritanien** (2025-2026) dans `packs/`, dont **Maths M & TMGM 2026 complet**,
@@ -116,6 +128,8 @@ Variables du serveur : `OC_PORT_HTTPS` (8443), `OC_PORT_HTTP` (8080), `OC_NOM` (
 
 ## Utiliser l'application
 
+0. **Résoudre une épreuve** → choisir l'épreuve : corrigé complet, questions à vérifier,
+   export ; **Je bloque** et **Vérifier mon raisonnement** sont aussi sur l'accueil.
 1. **Mes épreuves** → importer un pack (`.json`) ou **créer un QCM**.
 2. **Feuille-réponse** → imprimer, photocopier pour les élèves.
 3. Pour les questions ouvertes, le professeur noircit les points obtenus dans les cases `*`.
@@ -157,6 +171,8 @@ Une étape avec `attendu` et `variable` permet l'**erreur entraînée** : une é
 utilise cette variable et reste cohérente avec la valeur (fausse) de l'élève garde ses points.
 
 ## Licences
+
+Détail complet, avec usage commercial et alternatives : `docs/licences.md`.
 
 Toutes les dépendances autorisent l'usage commercial (MIT, Apache-2.0, BSD, ISC, 0BSD,
 BlueOak). Détail et tailles : `docs/choix.md`. Modèles d'IA proposés : Qwen3 et Qwen2.5

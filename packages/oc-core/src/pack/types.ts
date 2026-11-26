@@ -1,8 +1,27 @@
 // Format d'un pack d'épreuve (version "oc-pack/1").
 // Le schéma JSON équivalent est dans ./schema.ts ; la validation dans ./validate.ts.
 
-export type Langue = 'fr' | 'ar';
-export type TypeQuestion = 'qcm' | 'numerique' | 'texte_court' | 'calcul' | 'demonstration' | 'figure' | 'redaction';
+export type Langue = 'fr' | 'ar' | 'en';
+/** Types notés par étapes ou par grille de critères (tout sauf qcm, numerique, texte_court). */
+export type TypeEtapes = 'calcul' | 'demonstration' | 'figure' | 'graphique' | 'tableau' | 'redaction' | 'analyse_document' | 'question_ouverte' | 'raisonnement' | 'traduction' | 'grammaire';
+export type TypeQuestion = 'qcm' | 'numerique' | 'texte_court' | TypeEtapes;
+/** Origine du barème : « officiel » (fourni par l'autorité des examens) ou « propose » (non officiel). */
+export type SourceBareme = 'officiel' | 'propose';
+
+export interface EtapeSolution { texte: string; calcul?: string }
+
+/** Corrigé détaillé d'une question : compréhension, données, méthode, étapes, résultat. */
+export interface Solution {
+  comprendre?: string;
+  donnees?: string[];
+  methode?: string;
+  etapes?: EtapeSolution[];
+  resultat?: string;
+  /** Phrase de réponse finale (« Donc… »). */
+  reponse?: string;
+}
+
+export interface MethodeAlternative { nom: string; methode?: string; etapes?: EtapeSolution[]; resultat?: string }
 /** Nature d'une étape du barème (section 7, règle 1). `critere` = élément d'une grille (figures, rédaction). */
 export type NatureEtape = 'methode' | 'calcul' | 'resultat' | 'justification' | 'critere';
 export type RegleQcmMulti = 'tout_ou_rien' | 'partiel';
@@ -69,6 +88,12 @@ interface QuestionBase {
   etapes?: Etape[];
   /** Note pour le professeur relecteur : ce qui n'a pas pu être vérifié automatiquement. */
   a_relire?: string;
+  /** Corrigé détaillé (méthode, étapes, résultat). */
+  solution?: Solution;
+  /** Autres méthodes justes, acceptées à la correction. */
+  methodes_alternatives?: MethodeAlternative[];
+  /** Origine du barème de cette question, si elle diffère de celle du pack. */
+  bareme_source?: SourceBareme;
 }
 
 export interface QuestionQcm extends QuestionBase {
@@ -107,7 +132,7 @@ export interface QuestionTexteCourt extends QuestionBase {
 }
 
 export interface QuestionEtapes extends QuestionBase {
-  type: 'calcul' | 'demonstration' | 'figure' | 'redaction';
+  type: TypeEtapes;
   etapes: Etape[];
   /** « Montrer que… » : le résultat seul, sans démonstration, vaut 0. Vrai par défaut pour `demonstration`. */
   montrer_que?: boolean;
@@ -128,6 +153,14 @@ export interface Pack {
   id: string;
   titre: string;
   serie?: string;
+  /** Examen : « Baccalauréat », « BEPC », « Devoir »… (texte libre, jamais deviné). */
+  examen?: string;
+  /** Matière (clé du catalogue : mathematiques, physique-chimie, sciences-naturelles, francais…). */
+  matiere?: string;
+  niveau?: string;
+  annee?: number;
+  /** Barème officiel fourni, ou barème proposé (non officiel). Absent = inconnu. */
+  bareme_source?: SourceBareme;
   duree?: string;
   session?: string;
   total: number;

@@ -1,4 +1,4 @@
-# Cahier des charges — version 3 (porteur du projet, 26/11/2026)
+# Cahier des charges — version 3 (porteur du projet, 26/11/2026, deuxième envoi)
 
 Résumé fidèle du « Master prompt v3 » envoyé par le porteur. Il complète, sans les remplacer,
 les règles du prompt de départ (aucun faux hors ligne, aucun chiffre inventé, tout testé,
@@ -104,3 +104,57 @@ vérifications, méthodes acceptées et règles de notation. C'est le pack `oc-p
 Ce qui fonctionne, ce qui ne fonctionne pas, ce qui n'a pas été testé, les mesures (appareil,
 navigateur, taille du modèle, temps, précision, conditions), les problèmes rencontrés et la
 prochaine étape.
+
+## Ajouts du deuxième envoi (remplace le premier là où ils diffèrent)
+
+- **Objectif** : tous les examens officiels du Bac mauritanien (toutes séries, matières, types de
+  réponses), puis le BEPC et les devoirs. La fiabilité passe avant le nombre de fonctions.
+- **Catalogue des épreuves** (Bac → série → matière → session/année → sujet/barème), enrichi
+  sans toucher au moteur. Aucune série ni matière inventée : seulement ce qui est vérifié.
+- **Moteurs par matière** dans `oc-core` : mathématiques, physique-chimie (unités, cohérence
+  dimensionnelle), sciences naturelles, français, arabe, anglais, philosophie, histoire,
+  géographie, éducation islamique, technique, autre. Chacun a ses règles. Un nouveau domaine =
+  pack + moteur + règles de notation + règles de vérification + tests.
+- **Rédactions et réponses ouvertes** : notation par critères (pertinence, structure,
+  raisonnement), jamais « différent du corrigé = faux ».
+- **Détection automatique** (matière, série, session, année, langue, type) avec une confiance
+  affichée, jamais certaine, toujours modifiable à la main.
+- **Barème officiel ou proposé** (`bareme_source`) : « Barème officiel fourni » ou « Barème
+  proposé par le système — non officiel ». Interdit de présenter un barème proposé comme officiel.
+- **Confiance** : lecture, compréhension, résolution et notation séparées. Catégories élevée,
+  moyenne ou faible tant qu'aucune mesure statistique n'existe : pas de faux pourcentage.
+- **Types de questions** : qcm, qcm_multiple, numerique, texte_court, calcul, demonstration,
+  figure, graphique, tableau, redaction, analyse_document, question_ouverte, raisonnement,
+  traduction, grammaire. La liste doit pouvoir s'étendre.
+- **Accueil** : 📘 Résoudre une épreuve · 📝 Corriger des copies · 🧠 Je bloque ·
+  🔍 Vérifier mon raisonnement · 📚 Mes épreuves · 📊 Résultats.
+- **Résolution de toute l'épreuve** : bilan affiché (questions résolues, questions à vérifier).
+  Les questions incertaines ne sont jamais cachées.
+- **Correction par lot** (jusqu'à 100 copies et plus) sans bloquer l'interface.
+- **Modification humaine** : réponse lue, points, commentaire, barème ; tout est enregistré
+  (avant, après, motif, auteur, date).
+- **Test hors ligne réel** : installation → mode avion → fermeture → réouverture → import du
+  sujet → résolution → import d'une copie → correction → export.
+- **Licences** : `docs/choix.md` et `docs/licences.md` (nom, version, usage, licence, usage
+  commercial, taille, limites, alternative).
+- **Feuille de route** :
+  1. architecture existante
+  2. résolution
+  3. corrigé de référence
+  4. copies imprimées
+  5. OCR local
+  6. manuscrit court
+  7. maths avancées
+  8. physique
+  9. SVT
+  10. français
+  11. arabe
+  12. anglais
+  13. philosophie, histoire, géographie, éducation islamique
+  14. technique
+  15. toutes les séries
+  16. BEPC
+  17. devoirs
+- **Rapport type** après chaque étape : ✓ fonctionne · ⚠ partiel · ✗ ne fonctionne pas ·
+  📊 mesures · 🧪 tests · 📱 appareils · 🌐 hors ligne · 📦 packs · ➡ prochaine étape.
+- **Règle d'or** : mieux vaut signaler une incertitude que donner une fausse correction.

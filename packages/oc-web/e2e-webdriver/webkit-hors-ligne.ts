@@ -168,6 +168,26 @@ async function principal() {
       await attendreQue(`document.querySelectorAll('main svg circle').length > 81`, 'feuille-réponse affichée');
     });
 
+    await etape('corrigé complet du Bac, Je bloque, vérifier mon raisonnement', async () => {
+      await wd('POST', '/url', { url: URL_APP + '/#/resoudre' });
+      await cliquer('[data-pack]');
+      await attendreQue(`!!document.querySelector('#nb-resolues')`, 'bilan affiché');
+      const n = Number(await texte('#nb-resolues')) + Number(await texte('#nb-a-verifier'));
+      if (n !== 27) throw new Error(`bilan : ${n} questions au lieu de 27`);
+      await js(`document.querySelector('details.fiche summary').click();`);
+      await attendreQue(`document.querySelector('details.fiche .solution')?.textContent.includes('Confiance')`, 'fiche ouverte');
+      await wd('POST', '/url', { url: URL_APP + '/#/bloque' });
+      await attendreQue(`!!document.querySelector('#ql')`, 'page Je bloque');
+      await js(`document.querySelector('#ql').value = 'Résous x^2 - 5x + 6 = 0';`);
+      await cliquer('#ql-ok');
+      await attendreQue(`document.querySelector('#ql-res').textContent.includes('S = { 2 ; 3 }')`, 'équation résolue');
+      await wd('POST', '/url', { url: URL_APP + '/#/verifier' });
+      await attendreQue(`!!document.querySelector('.dem')`, 'page Vérifier');
+      await js(`document.querySelector('.dem').value = 'x^2 - 5x + 6 = 0\\n(x - 2)(x - 4) = 0\\nx = 2 ou x = 4'; document.querySelector('.c-eq').value = 'x^2 - 5x + 6 = 0';`);
+      await cliquer('.v-ok');
+      await attendreQue(`document.querySelectorAll('.l-erreur').length === 1 && document.querySelectorAll('.l-entrainee').length === 1`, 'erreur et erreur entraînée trouvées');
+    });
+
     await etape('interface en arabe (droite à gauche)', async () => {
       await wd('POST', '/url', { url: URL_APP + '/#/' });
       await cliquer('#lang');
